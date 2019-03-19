@@ -2,7 +2,6 @@ const sha1 = require('sha1')
 const colors = require('colors')
 const i18n = require('i18n')
 const UsersService = require('../services/UsersService')
-const SocketIoService = require('../services/SocketIOService')
 
 exports.list = (req, response, next) => {
   new UsersService().findAll()
@@ -15,38 +14,40 @@ exports.list = (req, response, next) => {
     });
 }
 
-exports.findById = (req, response, next) => {
-  const user_id = req.query.user_id;
+// exports.findById = (req, response, next) => {
+//   const user_id = req.query.user_id;
 
-  new UsersService().findById(user_id)
-    .then((result) => {
-      req.result = result;
-      next();
-    }).catch((error) => {
-      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-      console.log('\n---------------- error ----------------\n'.red, error);
-    });
-}
+//   new UsersService().findById(user_id)
+//     .then((result) => {
+//       req.result = result;
+//       next();
+//     }).catch((error) => {
+//       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+//       console.log('\n---------------- error ----------------\n'.red, error);
+//     });
+// }
 
-exports.findOne = (req, response, next) => {
-  const userId = req.params.user_id;
+// exports.findOne = (req, response, next) => {
+//   const userId = req.params.user_id;
 
-  new UsersService().findOne({user_id: userId})
-    .then((result) => {
-      if (!result) {
-        response.status(404).send('not found');
-        return;
-      }
-      req.user = result;
-      next();
-    }).catch((error) => {
-      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-      console.log('\n---------------- error ----------------\n'.red, error);
-    });
-}
+//   new UsersService().findOne({
+//       user_id: userId
+//     })
+//     .then((result) => {
+//       if (!result) {
+//         response.status(404).send('not found');
+//         return;
+//       }
+//       req.user = result;
+//       next();
+//     }).catch((error) => {
+//       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+//       console.log('\n---------------- error ----------------\n'.red, error);
+//     });
+// }
 
 exports.create = (req, response, next) => {
-  const role = req.body.role;
+  const roleId = req.body.role_id;
 
   if (req.body.password != req.body.password_confirmation) {
     response.status(400).send(i18n.__("passwords_do_not_match"))
@@ -59,10 +60,10 @@ exports.create = (req, response, next) => {
     password: sha1(req.body.password)
   };
 
-  if (role) {
-    user.role = 'admin'
+  if (roleId) {
+    user.role_id = 1
   } else {
-    user.role = 'user'
+    user.role_id = 0
   }
 
   new UsersService().create(user)
@@ -75,7 +76,12 @@ exports.create = (req, response, next) => {
 }
 
 exports.update = (req, response, next) => {
-  const roleId = req.body.role;
+  const roleId = req.body.role_id;
+
+  if (req.body.password != req.body.password_confirmation) {
+    response.status(400).send(i18n.__("passwords_do_not_match"))
+    return;
+  }
 
   const user = {
     name: req.body.name,
@@ -84,9 +90,9 @@ exports.update = (req, response, next) => {
   };
 
   if (roleId) {
-    user.role = 1
+    user.role_id = 1
   } else {
-    user.role = 2
+    user.role_id = 0
   }
 
   const where = {
@@ -122,8 +128,6 @@ exports.login = (req, response, next) => {
           role: result.role,
         }
 
-        await new SocketIoService().newClient(user.user_id)
-
         req.session.user = user;
         response.locals.user = user;
         next();
@@ -134,6 +138,8 @@ exports.login = (req, response, next) => {
     });
 }
 
+
+// TODO: destroy the session 
 exports.logout = (req, response) => {
   response.redirect('/');
 }
