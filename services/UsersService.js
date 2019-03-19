@@ -1,8 +1,6 @@
 const Joi = require('joi')
 const BaseService = require('./BaseService')
 const models = require('../DB/models/index');
-const UsersDao = require('../DAOs/UsersDao')
-const UsersProfilesService = require('./UsersProfilesService')
 
 const usersModels = models.users;
 
@@ -10,7 +8,7 @@ const schema = {
   name: Joi.string().required(),
   email: Joi.string().required(),
   password: Joi.string().required(),
-  role: Joi.string().required()
+  role_id: Joi.number().required()
 };
 
 class UsersService extends BaseService {
@@ -21,7 +19,7 @@ class UsersService extends BaseService {
   findAll(where, pageSize, pageNumber) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await new UsersDao().findAll(where, pageSize, pageNumber)
+        const result = await super.findAll(where, null, pageSize, pageNumber)
         resolve(result);
       } catch (error) {
         reject(error);
@@ -42,13 +40,7 @@ class UsersService extends BaseService {
           return;
         }
 
-        const result = await super.create(user);
-
-        // add user_id to users_profiles table
-        await new UsersProfilesService().create({
-          user_id: result.user_id
-        });
-
+        await super.create(user);
         resolve();
       } catch (error) {
         reject(error);

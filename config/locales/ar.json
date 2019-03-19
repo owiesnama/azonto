@@ -35,5 +35,6 @@
 	"initiator": "initiator",
 	"step description": "step description",
 	"type": "type",
-	"workflow steps": "workflow steps"
+	"workflow steps": "workflow steps",
+	"passwords_do_not_match": "passwords_do_not_match"
 }

@@ -4,11 +4,23 @@ const router = express.Router();
 const usersController = require('../controller/users');
 // const authController = require('../controller/auth');
 
+// list && create API
 router.route('/')
+  .get(usersController.list,
+    (req, response) => {
+      response.status(200).send(req.users);
+    })
   .post(usersController.create,
     (req, response) => {
-      response.redirect('/login');
+      response.redirect('/users');
     });
+
+// update API
+router.route('/:user_id')
+  .put(usersController.update,
+    (req, response) => {
+      response.sendStatus(200);
+    })
 
 router.route('/login')
   .post(usersController.login,

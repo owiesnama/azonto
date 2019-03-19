@@ -11,20 +11,7 @@ const i18n = require('i18n');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
-const settings = require('./routes/settings');
 const upload = require('./routes/upload');
-const usersProfiles = require('./routes/users_profiles');
-const workFlows = require('./routes/workflows');
-const stepTypes = require('./routes/step_types');
-const steps = require('./routes/steps');
-const archive = require('./routes/archive');
-const socket = require('./routes/socket');
-const trash = require('./routes/trash');
-const folders = require('./routes/folders');
-const favorites = require('./routes/favorites');
-
-// run the socket.io server
-const socketServer = require('./libs/socket-io/socket_server');
 
 const app = express();
 
@@ -78,24 +65,12 @@ Object.defineProperty(global, '__', {
 // middleware to make 'user' available to all templates
 app.use(function (req, response, next) {
     response.locals.user = req.session.user;
-    console.log(req.session)
     next();
 });
 
 app.use('/', index);
 app.use('/users', users);
-app.use('/settings', settings);
 app.use('/upload', upload);
-app.use('/users_profiles', usersProfiles);
-app.use('/workflows', workFlows);
-app.use('/step_types', stepTypes);
-app.use('/steps', steps);
-app.use('/archive', archive);
-app.use('/socket', socket);
-app.use('/trash', trash);
-app.use('/folders', folders);
-app.use('/favorites', favorites);
-
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

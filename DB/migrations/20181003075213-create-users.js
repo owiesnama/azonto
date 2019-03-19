@@ -20,13 +20,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      role: {
-        type: Sequelize.STRING,
+      role_id: {
+        type: Sequelize.INTEGER,
         allowNull: false,
-        defaultValue: 'user'
-      },
-      socket_token: {
-        type: Sequelize.STRING,
+        defaultValue: 0
       },
       created_at: {
         allowNull: false,

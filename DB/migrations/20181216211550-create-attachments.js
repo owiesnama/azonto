@@ -1,44 +1,45 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('attachments', {
-      attachment_id: {
+    return queryInterface.createTable('videos', {
+      video_id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
-      },
-      user_id: {
+      },      
+      title: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'users',
-          key: 'user_id'
-        }
-      },
-      folder_id: {
+        type: Sequelize.STRING
+      },      
+      description: {
         allowNull: false,
-        type: Sequelize.INTEGER,
-        references:{
-          model: 'folders',
-          key: 'folder_id'
-        }
-      },
+        type: Sequelize.STRING
+      },      
       url: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      display_name: {
+      player: {
         allowNull: false,
         type: Sequelize.STRING
       },
-      size: {
+      views: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+      },      
+      thumbnail: {
+        allowNull: false,
+        type: Sequelize.STRING,
+      },      
+      status_id: {
         allowNull: false,
         type: Sequelize.INTEGER
-      },
+      },      
       created_at: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       updated_at: {
         allowNull: false,
@@ -47,6 +48,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('attachments');
+    return queryInterface.dropTable('videos');
   }
 };
