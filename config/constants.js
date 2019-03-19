@@ -5,5 +5,8 @@ function define(name, value) {
   });
 }
 
+// users
 define("ADMIN", 1);
-define("IT_MANAGER", 2);
+
+// videos
+define("PENDING", 1);

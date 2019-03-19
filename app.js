@@ -11,6 +11,7 @@ const i18n = require('i18n');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const videos = require('./routes/videos');
 const upload = require('./routes/upload');
 
 const app = express();
@@ -38,7 +39,7 @@ app.use(session({
 //set i18n
 i18n.configure({
     locales: ['en', 'ar'],
-    defaultLocale: 'ar',
+    defaultLocale: 'en',
     queryParameter: 'lang',
     autoReload: true,
     directory: __dirname + '/config/locales/',
@@ -47,14 +48,16 @@ i18n.configure({
 app.use(i18n.init);
 
 app.use((req, response, next) => {
-    const lang = req.query.lang;
-    if (lang === "en") {
-        i18n.setLocale("en");
-    } else {
-        i18n.setLocale('ar');
-    }
-    console.log(`\nlocale: ${i18n.getLocale()} `.green);
-    next();
+  // TODO: to be used if we needed multi lang app
+  // const lang = req.query.lang;
+  // if (lang === "en") {
+  //     i18n.setLocale("en");
+  //   } else {
+  //     i18n.setLocale('ar');
+  //   }
+  i18n.setLocale("en");
+  console.log(`\nlocale: ${i18n.getLocale()} `.green);
+  next();
 });
 
 
@@ -70,6 +73,7 @@ app.use(function (req, response, next) {
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/videos', videos);
 app.use('/upload', upload);
 
 // catch 404 and forward to error handler

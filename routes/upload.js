@@ -2,12 +2,12 @@ const express = require('express');
 const router = express.Router();
 const path = require('path');
 
-const attachmentsController = require('../controller/attachments');
+const videosController = require('../controller/videos');
 const uploaderController = require('../controller/uploader');
 
 router.route('/')
   .post(uploaderController.upload,
-    attachmentsController.create,
+    videosController.create,
     (req, response) => {
       response.redirect('/home');
     }
