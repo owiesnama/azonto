@@ -1,4 +1,4 @@
-# databse:
+# database:
 ```
   CREATE DATABASE `videos-platform` DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
   CREATE USER 'videos-platform'@'localhost' IDENTIFIED BY 'videos-platform@123';
