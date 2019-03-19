@@ -1,0 +1,46 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
+@import "argon";
+
+label.btn ~ input[type='file'] {
+  display: none;
+}
+
+.v--modal-overlay .v--modal-box {
+  right: 50%;
+  transform: translateX(50%);
+}
+
+.footer {
+  position: fixed;
+  height: 50px;
+  width: 100%;
+  padding-right: 250px;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+}
+
+.main-content {
+  padding-bottom: 50px;
+}
+
+.card {
+  &.workflow--card {
+    .card-header {
+      margin: 1rem 0;
+      border-right: 2px solid $primary;
+      border-radius: 0;
+      border-bottom: none;
+    }
+    .card-body {
+      padding-top: 0;
+      font-weight: lighter;
+    }
+  }
+}
+
+.mx--2{
+  margin-right: -2rem;
+  margin-left: -2rem;
+}

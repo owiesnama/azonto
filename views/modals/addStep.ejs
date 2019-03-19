@@ -1,0 +1,64 @@
+<modal name="addStep"
+       height="auto"
+       classes=""
+       :pivot-y=".35">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <h5 class="modal-title text-muted">
+                <%= __("add step") %>
+            </h5>
+            <button type="button" class="close" @click="$modal.hide('addStep')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+        <form action="/workflows/workflow-slug/steps" method="post">
+            <div class="modal-body">
+
+                <div class="input-group mb-2">
+                    <input class="form-control"
+                           placeholder="<%= __('step name') %>"
+                           type="text" name="name">
+                </div>
+
+                <div class="input-group mb-2">
+                    <select class="form-control"
+                            placeholder="<%= __('initiator') %>"
+                            type="text"
+                            name="initiator">
+                    </select>
+                </div>
+
+                <div class="input-group mb-2">
+                    <textarea class="form-control"
+                              placeholder="<%= __('step description') %>"
+                              rows="5"
+                              name="description"></textarea>
+                </div>
+
+                <div class="input-group mb-2">
+                    <select class="form-control"
+                            placeholder="<%= __('type') %>"
+                            type="text"
+                            name="type">
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="$modal.hide('addStep')">
+                    <%= __('cancel') %>
+                </button>
+
+                <input class="btn btn-primary" type="submit" value="<%= __('save') %>">
+            </div>
+        </form>
+
+    </div>
+
+</modal>

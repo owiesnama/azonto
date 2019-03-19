@@ -1,0 +1,12 @@
+.table {
+  &.files--table td > span {
+      display: flex;
+      padding: .2rem;
+      justify-content: center;
+      align-content: center;
+
+    a{
+      margin: 0 .4rem;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+<modal name="addWorkflow" height="auto" classes="" :pivot-y=".35">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+      <h5 class="modal-title text-muted">
+        <%= __("add workflow") %>
+      </h5>
+      <button type="button" class="close" @click="$modal.hide('addWorkflow')" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+
+    <form action="/workflows" method="post">
+      <div class="modal-body">
+
+        <div class="input-group mb-2">
+          <input class="form-control" placeholder="<%=__('workflow name')%>" type="text" name="name">
+        </div>
+
+        <div class="input-group">
+          <textarea class="form-control" placeholder="<%=__('workflow description')%>" rows="10" name="description"></textarea>
+        </div>
+
+      </div>
+
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" @click="$modal.hide('addWorkflow')">
+          <%=__('cancel')%>
+        </button>
+
+        <input class="btn btn-primary" type="submit" value="<%=__('save')%>">
+      </div>
+    </form>
+
+
+  </div>
+
+</modal>

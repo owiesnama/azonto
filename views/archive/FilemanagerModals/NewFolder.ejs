@@ -1,0 +1,41 @@
+<modal name="newFolder"
+       height="auto"
+       classes=""
+       :pivot-y=".35">
+
+    <div class="modal-content">
+
+        <div class="modal-header">
+            <button type="button" class="close" @click="$modal.hide('newFolder')" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+
+
+        <form method="post" @submit.prevent="addFolder">
+
+            <div class="modal-body">
+                <div class="input-group">
+                    <input class="form-control"
+                           v-model="folder.name"
+                           placeholder="<%= __('folder name') %>"
+                           type="text"
+                           required
+                           name="name">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" @click="$modal.hide('newFolder')">
+                    <%= __('cancel') %>
+                </button>
+
+                <input class="btn btn-primary"
+                       type="submit"
+                       value="<%= __('save') %>">
+            </div>
+        </form>
+
+    </div>
+
+</modal>
