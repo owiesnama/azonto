@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "",
-    "database": "edms",
+    "database": "videos-platform",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false,
@@ -12,16 +12,16 @@
     }
   },
   "test": {
-    "username": "edms",
-    "password": "edms@123",
-    "database": "edms",
+    "username": "videos-platform",
+    "password": "videos-platform@123",
+    "database": "videos-platform",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "edms",
-    "password": "edms@123",
-    "database": "edms",
+    "username": "videos-platform",
+    "password": "videos-platform@123",
+    "database": "videos-platform",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false,
