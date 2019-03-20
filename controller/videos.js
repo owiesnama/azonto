@@ -37,12 +37,19 @@ exports.create = (req, response, next) => {
   // gets the generated file name from Multer
   const videoName = req.file.filename;
 
+  // get the thumbnail generated from screenshot lib
+  const thumbnail = req.thumbnail[0];
+  // console.log('thumbnail', thumbnail);
+
+  // response.send(thumbnail)
+  // return;
+
   const video = {
     title: req.body.title,
     description: req.body.description,
     url: videoName,
     player: req.body.player,
-    thumbnail: req.body.thumbnail,
+    thumbnail: thumbnail,
     status_id: constants.PENDING
   };
 

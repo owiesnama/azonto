@@ -1,11 +1,14 @@
 const express = require('express');
+
 const router = express.Router();
 const fs = require('fs');
 
-const path = __dirname + '/../uploads/';
+const videoPath = __dirname + '/../uploads/videos/';
+const screenshotPath = __dirname + '/../uploads/screenshots/';
 
 const videosController = require('../controller/videos');
 const uploadController = require('../controller/upload');
+const screenshotLib = require('../libs/screenshot');
 // const authController = require('../controller/auth');
 
 // list && create API
@@ -16,6 +19,7 @@ router.route('/')
     })
   .post(
     uploadController.upload,
+    screenshotLib.takeScreenshot,
     videosController.create,
     (req, response) => {
       response.redirect('/videos');
@@ -34,7 +38,8 @@ router.route('/:video_id')
     // deleting the file from uploads folder
     (req, response, next) => {
       try {
-        fs.unlinkSync(path + req.video.url)
+        fs.unlinkSync(videoPath + req.video.url)
+        fs.unlinkSync(screenshotPath + req.video.thumbnail)
         next();
       } catch (error) {
         response.status(500).send(error);
