@@ -15,11 +15,32 @@ exports.list = (req, response, next) => {
     });
 }
 
+exports.findOne = (req, response, next) => {
+  const videoId = parseInt(req.params.video_id);
+
+  new VideosService().findOne({
+      video_id: videoId
+    })
+    .then((result) => {
+      if (!result) {
+        response.sendStatus(404);
+      } else {
+        req.video = result;
+        next();
+      }
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
 exports.create = (req, response, next) => {
+  // gets the generated file name from Multer
+  const videoName = req.file.filename;
+
   const video = {
     title: req.body.title,
     description: req.body.description,
-    url: req.body.url,
+    url: videoName,
     player: req.body.player,
     thumbnail: req.body.thumbnail,
     status_id: constants.PENDING
@@ -40,13 +61,27 @@ exports.update = (req, response, next) => {
   const video = {
     title: req.body.title,
     description: req.body.description,
-    url: req.body.url,
     player: req.body.player,
     thumbnail: req.body.thumbnail,
     status_id: req.body.status_id
   };
 
   new VideosService().update(video, videoId)
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
+exports.delete = (req, response, next) => {
+  const videoId = parseInt(req.params.video_id);
+
+  new VideosService().delete({
+      video_id: videoId
+    })
     .then((result) => {
       req.result = result;
       next();

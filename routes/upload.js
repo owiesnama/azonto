@@ -1,9 +1,10 @@
+// TODO: remove if not used
 const express = require('express');
 const router = express.Router();
 const path = require('path');
 
 const videosController = require('../controller/videos');
-const uploaderController = require('../controller/uploader');
+const uploaderController = require('../controller/upload');
 
 router.route('/')
   .post(uploaderController.upload,
