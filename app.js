@@ -12,7 +12,7 @@ const i18n = require('i18n');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const videos = require('./routes/videos');
-const upload = require('./routes/upload');
+const messages = require('./routes/messages');
 
 const app = express();
 
@@ -74,7 +74,7 @@ app.use(function (req, response, next) {
 app.use('/', index);
 app.use('/users', users);
 app.use('/videos', videos);
-app.use('/upload', upload);
+app.use('/messages', messages);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
