@@ -13,6 +13,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const videos = require('./routes/videos');
 const messages = require('./routes/messages');
+const featuredVideos = require('./routes/featured_videos');
 
 const app = express();
 
@@ -75,6 +76,7 @@ app.use('/', index);
 app.use('/users', users);
 app.use('/videos', videos);
 app.use('/messages', messages);
+app.use('/featured_videos', featuredVideos);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
