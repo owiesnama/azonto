@@ -18,6 +18,5 @@ exports.takeScreenshot = (req, response, next) => {
     }, screenshotPath, function (err) {
       console.log('screenshots were saved')
     });
-
   next();
 }
