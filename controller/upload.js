@@ -13,6 +13,7 @@ const storage = multer.diskStorage({
 const upload = multer({
     storage: storage
   })
-  .array('docs', 4);
+  .single('video');
+// .array('video', 4);
 
 exports.upload = upload;

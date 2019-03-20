@@ -13,6 +13,14 @@ const schema = {
   status_id: Joi.number().required()
 };
 
+const updateSchema = {
+  title: Joi.string().required(),
+  description: Joi.string().required(),
+  player: Joi.string().required(),
+  thumbnail: Joi.string().required(),
+  status_id: Joi.number().required()
+};
+
 class VideosService extends BaseService {
   constructor() {
     super(videosModel);
@@ -62,7 +70,7 @@ class VideosService extends BaseService {
           return;
         }
 
-        const isError = this.validateInputs(video, schema);
+        const isError = this.validateInputs(video, updateSchema);
         if (isError.error) {
           reject({
             code: 400,
