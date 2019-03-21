@@ -1,0 +1,60 @@
+<%-include('./partials/header')%>
+<div id="app" class="container">
+    <div class="">
+        <main id="main" role="main">
+            <div class="promo-image"></div>
+            <br>
+            <section>
+                <header class="heading">
+                    <h1>submit <mark>video</mark></h1>
+                </header>
+                <section class="section">
+                    <div class="text-holder">
+                        <h2>Video Submission</h2>
+                        <p>Thank you for submiting your video to our website. To ensure proper submission, please include in your submission the title, description, and the video URL. (Upload video to <a href="https://wetransfer.com" target="_blank">wetransfer.com</a> or <a href="https://sendspace.com" target="_blank">sendspace.com</a>). All video submissions will get proper credit if accepted.</p>
+                        <p>By submitting your video, you are representing to Worldstar Hip Hop that you have all necessary rights in the video to authorize our use and reuse of the audio and visual material it contains, that your submission of the video is governed by our <a href="agree.php">On Line Video Submission Agreement</a>, and that you have read, understood and agreed to the terms and conditions of that Agreement.</p>
+                    </div>
+                    <form id="videosubmit" action="vsent.php" method="POST" class="contact-form">
+                        <fieldset>
+                            <label for="video-title">Title <mark>(required)</mark></label>
+                            <input name="video-title"
+                                   id="video-title"
+                                   type="text"
+                                   placeholder="Title">
+
+                            <label for="email">Email <mark>(required) </mark></label>
+                            <input name="email"
+                                   id="email"
+                                   type="text"
+                                   placeholder="username@domain.com">
+
+                            <label>Video Type <mark>(required)</mark></label>
+                            <span class="select-area select-options-flipped" style="width: 160px;"><span class="left"></span><span class="center"></span><a class="select-opener"></a></span><select name="attention" class="jcf-hidden">
+                                <option></option>
+                                <option>Music Video</option>
+                                <option>Promotional Video</option>
+                                <option>Fight / Vine / Funny Video</option>
+                                <option>Other</option>
+                            </select>
+
+                            <label for="video-url">Video URL <mark>(required, read “Video Submissions”)</mark></label>
+                            <input name="video-url"
+                                   id="video-url"
+                                   type="text"
+                                   placeholder="https://we.tl/0as0bCysax">
+
+                            <label for="video-description">Video Description <mark>(required)</mark></label>
+                            <textarea name="video-description"
+                                      id="video-description"
+                                      cols="3"
+                                      placeholder="Description"
+                                      rows="1"></textarea>
+                            <div><div class="grecaptcha-badge" data-style="bottomright" style="width: 256px; height: 60px; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;"><div class="grecaptcha-logo"><iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcLyzYUAAAAAJZcA_UcZ3ul1bGO3aTB70eq9Bj1&amp;co=aHR0cDovL3d3dy53b3JsZHN0YXJoaXBob3AuY29tOjgw&amp;hl=en&amp;v=v1552285980763&amp;size=invisible&amp;cb=tw0bxp2g5zo4" width="256" height="60" role="presentation" name="a-iei06ti9ke7v" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe></div><div class="grecaptcha-error"></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div></div><button class="g-recaptcha" data-sitekey="6LcLyzYUAAAAAJZcA_UcZ3ul1bGO3aTB70eq9Bj1" data-callback="onSubmit"> Submit Video </button>
+                        </fieldset>
+                    </form>
+                </section>
+            </section>
+        </main>
+    </div>
+
+<%-include('./partials/footer-section')%>

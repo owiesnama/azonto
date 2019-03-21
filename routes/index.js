@@ -12,5 +12,9 @@ router.get('/contact',
   (req, response) => {
     response.render('contact_us');
   });
+router.get('/upload',
+  (req, response) => {
+    response.render('create');
+  });
 
 module.exports = router;

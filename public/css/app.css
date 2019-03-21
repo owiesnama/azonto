@@ -17009,6 +17009,10 @@ textarea[resize=horizontal] {
   padding: 13px 0 12px;
 }
 
+.navbar .logo {
+  padding: 5px;
+}
+
 .navbar .nav-item {
   padding: 0;
   font-size: 13px;
@@ -17043,25 +17047,29 @@ textarea[resize=horizontal] {
   justify-content: center;
 }
 
-.navbar .social-networks {
+.navbar .right-nav {
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.navbar .right-nav .social-networks {
   padding: 7px 0 0 7px;
   margin: 0;
   list-style: none;
-  width: 158px;
+  min-width: 158px;
   text-align: center;
   font-size: 0;
   line-height: 0;
   letter-spacing: -5px;
-  float: right;
 }
 
-.navbar .social-networks li {
+.navbar .right-nav .social-networks li {
   display: inline-block;
   vertical-align: middle;
   margin: 0 12px 4px;
 }
 
-.navbar .social-networks li a {
+.navbar .right-nav .social-networks li a {
   display: block;
   text-indent: -9999px;
   overflow: hidden;
@@ -17070,18 +17078,18 @@ textarea[resize=horizontal] {
   background: url(/images/sprite.png?422afafc6d2cdecab2e1736e5b8512c9) no-repeat;
 }
 
-.navbar .social-networks .twitter a {
+.navbar .right-nav .social-networks .twitter a {
   width: 20px;
   height: 16px;
   background-position: -18px -2px;
 }
 
-.navbar .social-networks .facebook a {
+.navbar .right-nav .social-networks .facebook a {
   width: 10px;
   height: 20px;
 }
 
-.navbar .social-networks .instagram a {
+.navbar .right-nav .social-networks .instagram a {
   width: 20px;
   height: 20px;
   background-position: -108px -95px;
@@ -17093,6 +17101,7 @@ textarea[resize=horizontal] {
 
 .footer .logo {
   margin-left: 50px;
+  padding: 5px;
 }
 
 .page-item.active .page-link {
@@ -18714,6 +18723,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .contact-form select,
 .contact-form option {
   display: block;
+  outline: none;
   width: 100%;
   height: 39px;
   background: #fff;
@@ -18739,6 +18749,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   display: block;
   width: 100%;
   max-width: 675px;
+  padding: 10px;
+  outline: none;
   background: #fff;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
