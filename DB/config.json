@@ -1,0 +1,33 @@
+{
+  "development": {
+    "username": "root",
+    "password": "",
+    "database": "videos-platform",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    }
+  },
+  "test": {
+    "username": "videos-platform",
+    "password": "videos-platform@123",
+    "database": "videos-platform",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "videos-platform",
+    "password": "videos-platform@123",
+    "database": "videos-platform",
+    "host": "127.0.0.1",
+    "dialect": "mysql",
+    "operatorsAliases": false,
+    "define": {
+      "timestamps": true,
+      "underscored": true
+    }
+  }
+}

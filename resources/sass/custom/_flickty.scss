@@ -1,0 +1,31 @@
+//.flickity-button {
+//  &.flickity-prev-next-button {
+//    position: absolute;
+//    top: 0;
+//    text-indent: -9999px;
+//    overflow: hidden;
+//    width: 47px;
+//    height: 219px;
+//    z-index: 10;
+//  }
+//  &.previous {
+//    left: -46px;
+//    background: url(../../../public/img/arrows.png) no-repeat;
+//
+//  }
+//  &.next {
+//    left: auto;
+//    right: -46px;
+//    background-position: 100% 0;
+//    background: url(../../../public/img/arrows.png) no-repeat;
+//  }
+//}
+.flickity-page-dots {
+  visibility: hidden;
+  display: none;
+}
+
+.carousel {
+  padding: 11px 0 17px;
+  min-height: 180px;
+}
