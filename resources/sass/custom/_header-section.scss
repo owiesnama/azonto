@@ -1,0 +1,16 @@
+.header-section{
+  background: $black;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+.ads{
+  text-align: center;
+  background: $darker;
+  border-bottom: 1px solid $dark;
+  height: 65px;
+  &.top-banner{
+    background:url(../../../public/images/pattern.jpeg);
+    background-position: 2px -80px;
+  }
+}}
