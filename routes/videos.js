@@ -25,6 +25,14 @@ router.route('/')
       response.redirect('/videos');
     });
 
+router.route('/requests')
+  .get(videosController.pending,
+    (req, response) => {      
+      response.render('admin/requests', {
+        videos: req.videos
+      });
+    });
+
 // update API
 router.route('/:video_id')
   .put(videosController.update,
