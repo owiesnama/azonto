@@ -8,7 +8,8 @@ const usersController = require('../controller/users');
 router.route('/')
   .get(usersController.list,
     (req, response) => {
-      response.status(200).send(req.users);
+      response.render('users/users');
+      // response.status(200).send(req.users);
     })
   .post(usersController.create,
     (req, response) => {
@@ -25,7 +26,7 @@ router.route('/:user_id')
 router.route('/login')
   .post(usersController.login,
     (req, response) => {
-      response.redirect('/home');
+      response.render('admin/index');
     });
 
 router.route('/logout')
