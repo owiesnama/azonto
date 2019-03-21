@@ -17011,7 +17011,6 @@ textarea[resize=horizontal] {
 
 .navbar .nav-item {
   padding: 0;
-  margin: 8px 0;
   font-size: 13px;
   font-weight: bolder;
   text-align: center;
@@ -18711,23 +18710,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   padding: 25px 0 0 10px;
 }
 
-.contact-form input {
-  width: 375px;
-  padding: 8px 10px 11px;
-  margin: 0 0 25px;
-}
-
-.contact-form label {
-  margin: 0 4px 12px;
-}
-
-.contact-form textarea {
+.contact-form input,
+.contact-form select,
+.contact-form option {
   display: block;
   width: 100%;
   height: 39px;
   background: #fff;
   border: 1px solid #bfbfbf;
-  border-color: #bfbfbf #bfbfbf #e3e3e3;
   box-sizing: border-box;
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
@@ -18735,11 +18725,48 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   color: #333;
   font-size: 13px;
   line-height: 16px;
-  padding: 9px 10px 10px;
-  margin: 0;
-  height: 71px;
-  padding-right: 2px;
+  max-width: 375px;
+  padding: 8px 10px 11px;
+  margin: 0 0 25px;
+}
+
+.contact-form label {
+  display: block;
+  margin: 0 4px 12px;
+}
+
+.contact-form textarea {
+  display: block;
+  width: 100%;
+  max-width: 675px;
+  background: #fff;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  border-radius: 10px;
+  color: #333;
+  font-size: 13px;
+  line-height: 16px;
+  margin: 0 0 25px;
+  height: 230px;
   resize: none;
+}
+
+.contact-form button {
+  background-color: #fff;
+  color: #333;
+  font-size: 13px;
+  line-height: 16px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  border: 1px solid #bfbfbf;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  border: 1px solid #3e3e3e;
+  color: #000;
 }
 
 .min-container {
@@ -18799,7 +18826,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   font-size: 1.538em;
   line-height: 1.2em;
   text-transform: uppercase;
-  margin: 0 200px;
+  margin: 0;
   font-weight: normal;
   color: #1c2123;
 }
@@ -18964,5 +18991,25 @@ body {
   font: 1.3em/1.616em Verdana, Geneva, sans-serif;
   background: #f0f0f0;
   height: 100%;
+}
+
+.section {
+  padding: 25px 30px 30px 20px;
+  font-size: 0.923em;
+  line-height: 1.666em;
+}
+
+.para {
+  padding: 0 0 0 10px;
+  margin: 0 0 25px;
+}
+
+label {
+  display: inline-block;
+  vertical-align: top;
+  color: #323336;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 4px 10px;
 }
 

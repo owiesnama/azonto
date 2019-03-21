@@ -1,6 +1,4 @@
 import Form from './utilites/form'
-import "video.js/dist/video.min"
-import "video.js/dist/video-js.css"
 window.Form = Form;
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
