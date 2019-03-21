@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/',
   (req, response) => {
-    response.render('admin/login');
+    response.render('home');
   });
 
 router.get('/contact',
