@@ -25,7 +25,7 @@ router.route('/:user_id')
 router.route('/login')
   .post(usersController.login,
     (req, response) => {
-      response.redirect('/home');
+      response.render('admin/index');
     });
 
 router.route('/logout')

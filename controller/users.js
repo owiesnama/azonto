@@ -122,10 +122,11 @@ exports.login = (req, response, next) => {
         return;
       } else {
         //set only the needed user attributes
+        // TODO: sets the user session 
         const user = {
           user_id: result.user_id,
           name: result.name,
-          role: result.role,
+          // role: result.role,
         }
 
         req.session.user = user;

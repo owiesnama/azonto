@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get('/',
   (req, response) => {
-    response.render('home');
+    response.render('admin/login');
   });
 
 module.exports = router;
