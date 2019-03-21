@@ -1,12 +1,12 @@
 import Form from './utilites/form'
-
+import "video.js/dist/video.min"
+import "video.js/dist/video-js.css"
 window.Form = Form;
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
  * code may be modified to fit the specific needs of your application.
  */
-
 
 try {
     window.$ = window.jQuery = require('jquery');
@@ -53,3 +53,10 @@ import VModal from 'vue-js-modal';
 Vue.use(VModal);
 
 import './utilites/helpers'
+
+
+
+
+// import './bootstrap-material-design.min'
+// import './popper.min'
+// import './admin'

@@ -1,46 +1,275 @@
-// Fonts
-@import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-@import "argon";
+/*!
 
-label.btn ~ input[type='file'] {
-  display: none;
+=========================================================
+* Argon Dashboard - v1.0.0
+=========================================================
+
+* Product Page: https://www.creative-tim.com/product/argon-dashboard
+* Copyright 2018 Creative Tim (https://www.creative-tim.com)
+* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard/blob/master/LICENSE.md)
+
+* Coded by Creative Tim
+
+=========================================================
+
+* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+*/
+// Core
+@import "custom/functions";
+@import "custom/variables";
+@import "custom/mixins";
+// Bootstrap (4.1.3) components
+@import "bootstrap/root";
+@import "bootstrap/reboot";
+@import "bootstrap/type";
+@import "bootstrap/images";
+@import "bootstrap/code";
+@import "bootstrap/grid";
+@import "bootstrap/tables";
+@import "bootstrap/forms";
+@import "bootstrap/buttons";
+@import "bootstrap/transitions";
+@import "bootstrap/dropdown";
+@import "bootstrap/button-group";
+@import "bootstrap/input-group";
+@import "bootstrap/custom-forms";
+@import "bootstrap/nav";
+@import "bootstrap/navbar";
+@import "bootstrap/card";
+@import "bootstrap/breadcrumb";
+@import "bootstrap/pagination";
+@import "bootstrap/badge";
+@import "bootstrap/jumbotron";
+@import "bootstrap/alert";
+@import "bootstrap/progress";
+@import "bootstrap/media";
+@import "bootstrap/list-group";
+@import "bootstrap/close";
+@import "bootstrap/modal";
+@import "bootstrap/tooltip";
+@import "bootstrap/popover";
+@import "bootstrap/carousel";
+@import "bootstrap/utilities";
+@import "bootstrap/print";
+// Argon utilities and components
+@import "custom/reboot";
+@import "custom/misc";
+@import "custom/utilities";
+@import "custom/components";
+@import "custom/table";
+// Vendor (Plugins)
+@import "custom/vendors";
+@import "custom/header-section";
+@import "custom/flickty";
+@import "custom/video";
+
+.min-container {
+  max-width: 990px;
+  margin: 0 auto;
+  overflow: hidden;
 }
 
-.v--modal-overlay .v--modal-box {
-  right: 50%;
-  transform: translateX(50%);
-}
-
-.footer {
-  position: fixed;
-  height: 50px;
-  width: 100%;
-  padding-right: 250px;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-}
-
-.main-content {
-  padding-bottom: 50px;
-}
-
-.card {
-  &.workflow--card {
-    .card-header {
-      margin: 1rem 0;
-      border-right: 2px solid $primary;
-      border-radius: 0;
-      border-bottom: none;
+.video-slide {
+  width: 180px;
+  margin: 0 8px 0 7px;
+  text-align: center;
+  font-size: 0.923em;
+  line-height: 1.333em;
+  .video-box {
+    width: 180px;
+    height: 101px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    margin: 0 0 10px;
+    z-index: 1;
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 4px;
+      background: url(../../public/images/video-box.png);
+      opacity: 0;
     }
-    .card-body {
-      padding-top: 0;
-      font-weight: lighter;
-    }
+  }
+  .title {
+    font-weight: normal;
+    color: #000;
+    display: block;
+    margin: 0 0 5px;
   }
 }
 
-.mx--2{
-  margin-right: -2rem;
-  margin-left: -2rem;
+.heading {
+  text-align: center;
+  padding: 3px 15px 15px;
+  margin: 0 0 4px;
+  border-bottom: 1px solid #d6d6d6;
+  background: #fff;
+  background: linear-gradient(to bottom, #fff 0%, #fff 36%, #f1f1f1 90%, #f1f1f1 100%);
+  box-shadow: 0 2px 2px -2px rgba(0, 0, 0, .3);
+  h1 {
+    font-size: 1.538em;
+    line-height: 1.2em;
+    text-transform: uppercase;
+    margin: 0 200px;
+    font-weight: normal;
+    color: #1c2123;
+  }
+  mark {
+    color: #991a1a;
+    background: none;
+  }
+  .filter {
+    float: right;
+    margin: -5px 0 -13px;
+    &:after {
+      clear: both;
+      content: '';
+      dispaly: block;
+    }
+    .form-control {
+      color: #a6a6a6;
+      border-color: transparent;
+      background: none;
+      box-shadow: none;
+      text-align: center;
+    }
+
+  }
+  .num {
+    float: right;
+    text-transform: uppercase;
+    color: #a6a6a6;
+    font-size: 0.923em;
+    line-height: 1.25em;
+    margin: 7px 9px 0 0;
+  }
+}
+
+.video-box{
+  position: relative;
+  overflow: hidden;
+  display: block;
+  margin: 0 0 10px;
+  width: 222px;
+  height: 125px;
+  border-radius: 4px;
+  z-index: 1;
+}
+.promo-image {
+  margin: 0 0 8px;
+}
+
+#main {
+  max-width: 990px;
+  margin: 0 auto;
+  background: #fff;
+  position: relative;
+  z-index: 1;
+}
+
+
+.videos {
+  padding: 5px 2px 15px 10px;
+}
+
+.box{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 -5px 5px 0;
+  font-size: 0.923em;
+  line-height: 1.333em;
+  text-align: center;
+  padding: 10px 10px 2px;
+  border-radius: 4px;
+  width: 223px;
+  position: relative;
+  z-index: 1;
+  .title{
+    display: block;
+    font-weight: normal;
+    color: #00488f;
+    padding: 1px 0 0;
+    margin: 0 0 5px;
+    font-family: Arial, Verdana, sans-serif;
+  }
+}
+
+.comments{
+  display: inline-block;
+  vertical-align: top;
+  margin: 0 4px;
+  &:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../public/img/sprite.png) no-repeat -47px -41px;
+    margin: -1px 9px 0 0;
+    background-position: -47px -54px;
+    width: 11px;
+    height: 10px;
+  }
+}
+
+.views{
+  color: $black;
+  &:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    background: url(../../public/img/sprite.png) no-repeat -47px -41px;
+    height: 10px;
+    width: 17px;
+    margin: -1px 9px 0 0;
+  }
+}
+.footer{
+  background-color: $black;
+  padding: 0;
+}
+
+
+.paging{
+  margin: 0;
+  list-style: none;
+  overflow: hidden;
+  padding: 3px 24px 14px;
+  color: #b2b2b2;
+  text-transform: uppercase;
+  font-size: 15px;
+  line-height: 33px;
+  text-align: center;
+  .prev{
+    float: left;
+    font-weight: bold;
+    width: 104px;
+    margin: 0;
+  }
+  .next{
+    float: right;
+    font-weight: bold;
+    width: 64px;
+    margin: 0;
+  }
+  li{
+    display: inline-block;
+    vertical-align: top;
+    height: 35px;
+    width: 36px;
+    margin: 0 0 0 3px;
+  }
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  color: #333;
+  font: 1.3em/1.616em Verdana, Geneva, sans-serif;
+  background: #f0f0f0;
+  height: 100%;
 }
