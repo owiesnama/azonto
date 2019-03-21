@@ -63,6 +63,7 @@
 @import "custom/header-section";
 @import "custom/flickty";
 @import "custom/video";
+@import "custom/contact-form";
 
 .min-container {
   max-width: 990px;
@@ -116,7 +117,7 @@
     font-size: 1.538em;
     line-height: 1.2em;
     text-transform: uppercase;
-    margin: 0 200px;
+    margin: 0;
     font-weight: normal;
     color: #1c2123;
   }
@@ -272,4 +273,28 @@ body{
   font: 1.3em/1.616em Verdana, Geneva, sans-serif;
   background: #f0f0f0;
   height: 100%;
+}
+
+
+.section{
+  padding: 25px 30px 30px 20px;
+  font-size: 0.923em;
+  line-height: 1.666em;
+}
+
+.para{
+  padding: 0 0 0 10px;
+  margin: 0 0 25px;
+}
+
+
+
+
+label {
+  display: inline-block;
+  vertical-align: top;
+  color: #323336;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 4px 10px;
 }

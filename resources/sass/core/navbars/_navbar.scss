@@ -1,9 +1,12 @@
 
 .navbar {
   padding: 13px 0 12px;
+  .logo {
+    padding: 5px;
+  }
   .nav-item {
     padding: 0;
-    margin: 8px 0;
+    //margin: 8px 0;
     font-size: 13px;
     font-weight: bolder;
     text-align: center;
@@ -31,52 +34,56 @@
     text-align: center;
     justify-content: center;
   }
-
-  .social-networks {
-    padding: 7px 0 0 7px;
-    margin: 0;
-    list-style: none;
-    width: 158px;
-    text-align: center;
-    font-size: 0;
-    line-height: 0;
-    letter-spacing: -5px;
-    float: right;
-    li {
-      display: inline-block;
-      vertical-align: middle;
-      margin: 0 12px 4px;
-      a {
-        display: block;
-        text-indent: -9999px;
-        overflow: hidden;
-        width: 24px;
-        height: 24px;
-        background: url("../../../../public/img/sprite.png") no-repeat;
+  .right-nav {
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .social-networks {
+      padding: 7px 0 0 7px;
+      margin: 0;
+      list-style: none;
+      min-width: 158px;
+      text-align: center;
+      font-size: 0;
+      line-height: 0;
+      letter-spacing: -5px;
+      li {
+        display: inline-block;
+        vertical-align: middle;
+        margin: 0 12px 4px;
+        a {
+          display: block;
+          text-indent: -9999px;
+          overflow: hidden;
+          width: 24px;
+          height: 24px;
+          background: url("../../../../public/img/sprite.png") no-repeat;
+        }
       }
-    }
-    .twitter a{
-      width: 20px;
-      height: 16px;
-      background-position: -18px -2px;
-    }
-    .facebook a{
-      width: 10px;
-      height: 20px
-    }
-    .instagram a{
-      width: 20px;
-      height: 20px;
-      background-position: -108px -95px;
-    }
+      .twitter a {
+        width: 20px;
+        height: 16px;
+        background-position: -18px -2px;
+      }
+      .facebook a {
+        width: 10px;
+        height: 20px
+      }
+      .instagram a {
+        width: 20px;
+        height: 20px;
+        background-position: -108px -95px;
+      }
 
+    }
   }
 }
-.footer{
-  .navbar{
+
+.footer {
+  .navbar {
     padding: 5px 20px;
   }
-  .logo{
+  .logo {
     margin-left: 50px;
+    padding: 5px;
   }
 }
