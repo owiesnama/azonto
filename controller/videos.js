@@ -6,7 +6,26 @@ exports.list = (req, response, next) => {
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
-  new VideosService().findAll(null, pageSize, pageNumber)
+  // get  approved videos
+  new VideosService().findAll({
+      status_id: constants.APPROVED
+    }, pageSize, pageNumber)
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.pending = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
+  // get pending videos
+  new VideosService().findAll({
+      status_id: constants.PENDING
+    }, pageSize, pageNumber)
     .then((result) => {
       req.videos = result;
       next();

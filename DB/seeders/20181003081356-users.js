@@ -6,7 +6,7 @@ module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.bulkInsert('users', [{
         name: 'a',
-        role: 'admin',
+        role_id: 1,
         password: sha1('123'),
         email: 'a@a.com',
         created_at: new Date(),
@@ -14,7 +14,7 @@ module.exports = {
       },
       {
         name: 'i',
-        role: 'user',
+        role_id: 2,
         password: sha1('123'),
         email: 'b@b.com',
         created_at: new Date(),

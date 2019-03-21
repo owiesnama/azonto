@@ -9,4 +9,5 @@ function define(name, value) {
 define("ADMIN", 1);
 
 // videos
-define("PENDING", 1);
+define("PENDING", 0);
+define("APPROVED", 1);
