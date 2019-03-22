@@ -9,35 +9,48 @@
             <h4 class="card-title">Add User</h4>
         </div>
         <div class="card-body">
-            <form>
+            <form action="/users" @submit.prevent="store">
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">Full name</label>
-                            <input type="text" class="form-control">
+                            <input type="text"
+                                   v-model="user.name"
+                                   required
+                                   class="form-control">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">Email address</label>
-                            <input type="email" class="form-control">
+                            <input type="email"
+                                   v-model="user.email"
+                                   required
+                                   class="form-control">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">Password</label>
-                            <input type="password" class="form-control">
+                            <input type="password"
+                                   v-model="user.password"
+                                   required
+                                   class="form-control">
                         </div>
                     </div>
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
                             <label class="bmd-label-floating">Confirm password</label>
-                            <input type="password" class="form-control">
+                            <input type="password"
+                                   v-model="user.password_confirmation"
+                                   required
+                                   class="form-control">
                         </div>
                     </div>
                 </div>
                 <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="submit"
+                            class="btn btn-primary">Submit</button>
                     <button @click="$modal.hide('addUser')" type="button" class="btn btn-default">Cancel</button>
                 </div>
             </form>

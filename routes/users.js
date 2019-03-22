@@ -13,7 +13,9 @@ router.route('/')
     })
   .post(usersController.create,
     (req, response) => {
-      response.redirect('/users');
+      response.send({
+          user:req.user
+      });
     });
 
 // update API

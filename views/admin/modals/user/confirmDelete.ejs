@@ -1,0 +1,29 @@
+<modal name="confirmDelete"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <form action="" @submit.prevent="destroy">
+        <div class="card">
+
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Caution</h4>
+                <p class="card-category">you are going to delete this user ,are you sure?</p>
+            </div>
+            <div class="card-body">
+                <div class="p-1 mr-1">
+                    <h5 v-text="user.name"></h5>
+                    <p class="text-muted"
+                       v-text="user.email"></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit"
+                            class="btn btn-danger">Confirm
+                    </button>
+                    <button @click="$modal.hide('confirmDelete')" type="button" class="btn btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</modal>

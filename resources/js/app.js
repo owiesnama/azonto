@@ -9,7 +9,7 @@ require('chart.js');
 
 
 Vue.filter('ago', function (time) {
-    return window.moment(time).lang('ar').fromNow();
+    return window.moment(time).fromNow();
 });
 
 
@@ -25,6 +25,21 @@ Vue.component('HomeView', HomeView);
 import RequestsView from './Views/Requests'
 
 Vue.component('RequestsView', RequestsView);
+
+import SubmitView from './Views/Submit'
+
+Vue.component('SubmitView', SubmitView);
+
+
+import MessagesView from './Views/Messages'
+
+Vue.component('MessagesView', MessagesView);
+
+import UsersView from './Views/Users'
+
+Vue.component('UsersView', UsersView);
+
+
 const app = new Vue({
     el: '#app'
 });

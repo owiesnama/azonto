@@ -1,3 +1,6 @@
+const messagesController = require('../controller/messages');
+const usersController = require('../controller/users');
+
 const express = require('express');
 const router = express.Router();
 
@@ -8,14 +11,20 @@ router.route('/')
     );
 
 router.route('/users')
-    .get((req, response) => {
-        response.render('admin/users');
+    .get(usersController.list,(req, response) => {
+        response.render('admin/users',{
+            users:req.users
+        });
     });
 
 router.route('/messages')
-    .get((req, response) => {
-        response.render('admin/messages');
-    });
+    .get(messagesController.list,
+        (req, response) => {
+            console.log(req.messages);
+            response.render('admin/messages', {
+                messages: req.messages
+            });
+        });
 
 router.route('/requests')
     .get((req, response) => {

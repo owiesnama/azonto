@@ -1,0 +1,91 @@
+<%- include("./partials/header") %>
+<messages-view inline-template
+               :initial-messages="<%= JSON.stringify(messages) %>"
+>
+
+    <div class="main-panel">
+        <!-- Navbar -->
+        <%-include("./partials/navbar")%>
+        <!-- End Navbar -->
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">
+                                    Messages
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead class=" text-primary">
+                                        <tr
+                                        >
+                                            <th>
+                                                Sender
+                                            </th>
+                                            <th>
+                                                email
+                                            </th>
+                                            <th>
+                                                category
+                                            </th>
+                                            <th>
+                                                date
+                                            </th>
+                                            <th>
+
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <template v-if="messages.length">
+                                            <tr v-for="message in messages"
+                                                :key="message.id"
+                                            >
+                                                <td v-text="message.sender"></td>
+                                                <td v-text="message.sender"></td>
+                                                <td v-text="message.sender"></td>
+                                                <td>{{message.updated_at|ago}}</td>
+                                                <td>
+                                                    <button type="button"
+                                                            rel="tooltip"
+                                                            title="show message"
+                                                            @click="preview(message)"
+                                                            class="btn btn-success btn-link btn-sm">
+                                                        <i class="material-icons">message</i></button>
+
+                                                    <button type="button"
+                                                            rel="tooltip"
+                                                            title="show message"
+                                                            @click="confirm(message)"
+                                                            class="btn btn-danger btn-link btn-sm">
+                                                        <i class="material-icons">close</i></button>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                        <template v-else>
+                                            <tr>
+                                                <td class="text-muted text-center"
+                                                    colspan="100%">
+
+                                                <p>there in no messages for now</p>
+                                                </td>
+                                            </tr>
+                                        </template>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("./modals/messagePreview") %>
+        <%- include("./modals/confirmMessage") %>
+    </div>
+</messages-view>
+<%- include("./partials/footer") %>

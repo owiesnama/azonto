@@ -1,0 +1,22 @@
+<modal name="messagePreview"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <div class="card">
+        <div class="card-body">
+            <div class="d-flex justify-content-between mb-2">
+                <div class="d-flex">
+                    <span class="mr-1">From:</span>
+                    <span class="text-muted"
+                          v-text="message.sender"></span>
+                </div>
+                <span>{{message.updated_at|ago}}</span>
+            </div>
+            <div class="">
+                <p v-text="message.message"></p>
+            </div>
+        </div>
+    </div>
+</modal>

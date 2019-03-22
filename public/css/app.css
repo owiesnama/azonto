@@ -19187,3 +19187,10 @@ label {
   margin: 0 4px 10px;
 }
 
+input[type=checkbox] {
+  height: auto;
+  display: inline;
+  width: auto;
+  margin: 5px;
+}
+
