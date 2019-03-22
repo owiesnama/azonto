@@ -65,6 +65,7 @@
 @import "custom/video";
 @import "custom/contact-form";
 @import "custom/featured-videos";
+@import "custom/videos-section";
 
 .min-container {
   max-width: 990px;
@@ -153,7 +154,7 @@
   }
 }
 
-.video-box{
+.video-box {
   position: relative;
   overflow: hidden;
   display: block;
@@ -163,6 +164,7 @@
   border-radius: 4px;
   z-index: 1;
 }
+
 .promo-image {
   margin: 0 0 8px;
 }
@@ -172,15 +174,11 @@
   margin: 0 auto;
   background: #fff;
   position: relative;
+  border: 2px solid white;
   z-index: 1;
 }
 
-
-.videos {
-  padding: 5px 2px 15px 10px;
-}
-
-.box{
+.box {
   display: inline-block;
   vertical-align: top;
   margin: 0 -5px 5px 0;
@@ -192,7 +190,7 @@
   width: 223px;
   position: relative;
   z-index: 1;
-  .title{
+  .title {
     display: block;
     font-weight: normal;
     color: #00488f;
@@ -202,11 +200,11 @@
   }
 }
 
-.comments{
+.comments {
   display: inline-block;
   vertical-align: top;
   margin: 0 4px;
-  &:before{
+  &:before {
     content: '';
     display: inline-block;
     vertical-align: middle;
@@ -218,9 +216,9 @@
   }
 }
 
-.views{
+.views {
   color: $black;
-  &:before{
+  &:before {
     content: '';
     display: inline-block;
     vertical-align: middle;
@@ -230,13 +228,13 @@
     margin: -1px 9px 0 0;
   }
 }
-.footer{
+
+.footer {
   background-color: $black;
   padding: 0;
 }
 
-
-.paging{
+.paging {
   margin: 0;
   list-style: none;
   overflow: hidden;
@@ -246,19 +244,19 @@
   font-size: 15px;
   line-height: 33px;
   text-align: center;
-  .prev{
+  .prev {
     float: left;
     font-weight: bold;
     width: 104px;
     margin: 0;
   }
-  .next{
+  .next {
     float: right;
     font-weight: bold;
     width: 64px;
     margin: 0;
   }
-  li{
+  li {
     display: inline-block;
     vertical-align: top;
     height: 35px;
@@ -267,7 +265,7 @@
   }
 }
 
-body{
+body {
   margin: 0;
   padding: 0;
   color: #333;
@@ -276,20 +274,16 @@ body{
   height: 100%;
 }
 
-
-.section{
+.section {
   padding: 25px 30px 30px 20px;
   font-size: 0.923em;
   line-height: 1.666em;
 }
 
-.para{
+.para {
   padding: 0 0 0 10px;
   margin: 0 0 25px;
 }
-
-
-
 
 label {
   display: inline-block;

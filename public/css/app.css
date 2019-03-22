@@ -18793,6 +18793,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   max-width: 100%;
 }
 
+.featured-videos a {
+  min-height: 100%;
+}
+
 .featured-videos .video {
   height: auto;
   width: auto;
@@ -18924,6 +18928,24 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   margin: 0 0 0 -28px;
 }
 
+.videos {
+  padding: 10px 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.videos .video-box {
+  width: auto;
+  margin: 10px 5px;
+}
+
+.videos img {
+  vertical-align: middle;
+  border-style: none;
+  max-width: 100%;
+}
+
 .min-container {
   max-width: 990px;
   margin: 0 auto;
@@ -19039,11 +19061,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   margin: 0 auto;
   background: #fff;
   position: relative;
+  border: 2px solid white;
   z-index: 1;
-}
-
-.videos {
-  padding: 5px 2px 15px 10px;
 }
 
 .box {
