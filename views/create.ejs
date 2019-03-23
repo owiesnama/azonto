@@ -33,7 +33,7 @@
                                 <label for="video-title">Title
                                     <mark>(required)</mark>
                                 </label>
-                                <input name="video-title"
+                                <input name="title"
                                        id="video-title"
                                        type="text"
                                        required
@@ -51,7 +51,7 @@
                                 <label>Video Type
                                     <mark>(required)</mark>
                                 </label>
-                                <select name="attention"
+                                <select name="player"
                                         required
                                         class="jcf-hidden">
                                     <option></option>
@@ -66,7 +66,6 @@
                                         <mark>(required, read “Video Submissions”)</mark>
                                     </label>
                                     <input name="video-url"
-                                           id="video-url"
                                            class="mb-1"
                                            type="text"
                                            required
@@ -75,10 +74,10 @@
 
 
                                 <template v-if="isLocalVideo">
-                                    <label for="video-url">Video
+                                    <label for="video">Video
                                     </label>
-                                    <input name="video-url"
-                                           id="video-url"
+                                    <input name="video"
+                                           id="video"
                                            type="file"
                                            required
                                            class="mb-1"
@@ -95,11 +94,11 @@
                                 </div>
 
 
-                                <label for="video-description">Video Description
+                                <label for="description">Video Description
                                     <mark>(required)</mark>
                                 </label>
-                                <textarea name="video-description"
-                                          id="video-description"
+                                <textarea name="description"
+                                          id="description"
                                           cols="3"
                                           placeholder="Description"
                                           rows="1"></textarea>

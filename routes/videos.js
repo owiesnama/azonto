@@ -22,7 +22,7 @@ router.route('/')
     screenshotLib.takeScreenshot,
     videosController.create,
     (req, response) => {
-      response.redirect('/videos');
+      response.redirect('/');
     });
 
 router.route('/requests')

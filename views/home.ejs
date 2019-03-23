@@ -1,6 +1,7 @@
 <html lang="en" class="">
 
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="/css/app.css">
 </head>
 
@@ -26,7 +27,7 @@
 
 <div id="wrapper">
     <%- include('partials/header-section') %>
-    <div id="app" class="container">
+    <div id="app" class="min-container">
         <home-view inline-template>
             <div class="">
                 <main id="main" role="main">
@@ -645,10 +646,3 @@
 </body>
 <script src="/js/app.js"></script>
 </html>
-<script>
-    import Carousel from "../resources/js/components/Carousel";
-
-    export default {
-        components: {Carousel}
-    }
-</script>
