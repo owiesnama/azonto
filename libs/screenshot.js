@@ -1,5 +1,5 @@
 const ffmpeg = require('fluent-ffmpeg')
-const screenshotPath = __dirname + '/../uploads/screenshots/';
+const screenshotPath = __dirname + '/../uploads/thumbnails/';
 const videoPath = __dirname + '/../uploads/videos/';
 
 exports.takeScreenshot = (req, response, next) => {
