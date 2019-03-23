@@ -7,14 +7,15 @@ class VideosDao extends BaseDao {
     super(videosModel)
   }
 
-  findAll(where = {}, include = [], pageSize, pageNumber, order = ['created_at'], group = ['created_at']) {
+  findAll(where = {}, include = [], pageSize, pageNumber, order = [
+    ['created_at', 'DESC']
+  ]) {
     const that = this;
 
     let options = {
       include: include,
       where: where,
-      // order,
-      // group
+      order
     }
 
     if (pageSize || pageNumber) {
