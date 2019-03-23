@@ -3,12 +3,13 @@ class BaseDao {
     this.model = model;
   }
 
-  findAll(where = {}, include = [], pageSize, pageNumber) {
+  findAll(where = {}, include = [], pageSize, pageNumber, order = null) {
     const that = this;
 
     let options = {
       include: include,
       where: where,
+      order
     }
 
     if (pageSize || pageNumber) {
@@ -44,7 +45,9 @@ class BaseDao {
     const that = this;
 
     return new Promise((resolve, reject) => {
-      that.model.findOne({where})
+      that.model.findOne({
+          where
+        })
         .then((result) => {
           resolve(result);
         }).catch((error) => {

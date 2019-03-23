@@ -8,7 +8,8 @@ exports.list = (req, response, next) => {
 
   // get  approved videos
   new VideosService().findAll({
-      status_id: constants.APPROVED
+      // TODO: set the status
+      // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then((result) => {
       req.videos = result;
