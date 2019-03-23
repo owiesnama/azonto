@@ -297,124 +297,32 @@
                                 </time>
                             </h1>
                         </header>
+                        <!-- display videos -->
                         <div class="videos">
+                            <% videos.forEach((video)=> { %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhYYJQ02rH789dy71g" class="video-box">
+                                <a itemprop="url" href="/videos/<%=video.url%>" class="video-box">
                                     <img class="lazy"
                                          data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/cLi5V44s0mRc.jpg"
                                          width="222" height="125"
                                          alt="You Not My Daddy: Baby Boy Gets Upset When He Finds Out His Dad Cut His Dreads!"
                                          itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                         src="/thumbnails/<%=video.thumbnail%>">
 
                                 </a>
                                 <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhYYJQ02rH789dy71g">You Not My Daddy: Baby Boy Gets
-                                        Upset
-                                        When He Finds Out His Dad Cut His Dreads!</a>
+                                    <a href="/videos/<%=video.url%>"> <%= video.title%> </a>
                                 </strong>
                                 <div>
-                                    <span class="views">5,984</span>
+                                    <span class="views"> <%=video.views%> </span>
                                     <span class="comments">
                                                                         <a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"
                                                                            data-disqus-identifier="134737">53</a>
                                                                 </span>
                                 </div>
                             </section>
-                            <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhYYJQ02rH789dy71g" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/cLi5V44s0mRc.jpg"
-                                         width="222" height="125"
-                                         alt="You Not My Daddy: Baby Boy Gets Upset When He Finds Out His Dad Cut His Dreads!"
-                                         itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhYYJQ02rH789dy71g">You Not My Daddy: Baby Boy Gets
-                                        Upset
-                                        When He Finds Out His Dad Cut His Dreads!</a>
-                                </strong>
-                                <div>
-                                    <span class="views">5,984</span>
-                                    <span class="comments">
-                                                                        <a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"
-                                                                           data-disqus-identifier="134737">53</a>
-                                                                </span>
-                                </div>
-                            </section>
-                            <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhYYJQ02rH789dy71g" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/cLi5V44s0mRc.jpg"
-                                         width="222" height="125"
-                                         alt="You Not My Daddy: Baby Boy Gets Upset When He Finds Out His Dad Cut His Dreads!"
-                                         itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhYYJQ02rH789dy71g">You Not My Daddy: Baby Boy Gets
-                                        Upset
-                                        When He Finds Out His Dad Cut His Dreads!</a>
-                                </strong>
-                                <div>
-                                    <span class="views">5,984</span>
-                                    <span class="comments">
-                                                                        <a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"
-                                                                           data-disqus-identifier="134737">53</a>
-                                                                </span>
-                                </div>
-                            </section>
-                            <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhYYJQ02rH789dy71g" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/cLi5V44s0mRc.jpg"
-                                         width="222" height="125"
-                                         alt="You Not My Daddy: Baby Boy Gets Upset When He Finds Out His Dad Cut His Dreads!"
-                                         itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhYYJQ02rH789dy71g">You Not My Daddy: Baby Boy Gets
-                                        Upset
-                                        When He Finds Out His Dad Cut His Dreads!</a>
-                                </strong>
-                                <div>
-                                    <span class="views">5,984</span>
-                                    <span class="comments">
-                                                                        <a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"
-                                                                           data-disqus-identifier="134737">53</a>
-                                                                </span>
-                                </div>
-                            </section>
-                            <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhYYJQ02rH789dy71g" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/cLi5V44s0mRc.jpg"
-                                         width="222" height="125"
-                                         alt="You Not My Daddy: Baby Boy Gets Upset When He Finds Out His Dad Cut His Dreads!"
-                                         itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhYYJQ02rH789dy71g">You Not My Daddy: Baby Boy Gets
-                                        Upset
-                                        When He Finds Out His Dad Cut His Dreads!</a>
-                                </strong>
-                                <div>
-                                    <span class="views">5,984</span>
-                                    <span class="comments">
-                                                                        <a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"
-                                                                           data-disqus-identifier="134737">53</a>
-                                                                </span>
-                                </div>
-                            </section>
-                        </div>
-
+                            <% }) %>
+                        <!-- display videos -->
                     </section>
                     <div class="ad">
                         <div id="slot4" data-google-query-id="CLCH7NiijuECFYzk1QodLpoJIA" style="display: none;">

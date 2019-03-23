@@ -1,4 +1,5 @@
 const i18n = require('i18n');
+const groupArray = require('group-array');
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
@@ -8,10 +9,11 @@ exports.list = (req, response, next) => {
 
   // get  approved videos
   new VideosService().findAll({
-      status_id: constants.APPROVED
+      // TODO: set the status
+      // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then((result) => {
-      req.videos = result;
+      req.videos = groupArray(result, 'created_at');
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
