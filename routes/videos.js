@@ -24,7 +24,7 @@ router.route('/')
     watermark.generateWatermark,
     videosController.create,
     (req, response) => {
-      response.redirect('/videos');
+      response.redirect('/');
     });
 
 router.route('/requests')

@@ -13,7 +13,7 @@ router.route('/')
   .post(
     messagesController.create,
     (req, response) => {
-      response.redirect('/messages');
+      response.redirect('/');
     });
 
 // update API
@@ -21,13 +21,13 @@ router.route('/:message_id')
   .put(messagesController.update,
     (req, response) => {
       response.sendStatus(200);
-    })
+    });
 
 // delete API
 router.route('/:message_id')
   .delete(messagesController.delete,
     (req, response) => {
       response.sendStatus(200);
-    })
+    });
 
 module.exports = router;

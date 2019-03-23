@@ -13,6 +13,7 @@ const index = require('./routes/index');
 const users = require('./routes/users');
 const videos = require('./routes/videos');
 const messages = require('./routes/messages');
+const admin = require('./routes/admin');
 // TODO:
 // const admin = require('./routes/admin');
 const featuredVideos = require('./routes/featured_videos');
@@ -79,6 +80,7 @@ app.use('/users', users);
 app.use('/videos', videos);
 app.use('/messages', messages);
 app.use('/featured_videos', featuredVideos);
+app.use('/admin', admin);
 // TODO:
 // app.use('/admin', admin);
 

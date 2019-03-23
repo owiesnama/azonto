@@ -1,21 +1,22 @@
 <%-include('./partials/header')%>
-    <div id="app" class="container">
+    <div id="app" class="min-container">
         <div class="">
             <main id="main" role="main">
                 <br>
                 <section>
                     <header class="heading">
                         <h1>contact
-                            <mark>worldstarhiphop</mark>
+                            <mark>azonto.tv</mark>
                         </h1>
                     </header>
                     <section class="section">
                         <div class="para">
                             <p>To advertise or for other inquiries regarding Worldstarhiphop.com, please send us a
                                 message below.<br>
-                                To submit a video click <a href="vsubmit.php">here</a>.</p>
+                                To submit a video click <a href="/upload">here</a>.</p>
                         </div>
-                        <form id="contacts" action="csent.php" method="POST" class="contact-form">
+                        <form id="contacts" action="/messages"
+                              method="POST" class="contact-form">
                             <fieldset>
                                 <label for="name">Full Name</label>
                                 <input name="name"
@@ -25,8 +26,8 @@
                                 <label for="email">Email
                                     <mark>(required)</mark>
                                 </label>
-                                <input name="email"
-                                       id="email"
+                                <input name="sender"
+                                       id="sender"
                                        type="email"
                                        required
                                        placeholder="username@domain.com">

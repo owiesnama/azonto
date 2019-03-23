@@ -1,0 +1,74 @@
+<%-include('./partials/header')%>
+<div id="app" class="min-container">
+    <div class="">
+        <main id="main" role="main">
+            <br>
+            <section>
+                <header class="heading">
+                    <h1>contact
+                        <mark>azonto.tv</mark>
+                    </h1>
+                </header>
+                <section class="section">
+                    <div class="para">
+                        <p>To advertise or for other inquiries regarding Worldstarhiphop.com, please send us a
+                            message below.<br>
+                            To submit a video click <a href="vsubmit.php">here</a>.</p>
+                    </div>
+                    <form id="contacts" action="csent.php" method="POST" class="contact-form">
+                        <fieldset>
+                            <label for="name">Full Name</label>
+                            <input name="name"
+                                   id="name"
+                                   type="text"
+                                   placeholder="Name">
+                            <label for="email">Email
+                                <mark>(required)</mark>
+                            </label>
+                            <input name="email"
+                                   id="email"
+                                   type="email"
+                                   required
+                                   placeholder="username@domain.com">
+                            <label>Attention</label>
+                            <select name="attention">
+                                <option>General Inquiries</option>
+                                <option>Technical</option>
+                                <option>Legal</option>
+                                <option>Advertising</option>
+                                <option>PR / Media</option>
+                                <option>Press</option>
+                            </select>
+                            <label for="message">Message
+                                <mark>(required)</mark>
+                            </label>
+                            <textarea name="message"
+                                      id="message"
+                                      cols="30"
+                                      required
+                                      rows="10"></textarea>
+                            <div>
+                                <div class="grecaptcha-badge" data-style="bottomright"
+                                     style="width: 256px; height: 60px; transition: right 0.3s ease 0s; position: fixed; bottom: 14px; right: -186px; box-shadow: gray 0px 0px 5px;">
+                                    <div class="grecaptcha-logo">
+                                        <iframe src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6LcLyzYUAAAAAJZcA_UcZ3ul1bGO3aTB70eq9Bj1&amp;co=aHR0cDovL3d3dy53b3JsZHN0YXJoaXBob3AuY29tOjgw&amp;hl=en&amp;v=v1552285980763&amp;size=invisible&amp;cb=8zl3by7pu37y"
+                                                width="256" height="60" role="presentation" name="a-eadbljiuisd2"
+                                                frameborder="0" scrolling="no"
+                                                sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox"></iframe>
+                                    </div>
+                                    <div class="grecaptcha-error"></div>
+                                    <textarea id="g-recaptcha-response" name="g-recaptcha-response"
+                                              class="g-recaptcha-response"
+                                              style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea>
+                                </div>
+                            </div>
+                            <button class="g-recaptcha" data-sitekey="6LcLyzYUAAAAAJZcA_UcZ3ul1bGO3aTB70eq9Bj1"
+                                    data-callback="onSubmit"> Send Message
+                            </button>
+                        </fieldset>
+                    </form>
+                </section>
+            </section>
+        </main>
+    </div>
+<%-include('./partials/footer-section')%>

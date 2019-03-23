@@ -1,0 +1,15 @@
+.videos {
+  padding: 10px 10px 15px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  .video-box{
+    width: auto;
+    margin: 10px 5px;
+  }
+  img {
+    vertical-align: middle;
+    border-style: none;
+    max-width: 100%;
+  }
+}

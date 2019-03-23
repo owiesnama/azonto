@@ -8,12 +8,14 @@ const usersController = require('../controller/users');
 router.route('/')
   .get(usersController.list,
     (req, response) => {
-      response.render('users/users');
+      response.render('admin/users');
       // response.status(200).send(req.users);
     })
   .post(usersController.create,
     (req, response) => {
-      response.redirect('/users');
+      response.send({
+          user:req.user
+      });
     });
 
 // update API
