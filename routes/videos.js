@@ -1,4 +1,5 @@
 const express = require('express');
+const watermark = require('../libs/watermark');
 
 const router = express.Router();
 const fs = require('fs');
@@ -20,6 +21,7 @@ router.route('/')
   .post(
     uploadController.upload,
     screenshotLib.takeScreenshot,
+    watermark.generateWatermark,
     videosController.create,
     (req, response) => {
       response.redirect('/');
