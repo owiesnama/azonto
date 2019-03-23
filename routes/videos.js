@@ -21,7 +21,7 @@ router.route('/')
   .post(
     uploadController.upload,
     screenshotLib.takeScreenshot,
-    watermark.generateWatermark,
+    // watermark.generateWatermark,
     videosController.create,
     (req, response) => {
       response.redirect('/');
