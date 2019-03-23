@@ -4,7 +4,7 @@ const router = express.Router();
 const fs = require('fs');
 
 const videoPath = __dirname + '/../uploads/videos/';
-const screenshotPath = __dirname + '/../uploads/screenshots/';
+const screenshotPath = __dirname + '/../uploads/thumbnails/';
 
 const videosController = require('../controller/videos');
 const uploadController = require('../controller/upload');
