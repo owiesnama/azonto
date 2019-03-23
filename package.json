@@ -22,6 +22,7 @@
     "ejs": "~2.5.7",
     "express": "~4.15.5",
     "express-session": "^1.15.6",
+    "ffmpeg": "0.0.4",
     "filepond": "^3.6.0",
     "filesize": "^4.0.0",
     "flickity": "^2.2.0",
