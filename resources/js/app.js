@@ -8,8 +8,23 @@ require('./bootstrap');
 require('chart.js');
 
 
+moment.updateLocale('en', {
+    calendar : {
+        lastDay : '[Yesterday]',
+        sameDay : '[Today]',
+        nextDay : '[Tomorrow]',
+        lastWeek : '[Last] dddd',
+        nextWeek : '[Next] dddd',
+        sameElse : 'L'
+    }
+});
+
 Vue.filter('ago', function (time) {
     return window.moment(time).fromNow();
+});
+
+Vue.filter('calendar', function (time) {
+    return window.moment(time).calendar();
 });
 
 

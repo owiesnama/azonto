@@ -86399,8 +86399,21 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 
+moment.updateLocale('en', {
+  calendar: {
+    lastDay: '[Yesterday]',
+    sameDay: '[Today]',
+    nextDay: '[Tomorrow]',
+    lastWeek: '[Last] dddd',
+    nextWeek: '[Next] dddd',
+    sameElse: 'L'
+  }
+});
 Vue.filter('ago', function (time) {
   return window.moment(time).fromNow();
+});
+Vue.filter('calendar', function (time) {
+  return window.moment(time).calendar();
 });
 Vue.filter('size', function (size) {
   return window.filesize(size);

@@ -17013,6 +17013,11 @@ textarea[resize=horizontal] {
   padding: 5px;
 }
 
+.navbar .navbar-brand img {
+  width: 100px;
+  height: 20px;
+}
+
 .navbar .nav-item {
   padding: 0;
   font-size: 13px;
@@ -18711,6 +18716,20 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   opacity: 0;
 }
 
+.video-box .btn-play {
+  margin: 0 0 0 -29px;
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translate(0%, -50%);
+          transform: translate(0%, -50%);
+  left: 50%;
+  text-indent: -9999px;
+  overflow: hidden;
+  background: url(/images/sprite.png?422afafc6d2cdecab2e1736e5b8512c9) no-repeat -156px -60px;
+  height: 59px;
+  width: 60px;
+}
+
 .contact-form {
   border-top: 1px solid #e0e0e0;
   padding: 25px 0 0 10px;
@@ -18944,6 +18963,24 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   vertical-align: middle;
   border-style: none;
   max-width: 100%;
+}
+
+#slot1 {
+  height: 100%;
+  z-index: -1;
+  width: 100%;
+  max-width: 200px;
+  position: fixed;
+}
+
+#slot2 {
+  right: 0;
+  top: 0;
+  height: 100%;
+  z-index: -1;
+  width: 100%;
+  max-width: 200px;
+  position: fixed;
 }
 
 .min-container {
