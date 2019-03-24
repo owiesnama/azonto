@@ -60,11 +60,6 @@ exports.create = (req, response, next) => {
 
   // get the thumbnail generated from screenshot lib
   const thumbnail = req.thumbnail[0];
-  // console.log('thumbnail', thumbnail);
-
-  // response.send(thumbnail)
-  // return;
-
   const video = {
     title: req.body.title,
     description: req.body.description,

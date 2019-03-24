@@ -29,14 +29,18 @@ router.route('/')
 
 router.route('/requests')
   .get(videosController.pending,
-    (req, response) => {      
+    (req, response) => {
       response.render('admin/requests', {
         videos: req.videos
       });
     });
 
-// update API
+// find one & update API
 router.route('/:video_id')
+  .get(videosController.findOne,
+    (req, response) => {
+      response.send(req.video);
+    })
   .put(videosController.update,
     (req, response) => {
       response.sendStatus(200);
