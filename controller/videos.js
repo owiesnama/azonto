@@ -4,119 +4,113 @@ const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
 exports.list = (req, response, next) => {
-    const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
-    const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
-    // get  approved videos
-    new VideosService().findAll({
-        // TODO: set the status
-        // status_id: constants.APPROVED
+  // get  approved videos
+  new VideosService().findAll({
+      // TODO: set the status
+      // status_id: constants.APPROVED
     }, pageSize, pageNumber)
-        .then((result) => {
-            req.trendingVideos = result;
-            req.videos = groupArray(result, 'created_at');
-            next();
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    .then((result) => {
+      req.videos = groupArray(result, 'created_at');
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
     });
 }
 
 exports.pending = (req, response, next) => {
-    const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
-    const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
-    // get pending videos
-    new VideosService().findAll({
-        status_id: constants.PENDING
+  // get pending videos
+  new VideosService().findAll({
+      status_id: constants.PENDING
     }, pageSize, pageNumber)
-        .then((result) => {
-            req.videos = result;
-            next();
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
     });
 }
 
 exports.findOne = (req, response, next) => {
-    const videoId = parseInt(req.params.video_id);
+  const videoId = parseInt(req.params.video_id);
 
-    new VideosService().findOne({
-        video_id: videoId
+  new VideosService().findOne({
+      video_id: videoId
     })
-        .then((result) => {
-            if (!result) {
-                response.sendStatus(404);
-            } else {
-                req.video = result;
-                next();
-            }
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    .then((result) => {
+      if (!result) {
+        response.sendStatus(404);
+      } else {
+        req.video = result;
+        next();
+      }
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
     });
 }
 
 exports.create = (req, response, next) => {
-    // gets the generated file name from Multer
-    const videoName = req.file.filename;
+  // gets the generated file name from Multer
+  const videoName = req.file.filename;
 
-    // get the thumbnail generated from screenshot lib
-    const thumbnail = req.thumbnail[0];
-    // console.log('thumbnail', thumbnail);
+  // get the thumbnail generated from screenshot lib
+  const thumbnail = req.thumbnail[0];
+  const video = {
+    title: req.body.title,
+    description: req.body.description,
+    url: videoName,
+    player: req.body.player,
+    thumbnail: thumbnail,
+    status_id: constants.PENDING
+  };
 
-    // response.send(thumbnail)
-    // return;
-
-    const video = {
-        title: req.body.title,
-        description: req.body.description,
-        url: videoName,
-        player: req.body.player,
-        thumbnail: thumbnail,
-        status_id: constants.PENDING
-    };
-
-    new VideosService().create(video)
-        .then((result) => {
-            req.result = result;
-            next();
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-        console.log('\n---------------- error ----------------\n'.red, error);
+  new VideosService().create(video)
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
 
 exports.update = (req, response, next) => {
-    const videoId = parseInt(req.params.video_id);
-    const video = {
-        title: req.body.title,
-        description: req.body.description,
-        player: req.body.player,
-        thumbnail: req.body.thumbnail,
-        status_id: req.body.status_id
-    };
+  const videoId = parseInt(req.params.video_id);
+  const video = {
+    title: req.body.title,
+    description: req.body.description,
+    player: req.body.player,
+    thumbnail: req.body.thumbnail,
+    status_id: req.body.status_id
+  };
 
-    new VideosService().update(video, videoId)
-        .then((result) => {
-            req.result = result;
-            next();
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-        console.log('\n---------------- error ----------------\n'.red, error);
+  new VideosService().update(video, videoId)
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
 
 exports.delete = (req, response, next) => {
-    const videoId = parseInt(req.params.video_id);
+  const videoId = parseInt(req.params.video_id);
 
-    new VideosService().delete({
-        video_id: videoId
+  new VideosService().delete({
+      video_id: videoId
     })
-        .then((result) => {
-            req.result = result;
-            next();
-        }).catch((error) => {
-        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-        console.log('\n---------------- error ----------------\n'.red, error);
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
 
