@@ -1,7 +1,6 @@
 const i18n = require('i18n');
 const groupArray = require('group-array');
 const Sequelize = require('sequelize');
-const _sequelizeLikeOperator = require('sequelize').Op.like;
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
@@ -81,6 +80,8 @@ exports.recommended = (req, response, next) => {
 exports.search = (req, response, next) => {
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
+  const _sequelizeLikeOperator = Sequelize.Op.like;
   const title = req.body.title;
   const description = req.body.description;
   let where = {
