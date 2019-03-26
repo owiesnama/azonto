@@ -55,6 +55,10 @@ import UsersView from './Views/Users'
 Vue.component('UsersView', UsersView);
 
 
+import VueDisqus from 'vue-disqus'
+
+Vue.use(VueDisqus)
+
 const app = new Vue({
     el: '#app'
 });
