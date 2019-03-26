@@ -40,6 +40,12 @@ router.route('/recommended/:category_id')
       response.status(200).send(req.videos);
     })
 
+router.route('/search')
+  .post(videosController.search,
+    (req, response) => {
+      response.status(200).send(req.videos);
+    })
+
 router.route('/requests')
   .get(videosController.pending,
     (req, response) => {

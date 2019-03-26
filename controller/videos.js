@@ -1,5 +1,7 @@
 const i18n = require('i18n');
 const groupArray = require('group-array');
+const Sequelize = require('sequelize');
+const _sequelizeLikeOperator = require('sequelize').Op.like;
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
@@ -59,7 +61,7 @@ exports.recommended = (req, response, next) => {
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
   const categoryId = parseInt(req.params.category_id);
-  
+
   // get APPROVED videos
   new VideosService().findAll({
       // TODO: set status id
@@ -68,6 +70,44 @@ exports.recommended = (req, response, next) => {
     }, pageSize, pageNumber, [
       ['views', 'DESC']
     ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.search = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+  const title = req.body.title;
+  const description = req.body.description;
+  let where = {
+    // TODO: set status id
+    // status_id: constants.APPROVED
+  };
+
+  if (title) {
+    where.title = {
+      [_sequelizeLikeOperator]: `%${title}%`
+    };
+  }
+
+  if (description) {
+    where.description = {
+      [_sequelizeLikeOperator]: `%${description}%`
+    };
+  }
+
+  // get APPROVED videos
+  new VideosService().findAll(
+      where,
+      pageSize,
+      pageNumber,
+      [
+        ['created_at', 'DESC']
+      ])
     .then((result) => {
       req.videos = result;
       next();
