@@ -1,5 +1,7 @@
 const ffmpeg = require('ffmpeg');
 const path = require('path');
+const colors = require('colors');
+
 const screenshotPath = __dirname + '/../uploads/thumbnails/';
 const videoPath = __dirname + '/../uploads/videos/';
 
@@ -34,7 +36,5 @@ try {
       console.log('Error: ' + err);
     });
 } catch (e) {
-  console.log(e);
-  console.log(e.code);
-  console.log(e.msg);
+  console.log(`Error in Watermark: ${e.code}, ${e.msg}`.red);
 }
