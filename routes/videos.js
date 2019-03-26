@@ -34,6 +34,12 @@ router.route('/trending')
       response.status(200).send(req.videos);
     })
 
+router.route('/recommended/:category_id')
+  .get(videosController.recommended,
+    (req, response) => {
+      response.status(200).send(req.videos);
+    })
+
 router.route('/requests')
   .get(videosController.pending,
     (req, response) => {

@@ -42,8 +42,29 @@ exports.trending = (req, response, next) => {
 
   // get APPROVED videos
   new VideosService().findAll({
-    // TODO: set status id
+      // TODO: set status id
       // status_id: constants.APPROVED
+    }, pageSize, pageNumber, [
+      ['views', 'DESC']
+    ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.recommended = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+  const categoryId = parseInt(req.params.category_id);
+  
+  // get APPROVED videos
+  new VideosService().findAll({
+      // TODO: set status id
+      // status_id: constants.APPROVED
+      category_id: categoryId
     }, pageSize, pageNumber, [
       ['views', 'DESC']
     ])
