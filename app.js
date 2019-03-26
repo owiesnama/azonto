@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 const session = require('express-session')
 const colors = require('colors');
 const i18n = require('i18n');
+const fs = require('fs');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -101,5 +102,24 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+// check that upload and it's sub folder are exists 
+const uploadsPath = './uploads/';
+const screenshotPath = './uploads/thumbnails/';
+const videoPath = './uploads/videos/';
+
+if (!fs.existsSync(uploadsPath)) {
+
+  fs.mkdirSync(uploadsPath);
+
+}
+
+if (!fs.existsSync(screenshotPath)) {
+  fs.mkdirSync(screenshotPath);
+}
+
+if (!fs.existsSync(videoPath)) {
+  fs.mkdirSync(videoPath);
+}
 
 module.exports = app;
