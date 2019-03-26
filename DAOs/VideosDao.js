@@ -2,12 +2,17 @@ const BaseDao = require('./BaseDao')
 const models = require('../DB/models/index')
 const videosModel = models.videos;
 
+const include = [{
+  model: models.categories,
+  as: 'category',
+  attributes: ['category_id', 'name']
+}]
 class VideosDao extends BaseDao {
   constructor() {
     super(videosModel)
   }
 
-  findAll(where = {}, include = [], pageSize, pageNumber, order = [
+  findAll(where = {}, pageSize, pageNumber, order = [
     ['created_at', 'DESC']
   ]) {
     const that = this;
@@ -33,18 +38,6 @@ class VideosDao extends BaseDao {
         });
     });
   }
-
-  // findAll(where = {}, pageSize, pageNumber) {
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       const result = await super.findAll(where, null, pageSize, pageNumber);
-  //       resolve(result);
-  //     } catch (error) {
-  //       reject(error);
-  //     }
-  //   });
-  // }
-
 }
 
 module.exports = VideosDao

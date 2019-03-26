@@ -66,7 +66,8 @@ exports.create = (req, response, next) => {
     url: videoName,
     player: req.body.player,
     thumbnail: thumbnail,
-    status_id: constants.PENDING
+    status_id: constants.PENDING,
+    category_id: req.body.category_id
   };
 
   new VideosService().create(video)
@@ -86,7 +87,8 @@ exports.update = (req, response, next) => {
     description: req.body.description,
     player: req.body.player,
     thumbnail: req.body.thumbnail,
-    status_id: req.body.status_id
+    status_id: req.body.status_id,
+    category_id: req.body.category_id
   };
 
   new VideosService().update(video, videoId)

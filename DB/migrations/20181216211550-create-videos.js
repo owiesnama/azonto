@@ -38,6 +38,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         defaultValue: 0
       },      
+      category_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        reference: {
+          model: 'categories',
+          key: 'category_id'
+        }
+      },      
       created_at: {
         allowNull: false,
         type: Sequelize.DATEONLY
