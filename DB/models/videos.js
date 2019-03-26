@@ -13,10 +13,12 @@ module.exports = (sequelize, DataTypes) => {
     player: DataTypes.STRING,
     views: DataTypes.INTEGER,
     thumbnail: DataTypes.STRING,
-    status_id: DataTypes.INTEGER
+    status_id: DataTypes.INTEGER,
+    category_id: DataTypes.INTEGER
   }, {});
   videos.associate = function(models) {
     // associations can be defined here
+    videos.belongsTo(models.categories, {as: 'category', foreignKey: 'category_id'})
   };
   return videos;
 };

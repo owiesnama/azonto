@@ -12,7 +12,8 @@ const schema = {
   url: Joi.string().required(),
   player: Joi.string().required(),
   thumbnail: Joi.string().required(),
-  status_id: Joi.number().required()
+  status_id: Joi.number().required(),
+  category_id: Joi.number().required()
 };
 
 const updateSchema = {
@@ -20,7 +21,8 @@ const updateSchema = {
   description: Joi.string().required(),
   player: Joi.string().required(),
   thumbnail: Joi.string().required(),
-  status_id: Joi.number().required()
+  status_id: Joi.number().required(),
+  category_id: Joi.number().required()
 };
 
 class VideosService extends BaseService {
@@ -31,7 +33,7 @@ class VideosService extends BaseService {
   findAll(where = {}, pageSize, pageNumber) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await new VideosDao().findAll(where, null, pageSize, pageNumber)
+        const result = await new VideosDao().findAll(where, pageSize, pageNumber)
         resolve(result);
       } catch (error) {
         reject(error);
