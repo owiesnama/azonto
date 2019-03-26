@@ -139,8 +139,9 @@ exports.login = (req, response, next) => {
     });
 }
 
-
-// TODO: destroy the session 
 exports.logout = (req, response) => {
+  req.session.destroy(function (err) {
+    // cannot access session here
+  })
   response.redirect('/');
 }
