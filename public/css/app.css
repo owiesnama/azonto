@@ -17100,6 +17100,10 @@ textarea[resize=horizontal] {
   background-position: -108px -95px;
 }
 
+.navbar .nabvar-toggler .icon-bar {
+  background: white;
+}
+
 .footer .navbar {
   padding: 5px 20px;
 }
@@ -18812,10 +18816,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   max-width: 100%;
 }
 
-.featured-videos a {
-  min-height: 100%;
-}
-
 .featured-videos .video {
   height: auto;
   width: auto;
@@ -18981,6 +18981,32 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   width: 100%;
   max-width: 200px;
   position: fixed;
+}
+
+.content {
+  position: relative;
+  padding: 0 17px;
+}
+
+.content .video-player {
+  position: relative;
+  margin: 0 0 13px;
+  width: 100%;
+}
+
+.content video {
+  width: 100%;
+}
+
+.content .content-heading {
+  padding: 0 0 13px;
+}
+
+.content .content-heading h1 {
+  display: inline;
+  margin: 0;
+  vertical-align: top;
+  font: bold 1.462em/1.105em Tahoma, Arial, sans-serif;
 }
 
 .min-container {
