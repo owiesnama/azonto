@@ -10,7 +10,7 @@
 
 
   overflow: hidden;
-  margin: 0 0 17px;
+  margin: 0;
 
   .video {
     height: auto;
@@ -127,4 +127,8 @@
     margin: 0 0 0 -28px;
   }
 
+}
+
+.mr-1-px{
+  margin-right:1px !important;
 }
