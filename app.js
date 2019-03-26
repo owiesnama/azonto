@@ -109,9 +109,7 @@ const screenshotPath = './uploads/thumbnails/';
 const videoPath = './uploads/videos/';
 
 if (!fs.existsSync(uploadsPath)) {
-
   fs.mkdirSync(uploadsPath);
-
 }
 
 if (!fs.existsSync(screenshotPath)) {
