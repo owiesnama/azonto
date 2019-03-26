@@ -28,6 +28,12 @@ router.route('/')
       response.redirect('/');
     });
 
+router.route('/trending')
+  .get(videosController.trending,
+    (req, response) => {
+      response.status(200).send(req.videos);
+    })
+
 router.route('/requests')
   .get(videosController.pending,
     (req, response) => {

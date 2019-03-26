@@ -32,10 +32,10 @@ class VideosService extends BaseService {
     super(videosModel);
   }
 
-  findAll(where = {}, pageSize, pageNumber) {
+  findAll(where = {}, pageSize, pageNumber, orderBy) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await new VideosDao().findAll(where, pageSize, pageNumber)
+        const result = await new VideosDao().findAll(where, pageSize, pageNumber, orderBy)
         resolve(result);
       } catch (error) {
         reject(error);

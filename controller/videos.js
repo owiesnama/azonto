@@ -36,6 +36,25 @@ exports.pending = (req, response, next) => {
     });
 }
 
+exports.trending = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
+  // get APPROVED videos
+  new VideosService().findAll({
+    // TODO: set status id
+      // status_id: constants.APPROVED
+    }, pageSize, pageNumber, [
+      ['views', 'DESC']
+    ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
 exports.findOne = (req, response, next) => {
   const videoId = parseInt(req.params.video_id);
 
