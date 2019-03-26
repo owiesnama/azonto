@@ -56,5 +56,4 @@ import './utilites/helpers'
 
 
 // import './bootstrap-material-design.min'
-// import './popper.min'
 // import './admin'

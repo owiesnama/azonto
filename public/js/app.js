@@ -86516,7 +86516,6 @@ window.filesize = __webpack_require__(/*! filesize */ "./node_modules/filesize/l
 
 Vue.use(vue_js_modal__WEBPACK_IMPORTED_MODULE_1___default.a);
  // import './bootstrap-material-design.min'
-// import './popper.min'
 // import './admin'
 
 /***/ }),
