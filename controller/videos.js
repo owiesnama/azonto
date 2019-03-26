@@ -62,6 +62,7 @@ exports.create = (req, response, next) => {
   const thumbnail = req.thumbnail[0];
   const video = {
     title: req.body.title,
+    email: req.body.email,
     description: req.body.description,
     url: videoName,
     player: req.body.player,

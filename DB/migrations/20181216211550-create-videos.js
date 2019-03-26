@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },      
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },      
       description: {
         allowNull: false,
         type: Sequelize.STRING
@@ -41,7 +45,7 @@ module.exports = {
       category_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
-        reference: {
+        references: {
           model: 'categories',
           key: 'category_id'
         }

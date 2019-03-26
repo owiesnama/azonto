@@ -8,6 +8,7 @@ const videosModel = models.videos;
 
 const schema = {
   title: Joi.string().required(),
+  email: Joi.string().required(),
   description: Joi.string().required(),
   url: Joi.string().required(),
   player: Joi.string().required(),
@@ -18,6 +19,7 @@ const schema = {
 
 const updateSchema = {
   title: Joi.string().required(),
+  email: Joi.string().required(),
   description: Joi.string().required(),
   player: Joi.string().required(),
   thumbnail: Joi.string().required(),
@@ -93,30 +95,6 @@ class VideosService extends BaseService {
       }
     });
   }
-
-
-  // TODO: removed if not needed
-  // create(doc) {
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       let isError = this.validateInputs(doc, schema);
-  //       if (isError.error) {
-  //         reject({
-  //           code: 400,
-  //           key: isError.error.details[0].context.key,
-  //           message: i18n.__("required field", isError.error.details[0].context.label)
-  //         });
-  //         return;
-  //       }
-
-  //       const result = await super.create(doc);
-  //       resolve(result);
-  //     } catch (error) {
-  //       reject(error);
-  //     }
-  //   });
-  // }
-
 }
 
 module.exports = VideosService
