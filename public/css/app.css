@@ -19019,6 +19019,101 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   font: bold 1.462em/1.105em Tahoma, Arial, sans-serif;
 }
 
+@media (min-width: 300px) and (max-width: 720px) {
+  .videos {
+    justify-content: flex-start;
+  }
+
+  .videos .box {
+    display: flex;
+    flex-grow: 1;
+    border-radius: 0;
+    flex-basis: 100%;
+    align-items: flex-start;
+  }
+
+  .videos .box:not(:last-child) {
+    border-bottom: 1px solid #cbcbcb;
+  }
+
+  .videos .video-box {
+    width: 140px;
+    margin: 0 5px;
+    height: 90px;
+    min-width: 140px;
+    min-height: 90px;
+    border-radius: 0;
+  }
+
+  .videos .video-box img {
+    vertical-align: middle;
+    border-style: none;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+  }
+
+  .videos a {
+    color: black;
+  }
+
+  .videos .views {
+    color: silver;
+  }
+}
+
+.footer .logo {
+  margin: 0 h;
+}
+
+@media (min-width: 300px) and (max-width: 720px) {
+  .heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .heading.with--background:before {
+    background-image: none !important;
+  }
+
+  .heading h1 {
+    font-weight: bolder !important;
+    font-size: 16px !important;
+  }
+
+  .heading .num {
+    margin: 0 !important;
+  }
+
+  .heading .form-group {
+    margin: 0;
+  }
+}
+
+.carousel-section {
+  display: none;
+  visibility: hidden;
+}
+
+.only-mobile {
+  display: none;
+  visibility: hidden;
+}
+
+@media (min-width: 300px) and (max-width: 720px) {
+  .only-desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+  .only-mobile {
+    display: flex;
+    visibility: inherit;
+  }
+}
+
 .min-container {
   max-width: 990px;
   margin: 0 auto;
@@ -19085,7 +19180,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .heading .filter {
   float: right;
-  margin: -5px 0 -13px;
+  margin: -35px 0 -13px;
 }
 
 .heading .filter:after {
@@ -19108,7 +19203,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   color: #e2e2e2;
   font-size: 0.923em;
   line-height: 1.25em;
-  margin: 7px 9px 0 0;
+  margin: -20px 9px 0 0;
 }
 
 .heading.with--background {
