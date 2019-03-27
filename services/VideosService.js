@@ -8,19 +8,23 @@ const videosModel = models.videos;
 
 const schema = {
   title: Joi.string().required(),
+  email: Joi.string().required(),
   description: Joi.string().required(),
   url: Joi.string().required(),
   player: Joi.string().required(),
   thumbnail: Joi.string().required(),
-  status_id: Joi.number().required()
+  status_id: Joi.number().required(),
+  category_id: Joi.number().required()
 };
 
 const updateSchema = {
   title: Joi.string().required(),
+  email: Joi.string().required(),
   description: Joi.string().required(),
   player: Joi.string().required(),
   thumbnail: Joi.string().required(),
-  status_id: Joi.number().required()
+  status_id: Joi.number().required(),
+  category_id: Joi.number().required()
 };
 
 class VideosService extends BaseService {
@@ -28,10 +32,10 @@ class VideosService extends BaseService {
     super(videosModel);
   }
 
-  findAll(where = {}, pageSize, pageNumber) {
+  findAll(where = {}, pageSize, pageNumber, orderBy) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await new VideosDao().findAll(where, null, pageSize, pageNumber)
+        const result = await new VideosDao().findAll(where, pageSize, pageNumber, orderBy)
         resolve(result);
       } catch (error) {
         reject(error);
@@ -91,30 +95,6 @@ class VideosService extends BaseService {
       }
     });
   }
-
-
-  // TODO: removed if not needed
-  // create(doc) {
-  //   return new Promise(async (resolve, reject) => {
-  //     try {
-  //       let isError = this.validateInputs(doc, schema);
-  //       if (isError.error) {
-  //         reject({
-  //           code: 400,
-  //           key: isError.error.details[0].context.key,
-  //           message: i18n.__("required field", isError.error.details[0].context.label)
-  //         });
-  //         return;
-  //       }
-
-  //       const result = await super.create(doc);
-  //       resolve(result);
-  //     } catch (error) {
-  //       reject(error);
-  //     }
-  //   });
-  // }
-
 }
 
 module.exports = VideosService

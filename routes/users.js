@@ -4,25 +4,29 @@ const router = express.Router();
 const usersController = require('../controller/users');
 // const authController = require('../controller/auth');
 
-// list && create API
+// list && create APIs
 router.route('/')
   .get(usersController.list,
     (req, response) => {
-      response.render('admin/users');
-      // response.status(200).send(req.users);
+      // response.render('admin/users');
+      response.status(200).send(req.users);
     })
   .post(usersController.create,
     (req, response) => {
       response.send({
-          user:req.user
+        user: req.user
       });
     });
 
-// update API
+// update, delete APIs
 router.route('/:user_id')
   .put(usersController.update,
     (req, response) => {
       response.sendStatus(200);
+    })
+  .delete(usersController.delete,
+    (req, response) => {
+      response.redirect('/users');
     })
 
 router.route('/login')

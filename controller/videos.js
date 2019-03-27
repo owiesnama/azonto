@@ -1,5 +1,6 @@
 const i18n = require('i18n');
 const groupArray = require('group-array');
+const Sequelize = require('sequelize');
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
@@ -36,6 +37,86 @@ exports.pending = (req, response, next) => {
     });
 }
 
+exports.trending = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
+  // get APPROVED videos
+  new VideosService().findAll({
+      // TODO: set status id
+      // status_id: constants.APPROVED
+    }, pageSize, pageNumber, [
+      ['views', 'DESC']
+    ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.recommended = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+  const categoryId = parseInt(req.params.category_id);
+
+  // get APPROVED videos
+  new VideosService().findAll({
+      // TODO: set status id
+      // status_id: constants.APPROVED
+      category_id: categoryId
+    }, pageSize, pageNumber, [
+      ['views', 'DESC']
+    ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.search = (req, response, next) => {
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
+  const _sequelizeLikeOperator = Sequelize.Op.like;
+  const title = req.body.title;
+  const description = req.body.description;
+  let where = {
+    // TODO: set status id
+    // status_id: constants.APPROVED
+  };
+
+  if (title) {
+    where.title = {
+      [_sequelizeLikeOperator]: `%${title}%`
+    };
+  }
+
+  if (description) {
+    where.description = {
+      [_sequelizeLikeOperator]: `%${description}%`
+    };
+  }
+
+  // get APPROVED videos
+  new VideosService().findAll(
+      where,
+      pageSize,
+      pageNumber,
+      [
+        ['created_at', 'DESC']
+      ])
+    .then((result) => {
+      req.videos = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
 exports.findOne = (req, response, next) => {
   const videoId = parseInt(req.params.video_id);
 
@@ -62,11 +143,13 @@ exports.create = (req, response, next) => {
   const thumbnail = req.thumbnail[0];
   const video = {
     title: req.body.title,
+    email: req.body.email,
     description: req.body.description,
     url: videoName,
     player: req.body.player,
     thumbnail: thumbnail,
-    status_id: constants.PENDING
+    status_id: constants.PENDING,
+    category_id: req.body.category_id
   };
 
   new VideosService().create(video)
@@ -86,7 +169,8 @@ exports.update = (req, response, next) => {
     description: req.body.description,
     player: req.body.player,
     thumbnail: req.body.thumbnail,
-    status_id: req.body.status_id
+    status_id: req.body.status_id,
+    category_id: req.body.category_id
   };
 
   new VideosService().update(video, videoId)

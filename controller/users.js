@@ -109,6 +109,20 @@ exports.update = (req, response, next) => {
     });
 }
 
+exports.delete = (req, response, next) => {
+  const userId = parseInt(req.params.user_id);
+
+  new UsersService().delete({
+      user_id: userId
+    })
+    .then((result) => {
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
 exports.login = (req, response, next) => {
   const where = {
     email: req.body.email,
@@ -139,8 +153,9 @@ exports.login = (req, response, next) => {
     });
 }
 
-
-// TODO: destroy the session 
 exports.logout = (req, response) => {
+  req.session.destroy(function (err) {
+    // cannot access session here
+  })
   response.redirect('/');
 }
