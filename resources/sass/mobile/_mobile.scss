@@ -1,0 +1,25 @@
+@import "featured-videos";
+@import "video";
+@import "heading";
+
+.carousel-section {
+  display: none;
+  visibility: hidden;
+}
+
+.only-mobile{
+  display: none;
+  visibility: hidden;
+}
+
+@media (min-width: 300px) and (max-width: 720px) {
+  .only-desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+  .only-mobile{
+   display: flex;
+    visibility: inherit;
+  }
+}

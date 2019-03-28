@@ -1,0 +1,71 @@
+//@media (min-width: 300px) and (max-width: 720px) {
+//  .featured-videos {
+//    display: flex;
+//    flex-direction: column;
+//    padding: 10px 10px 15px;
+//    flex-wrap: wrap;
+//
+//    img {
+//      width: 140px;
+//      height: 90px;
+//      border-radius: 0;
+//    }
+//
+//    .video {
+//      padding: 10px 10px 2px;
+//      font-size: 0.923em;
+//      line-height: 1.333em;
+//      .caption {
+//        position: static;
+//        padding: 1px;
+//        h1,h2{
+//          color: black;
+//          text-shadow: none;
+//        }
+//        background: none;
+//      }
+//      &.large {
+//        .caption {
+//          padding: 1px;
+//          color: black;
+//          text-shadow: none;
+//          background: none;
+//        }
+//      }
+//
+//
+//      a{
+//        display: flex;
+//        flex-basis: 100%;
+//        flex-direction:row;
+//      }
+//
+//
+//
+//      a:hover {
+//        color: black;
+//        display: block;
+//        position: static;
+//        .btn-play {
+//          opacity: 1;
+//        }
+//        .btn-play-hover {
+//          opacity: 0;
+//        }
+//        h2 {
+//          color: black;
+//        }
+//        &:after {
+//          opacity: 0;
+//        }
+//      }
+//
+//
+//    }
+//
+//    .d-flex{
+//      flex-direction:column;
+//    }
+//
+//  }
+//}

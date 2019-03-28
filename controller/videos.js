@@ -149,7 +149,9 @@ exports.create = (req, response, next) => {
     player: req.body.player,
     thumbnail: thumbnail,
     status_id: constants.PENDING,
-    category_id: req.body.category_id
+    // FIXME: change to real value
+    // category_id: req.body.category_id
+    category_id: 1
   };
 
   new VideosService().create(video)
