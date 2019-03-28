@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const featuredVideosController = require('../controller/featured_videos');
-// const authController = require('../controller/auth');
+const authController = require('../controller/auth');
 
 // list && create API
 router.route('/')
@@ -10,7 +10,15 @@ router.route('/')
     (req, response) => {
       response.status(200).send(req.featuredVideos);
     })
-  .post(
+  .post(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).createAny('featured_videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
     featuredVideosController.create,
     (req, response) => {
       response.redirect('/featured_videos');
@@ -18,7 +26,16 @@ router.route('/')
 
 // delete API
 router.route('/:featured_video_id')
-  .delete(featuredVideosController.delete,
+  .delete(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).deleteAny('featured_videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    featuredVideosController.delete,
     (req, response) => {
       response.sendStatus(200);
     })

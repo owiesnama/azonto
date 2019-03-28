@@ -1,5 +1,6 @@
 const express = require('express');
 const colors = require('colors');
+const constants = require('../config/constants');
 
 const router = express.Router();
 
@@ -11,7 +12,11 @@ const authController = require('../controller/auth');
 router.route('/login')
   .post(usersController.login,
     (req, response) => {
-      response.redirect('/admin');
+      if (req.session.user.role_id === constants.ADMIN) {
+        response.redirect('/admin');
+      } else if (req.session.user.role_id === constants.REVIEWER) {
+        response.redirect('/admin/requests');
+      }
     });
 
 

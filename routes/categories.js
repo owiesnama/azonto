@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 
 const categoriesController = require('../controller/categories');
-// const authController = require('../controller/auth');
+const authController = require('../controller/auth');
+
 
 // list && create API
 router.route('/')
@@ -10,14 +11,32 @@ router.route('/')
     (req, response) => {
       response.status(200).send(req.categories);
     })
-  .post(categoriesController.create,
+  .post(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).createAny('categories');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    categoriesController.create,
     (req, response) => {
       response.sendStatus(200);
     });
 
 // update API
 router.route('/:category_id')
-  .put(categoriesController.update,
+  .put(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).updateAny('categories');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    categoriesController.update,
     (req, response) => {
       response.sendStatus(200);
     })

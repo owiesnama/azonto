@@ -10,7 +10,7 @@ const categoriesController = require('../controller/categories');
 const videosController = require('../controller/videos');
 const uploadController = require('../controller/upload');
 const screenshotLib = require('../libs/screenshot');
-// const authController = require('../controller/auth');
+const authController = require('../controller/auth');
 
 // list && create API
 router.route('/')
@@ -46,8 +46,19 @@ router.route('/search')
       response.status(200).send(req.videos);
     })
 
+// checks that the session is set for the bellow APIs 
+router.use(authController.isLoggedIn);
+
 router.route('/requests')
-  .get(videosController.pending,
+  .get((req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).readAny('videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    videosController.pending,
     (req, response) => {
       response.render('admin/requests', {
         videos: req.videos
@@ -56,7 +67,15 @@ router.route('/requests')
 
 // find one & update API
 router.route('/:video_id')
-  .get(videosController.findOne,
+  .get((req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).readAny('videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    videosController.findOne,
     categoriesController.list,
     (req, response) => {
       response.render('show', {
@@ -64,14 +83,29 @@ router.route('/:video_id')
         categories: req.categories
       });
     })
-  .put(videosController.update,
+  .put((req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).updateAny('videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    }, videosController.update,
     (req, response) => {
       response.sendStatus(200);
     })
 
 // delete API
 router.route('/:video_id')
-  .delete(videosController.findOne,
+  .delete((req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).deleteAny('videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    videosController.findOne,
     // deleting the file from uploads folder
     (req, response, next) => {
       try {
