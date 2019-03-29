@@ -85,8 +85,7 @@ exports.search = (req, response, next) => {
   const title = req.query.title;
   const description = req.query.description;
   let where = {
-    // TODO: set status id
-    // status_id: constants.APPROVED
+    status_id: constants.APPROVED
   };
 
   if (title) {
@@ -121,7 +120,8 @@ exports.findOne = (req, response, next) => {
   const videoId = parseInt(req.params.video_id);
 
   new VideosService().findOne({
-      video_id: videoId
+      video_id: videoId,
+      status_id: constants.APPROVED
     })
     .then((result) => {
       if (!result) {
@@ -149,9 +149,7 @@ exports.create = (req, response, next) => {
     player: req.body.player,
     thumbnail: thumbnail,
     status_id: constants.PENDING,
-    // FIXME: change to real value
-    // category_id: req.body.category_id
-    category_id: 1
+    category_id: req.body.category_id
   };
 
   new VideosService().create(video)
@@ -200,30 +198,3 @@ exports.delete = (req, response, next) => {
       console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
-
-
-// exports.create = async (req, response, next) => {
-//   if (req.files.length > 0) {
-//     let attachments = [];
-
-//     for (let file = 0; file < req.files.length; file++) {
-//       let currentAttachment = {};
-//       const doc = req.files[file];
-//       currentAttachment.user_id = req.session.user.user_id;
-//       // TODO:FIXME: sets the folder id
-//       currentAttachment.folder_id = 1;
-//       currentAttachment.url = doc.filename;
-//       currentAttachment.display_name = doc.originalname;
-//       currentAttachment.size = doc.size;
-
-//       attachments.push(currentAttachment);
-//     }
-
-//     await new VideosService().bulkCreate(attachments);
-
-//     next();
-//     return;
-//   }
-
-//   response.status(400).send(i18n.__('select_files'));
-// }
