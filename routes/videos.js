@@ -41,7 +41,7 @@ router.route('/recommended/:category_id')
     })
 
 router.route('/search')
-  .post(videosController.search,
+  .get(videosController.search,
     (req, response) => {
       response.status(200).send(req.videos);
     })

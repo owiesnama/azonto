@@ -82,8 +82,8 @@ exports.search = (req, response, next) => {
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   const _sequelizeLikeOperator = Sequelize.Op.like;
-  const title = req.body.title;
-  const description = req.body.description;
+  const title = req.query.title;
+  const description = req.query.description;
   let where = {
     // TODO: set status id
     // status_id: constants.APPROVED
