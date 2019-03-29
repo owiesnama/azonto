@@ -24,6 +24,10 @@
                                         <tr
                                         >
                                             <th>
+                                              Full Name
+                                            </th>
+
+                                            <th>
                                                 Sender
                                             </th>
                                             <th>
@@ -45,9 +49,10 @@
                                             <tr v-for="message in messages"
                                                 :key="message.id"
                                             >
+                                                <td v-text="message.name"></td>
                                                 <td v-text="message.sender"></td>
-                                                <td v-text="message.sender"></td>
-                                                <td v-text="message.sender"></td>
+                                                <td v-text="message.attention"></td>
+                                                <td v-text="message.message"></td>
                                                 <td>{{message.updated_at|ago}}</td>
                                                 <td>
                                                     <button type="button"

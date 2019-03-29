@@ -33,7 +33,9 @@ exports.findOne = (req, response, next) => {
 
 exports.create = (req, response, next) => {
   const message = {
+    name: req.body.name,
     sender: req.body.sender,
+    attention: req.body.attention,
     message: req.body.message
   };
 
@@ -50,7 +52,9 @@ exports.create = (req, response, next) => {
 exports.update = (req, response, next) => {
   const messageId = parseInt(req.params.message_id);
   const message = {
+    name: req.body.name,
     sender: req.body.sender,
+    attention: req.body.attention,
     message: req.body.message
   };
 
