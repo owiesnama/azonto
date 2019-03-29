@@ -10,15 +10,16 @@ router.route('/')
     (req, response) => {
       response.status(200).send(req.featuredVideos);
     })
-  .post(authController.isLoggedIn,
-    (req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).createAny('featured_videos');
-      if (permission.granted) {
-        next();
-      } else {
-        response.status(403).send('unauthorized');
-      }
-    },
+  .post(
+    // authController.isLoggedIn,
+    // (req, response, next) => {
+    //   const permission = ac.can('' + req.session.user.role_id).createAny('featured_videos');
+    //   if (permission.granted) {
+    //     next();
+    //   } else {
+    //     response.status(403).send('unauthorized');
+    //   }
+    // },
     featuredVideosController.create,
     (req, response) => {
       response.redirect('/featured_videos');
