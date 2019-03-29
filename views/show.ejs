@@ -5,149 +5,156 @@
             <div class="ad">
 
             </div>
-            <div class="row">
-                <div class="col-lg-8 col-md-8 border-right">
-                    <article class="content">
-                        <div class="content-heading text-sm">
-                            <h1><%= video.title %></h1>
-                        </div>
-                        <div class="video-player" itemprop="video" itemscope=""
-                             itemtype="http://schema.org/VideoObject">
-                            <video poster="<%= video.thumbnail %>"
-                                   preload="auto"
-                                   controls
-                                   src="<%= video.url %>">
-                            </video>
-                        </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-lg-8 col-md-8 border-right">
+                        <article class="content">
+                            <div class="content-heading text-sm">
+                                <h1><%= video.title %></h1>
+                            </div>
+                            <div class="video-player" itemprop="video" itemscope=""
+                                 itemtype="http://schema.org/VideoObject">
+                                <video poster="<%= video.thumbnail %>"
+                                       preload="auto"
+                                       controls
+                                       src="<%= video.url %>">
+                                </video>
+                            </div>
+                            <div class="shareaholic-canvas border-bottom" data-app="share_buttons" data-app-id="28469290"></div>
+                            <div class="text-center">
+                                <p class="mb-1">Uploaded on <span><%=video.created_at%></span></p>
 
-                        <div class="comments-holder">
-                            <vue-disqus shortname="azonto-tv" identifier="<%= video.video_id %>"></vue-disqus>
-                        </div>
-                    </article>
-                </div>
-                <div class="col-md-4 p-0"
-                >
-                    <div class="">
-                        <header class="heading with--background">
-                            <h1>
-                                recommended
-                                <mark>videos</mark>
-                            </h1>
-                        </header>
-                        <section class="videos">
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-                                <div class="p-1 d-flex flex-column ">
-                                    <strong class="title" itemprop="name">
-                                        <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -Exposing MeRemix</a>
-                                    </strong>
-                                    <span>5 views</span>
-                                </div>
+                                <p class="text-muted"><%=video.description%></p>
+                            </div>
+                            <div class="comments-holder">
+                                <vue-disqus shortname="azonto-tv" identifier="<%= video.video_id %>"></vue-disqus>
+                            </div>
+                        </article>
+                    </div>
+                    <div class="col-md-4 p-0"
+                    >
+                        <div class="">
+                            <header class="heading with--background">
+                                <h1>
+                                    recommended
+                                    <mark>videos</mark>
+                                </h1>
+                            </header>
+                            <section class="videos">
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
+                                    <div class="p-1 d-flex flex-column ">
+                                        <strong class="title" itemprop="name">
+                                            <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -Exposing MeRemix</a>
+                                        </strong>
+                                        <span>5 views</span>
+                                    </div>
+                                </section>
+
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
+
+                                    <div class="p-1 d-flex flex-column">
+                                        <strong class="title" itemprop="name">
+                                            <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
+                                                Exposing Me
+                                                Remix</a>
+                                        </strong>
+                                        <span>5 views</span>
+                                    </div>
+
+                                </section>
+
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
+
+                                    <div class="p-1 d-flex flex-column">
+                                        <strong class="title" itemprop="name">
+                                            <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
+                                                Exposing Me
+                                                Remix</a>
+                                        </strong>
+                                        <span>5 views</span>
+                                    </div>
+                                </section>
                             </section>
-
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-
-                                <div class="p-1 d-flex flex-column">
-                                    <strong class="title" itemprop="name">
-                                        <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
-                                            Exposing Me
-                                            Remix</a>
-                                    </strong>
-                                    <span>5 views</span>
-                                </div>
-
-                            </section>
-
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-
-                                <div class="p-1 d-flex flex-column">
-                                    <strong class="title" itemprop="name">
-                                        <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
-                                            Exposing Me
-                                            Remix</a>
-                                    </strong>
-                                    <span>5 views</span>
-                                </div>
-                            </section>
-                        </section>
-                        <header class="heading with--background">
-                            <h1>
-                                sponsored
-                                <mark>videos</mark>
-                            </h1>
-                        </header>
-                        <section class="videos">
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
-                                        Exposing Me
-                                        Remix</a>
-                                </strong>
-
-                            </section>
-
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-                                <strong class="title" itemprop="name">
-                                    <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
-                                        Exposing Me
-                                        Remix</a>
-                                </strong>
-
-                            </section>
-
-                            <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
-                                    <img class="lazy"
-                                         data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
-                                         width="222" height="125"
-                                         alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
-                                         src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
-                                </a>
-
-                                <div class="p-1 d-flex flex-column">
+                            <header class="heading with--background">
+                                <h1>
+                                    sponsored
+                                    <mark>videos</mark>
+                                </h1>
+                            </header>
+                            <section class="videos">
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
                                     <strong class="title" itemprop="name">
                                         <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
                                             Exposing Me
                                             Remix</a>
                                     </strong>
-                                    <span>5 views</span>
-                                </div>
+
+                                </section>
+
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
+                                    <strong class="title" itemprop="name">
+                                        <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
+                                            Exposing Me
+                                            Remix</a>
+                                    </strong>
+
+                                </section>
+
+                                <section class="box is-horizontal" itemscope="" itemtype="http://schema.org/ImageObject">
+                                    <a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">
+                                        <img class="lazy"
+                                             data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"
+                                             width="222" height="125"
+                                             alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"
+                                             src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">
+                                    </a>
+
+                                    <div class="p-1 d-flex flex-column">
+                                        <strong class="title" itemprop="name">
+                                            <a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga -
+                                                Exposing Me
+                                                Remix</a>
+                                        </strong>
+                                        <span>5 views</span>
+                                    </div>
+                                </section>
                             </section>
-                        </section>
+                        </div>
                     </div>
                 </div>
             </div>

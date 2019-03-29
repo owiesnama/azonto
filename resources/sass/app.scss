@@ -115,6 +115,9 @@
   padding: 15px 15px;
   border-bottom: 1px solid #d6d6d6;
   background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   h1 {
     font-size: 1.538em;
     color: white;
@@ -128,12 +131,9 @@
     background: none;
   }
   .filter {
-    float: right;
-    margin: -35px 0 -13px;
-    &:after {
-      clear: both;
-      content: '';
-      dispaly: block;
+    margin: 0;
+    .form-group {
+      margin: 0;
     }
     .form-control {
       color: #a6a6a6;
@@ -141,36 +141,17 @@
       background: none;
       box-shadow: none;
       text-align: center;
+      height: auto;
+      margin: 0;
+      padding: 0;
     }
 
   }
   .num {
-    float: right;
     text-transform: uppercase;
     color: #e2e2e2;
     font-size: 0.923em;
     line-height: 1.25em;
-    margin: -20px 9px 0 0;
-  }
-  &.with--background {
-    position: relative;
-    * {
-      position: relative;
-      z-index: 1;
-    }
-  }
-  &.with--background:before {
-    content: ' ';
-    display: block;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 0;
-    opacity: 0.3;
-    background: url('../../public/images/pattern2.jpeg');
-
   }
 }
 
@@ -191,6 +172,7 @@
 
 #main {
   max-width: 990px;
+  min-height: 100vh;
   margin: 0 auto;
   background: #fff;
   position: relative;
@@ -336,14 +318,24 @@ input[type="checkbox"] {
 .box {
   &.is-horizontal {
     display: flex;
-    width:auto;
-    align-items: center;
+    width: auto;
+    align-items: flex-start;
     justify-content: center;
-    padding:0;
-    .video-box{
+    padding: 0;
+    .video-box {
       height: 90px;
+      margin: 0;
     }
-    strong{
+    .flex-column{
+      padding-top: 0;
+      text-align: left;
+
+      span{
+        color: gray;
+        font-size: small;
+      }
+    }
+    strong {
       font-size: medium;
     }
   }

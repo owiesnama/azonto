@@ -1,0 +1,28 @@
+<modal name="approveRequest"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <form action="" @submit.prevent="put(shouldPlayVideo)">
+        <div class="card">
+
+            <div class="card-header card-header-success">
+                <p class="card-category">Do you want to approve the given video </p>
+            </div>
+            <div class="card-body">
+                <div class="p-1 mr-1">
+                    <h5 v-text="shouldPlayVideo.title"></h5>
+                    <p class="text-muted"
+                       v-text="shouldPlayVideo.description"></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit"
+                            class="btn btn-success">Approve
+                    </button>
+                    <button @click="$modal.hide('approveRequest')" type="button" class="btn btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</modal>

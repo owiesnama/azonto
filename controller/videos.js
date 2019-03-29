@@ -170,6 +170,7 @@ exports.update = (req, response, next) => {
     title: req.body.title,
     description: req.body.description,
     player: req.body.player,
+    email: req.body.email,
     thumbnail: req.body.thumbnail,
     status_id: req.body.status_id,
     category_id: req.body.category_id

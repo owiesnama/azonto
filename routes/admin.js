@@ -58,7 +58,7 @@ router.route('/messages')
       });
     });
 
-// checks that the session is set for the bellow APIs, and the user is Authorized 
+// checks that the session is set for the bellow APIs, and the user is Authorized
 router.use(authController.isLoggedIn,
   (req, response, next) => {
     const permission = ac.can('' + req.session.user.role_id).readAny('admin');
@@ -80,5 +80,21 @@ router.route('/users')
       users: req.users
     });
   });
+router.route('/videos')
+    .get((req, response) => {
+            response.render('admin/videos');
+        }
+    );
 
+router.route('/categories')
+    .get((req, response) => {
+            response.render('admin/categories');
+        }
+    );
+
+router.route('/login')
+    .get((req, response) => {
+            response.render('admin/login');
+        }
+    );
 module.exports = router;

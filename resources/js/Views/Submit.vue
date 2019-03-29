@@ -2,8 +2,14 @@
     export default {
         data(){
             return{
-                isLocalVideo:false
+                isLocalVideo:false,
+                categories:[],
             }
+        },
+
+        created(){
+            axios.get("/categories")
+                .then(({data}) => this.categories = data)
         }
     }
 </script>

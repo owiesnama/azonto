@@ -46,7 +46,7 @@
                                 <div class="video-slide">
                                     <a href="/videos/<%= video.video_id %>">
                                             <span class="video-box">
-                                                    <img src="/thumbnails/<%=video.thumbnail%>"
+                                                    <img src="/thumbnails/<%= video.thumbnail %>"
                                                          width="300"
                                                          height="200"
                                                          alt=""
@@ -176,8 +176,10 @@
 
                                 </a>
                                 <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid,
-                                        aperiam at dolores eos error facilis incidunt ipsam minima perspiciatis sunt. </a>
+                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                                        Aliquid,
+                                        aperiam at dolores eos error facilis incidunt ipsam minima perspiciatis
+                                        sunt. </a>
                                     <div>
                                         <span class="views"> 1 view</span>
                                         <!--<span class="comments">-->
@@ -197,7 +199,7 @@
                                 </a>
                                 <strong class="title text-left" itemprop="name">
                                     <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-                                         aque eius illo itaque, laboriosam</a>
+                                        aque eius illo itaque, laboriosam</a>
                                     <div>
                                         <span class="views">200,02 views</span>
                                         <!--<span class="comments">-->
@@ -209,22 +211,23 @@
                             </section>
                         </div>
                     </section>
-                    <% for ($key in videos) { %>
+                    <% for (let key in videos) { %>
                     <div class="ad">
 
                     </div>
                     <section>
                         <header class="heading with--background">
                             <h1>
-                                <time datetime="2019-03-19">{{$key|calendar}}
+                                <time datetime="2019-03-19">{{key|calendar}}
                                     <mark>VIDEOS</mark>
                                 </time>
-                            </h1><span class="num"><%= videos[$key].length %> videos</span>
+                            </h1>
+                            <span class="num"><%= videos[key].length %> videos</span>
 
                         </header>
                         <!-- display videos -->
                         <div class="videos">
-                            <% videos[$key].forEach( video => { %>
+                            <% videos[key].forEach( video => { %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
                                     <img class="lazy"
@@ -258,199 +261,199 @@
                     <% } %>
 
                     <!--<section>-->
-                        <!--<header class="heading">-->
-                            <!--<span class="num">30 VIDEOS</span>-->
-                            <!--<h1>-->
-                                <!--<time datetime="2019-03-18">March-->
-                                    <!--<mark>18</mark>-->
-                                    <!--<sup>2019</sup>-->
-                                <!--</time>-->
-                            <!--</h1>-->
-                        <!--</header>-->
+                    <!--<header class="heading">-->
+                    <!--<span class="num">30 VIDEOS</span>-->
+                    <!--<h1>-->
+                    <!--<time datetime="2019-03-18">March-->
+                    <!--<mark>18</mark>-->
+                    <!--<sup>2019</sup>-->
+                    <!--</time>-->
+                    <!--</h1>-->
+                    <!--</header>-->
 
-                        <!--<section class="videos">-->
-                            <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
-                                <!--<a itemprop="url" href="/videos/video.php?v=wshhV207aoW9lSGnW02v" class="video-box">-->
-                                    <!--<img class="lazy"-->
-                                         <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/agtE5IH4F5pl.jpg"-->
-                                         <!--width="222" height="125"-->
-                                         <!--alt="Whoa: Dead Whale Washed Up In The Philippines Had 40kg Of Plastic In Its Stomach!"-->
-                                         <!--itemprop="thumbnailUrl"-->
-                                         <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
-                                <!--</a>-->
-                                <!--<strong class="title" itemprop="name">-->
-                                    <!--<a href="/videos/video.php?v=wshhV207aoW9lSGnW02v">Whoa: Dead Whale Washed Up In The-->
-                                        <!--Philippines Had 40kg Of-->
-                                        <!--Plastic In Its Stomach!</a>-->
-                                <!--</strong>-->
-                                <!--<div>-->
-                                    <!--<span class="views">182,162</span>-->
-                                    <!--<span class="comments">-->
-                                                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhV207aoW9lSGnW02v#disqus_thread"-->
-                                                                           <!--data-disqus-identifier="134717">3856</a>-->
-                                                                <!--</span>-->
-                                <!--</div>-->
-                            <!--</section>-->
-                        <!--</section>-->
-                        <!--<div class="ad">-->
-                            <!--<div id="slot5" data-google-query-id="CLGH7NiijuECFYzk1QodLpoJIA" style="display: none;">-->
-                                <!--<div id="google_ads_iframe_/5529491/newhome_row_2_728x90_0__container__"-->
-                                     <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
-                            <!--</div>-->
-                        <!--</div>-->
+                    <!--<section class="videos">-->
+                    <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
+                    <!--<a itemprop="url" href="/videos/video.php?v=wshhV207aoW9lSGnW02v" class="video-box">-->
+                    <!--<img class="lazy"-->
+                    <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/agtE5IH4F5pl.jpg"-->
+                    <!--width="222" height="125"-->
+                    <!--alt="Whoa: Dead Whale Washed Up In The Philippines Had 40kg Of Plastic In Its Stomach!"-->
+                    <!--itemprop="thumbnailUrl"-->
+                    <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
+                    <!--</a>-->
+                    <!--<strong class="title" itemprop="name">-->
+                    <!--<a href="/videos/video.php?v=wshhV207aoW9lSGnW02v">Whoa: Dead Whale Washed Up In The-->
+                    <!--Philippines Had 40kg Of-->
+                    <!--Plastic In Its Stomach!</a>-->
+                    <!--</strong>-->
+                    <!--<div>-->
+                    <!--<span class="views">182,162</span>-->
+                    <!--<span class="comments">-->
+                    <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhV207aoW9lSGnW02v#disqus_thread"-->
+                    <!--data-disqus-identifier="134717">3856</a>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</section>-->
+                    <!--</section>-->
+                    <!--<div class="ad">-->
+                    <!--<div id="slot5" data-google-query-id="CLGH7NiijuECFYzk1QodLpoJIA" style="display: none;">-->
+                    <!--<div id="google_ads_iframe_/5529491/newhome_row_2_728x90_0__container__"-->
+                    <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
-                        <!--<section>-->
-                            <!--<header class="heading">-->
-                                <!--<span class="num">21 VIDEOS</span>-->
-                                <!--<h1>-->
-                                    <!--<time datetime="2019-03-17">March-->
-                                        <!--<mark>17</mark>-->
-                                        <!--<sup>2019</sup>-->
-                                    <!--</time>-->
-                                <!--</h1>-->
-                            <!--</header>-->
-                            <!--<section class="videos">-->
-                                <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
-                                    <!--<a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">-->
-                                        <!--<img class="lazy"-->
-                                             <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"-->
-                                             <!--width="222" height="125"-->
-                                             <!--alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"-->
-                                             <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
-                                    <!--</a>-->
-                                    <!--<strong class="title" itemprop="name">-->
-                                        <!--<a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga - -->
-                                            <!--Exposing Me-->
-                                            <!--Remix</a>-->
-                                    <!--</strong>-->
-                                    <!--<div>-->
-                                        <!--<span class="views">2,088,261</span>-->
-                                        <!--<span class="comments">-->
-                                                                                <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhIb8I26iWRDlV9RMv#disqus_thread"-->
-                                                                                   <!--data-disqus-identifier="134685">229</a>-->
-                                                                        <!--</span>-->
-                                    <!--</div>-->
-                                <!--</section>-->
-                            <!--</section>-->
-                            <!--<div class="ad">-->
-                                <!--<div id="slot7" data-google-query-id="CLKH7NiijuECFYzk1QodLpoJIA"-->
-                                     <!--style="display: none;">-->
-                                    <!--<div id="google_ads_iframe_/5529491/newhome_row_4_728x90_0__container__"-->
-                                         <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
-                                <!--</div>-->
-                            <!--</div>-->
+                    <!--<section>-->
+                    <!--<header class="heading">-->
+                    <!--<span class="num">21 VIDEOS</span>-->
+                    <!--<h1>-->
+                    <!--<time datetime="2019-03-17">March-->
+                    <!--<mark>17</mark>-->
+                    <!--<sup>2019</sup>-->
+                    <!--</time>-->
+                    <!--</h1>-->
+                    <!--</header>-->
+                    <!--<section class="videos">-->
+                    <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
+                    <!--<a itemprop="url" href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv" class="video-box">-->
+                    <!--<img class="lazy"-->
+                    <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/H7Y2INsT9mwW.jpg"-->
+                    <!--width="222" height="125"-->
+                    <!--alt="FBG Duck &amp; Rooga - Exposing Me Remix" itemprop="thumbnailUrl"-->
+                    <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
+                    <!--</a>-->
+                    <!--<strong class="title" itemprop="name">-->
+                    <!--<a href="/videos/video.php?v=wshhIb8I26iWRDlV9RMv">FBG Duck &amp; Rooga - -->
+                    <!--Exposing Me-->
+                    <!--Remix</a>-->
+                    <!--</strong>-->
+                    <!--<div>-->
+                    <!--<span class="views">2,088,261</span>-->
+                    <!--<span class="comments">-->
+                    <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhIb8I26iWRDlV9RMv#disqus_thread"-->
+                    <!--data-disqus-identifier="134685">229</a>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</section>-->
+                    <!--</section>-->
+                    <!--<div class="ad">-->
+                    <!--<div id="slot7" data-google-query-id="CLKH7NiijuECFYzk1QodLpoJIA"-->
+                    <!--style="display: none;">-->
+                    <!--<div id="google_ads_iframe_/5529491/newhome_row_4_728x90_0__container__"-->
+                    <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
-                            <!--<section>-->
-                                <!--<header class="heading">-->
-                                    <!--<span class="num">29 VIDEOS</span>-->
-                                    <!--<h1>-->
-                                        <!--<time datetime="2019-03-16">March-->
-                                            <!--<mark>16</mark>-->
-                                            <!--<sup>2019</sup>-->
-                                        <!--</time>-->
-                                    <!--</h1>-->
-                                <!--</header>-->
-                                <!--<section class="videos">-->
-                                    <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
-                                        <!--<a itemprop="url" href="/videos/video.php?v=wshhg9b3Slr8Gy99AxLf"-->
-                                           <!--class="video-box">-->
-                                            <!--<img class="lazy"-->
-                                                 <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/OsoanlKU4uLb.jpg"-->
-                                                 <!--width="222" height="125"-->
-                                                 <!--alt="Thoughts? Woman Exposes How Law Enforcement Focuses On A Black Person During Protests!"-->
-                                                 <!--itemprop="thumbnailUrl"-->
-                                                 <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
-                                        <!--</a>-->
-                                        <!--<strong class="title" itemprop="name">-->
-                                            <!--<a href="/videos/video.php?v=wshhg9b3Slr8Gy99AxLf">Thoughts? Woman Exposes-->
-                                                <!--How Law-->
-                                                <!--Enforcement-->
-                                                <!--Focuses On A Black Person During-->
-                                                <!--Protests!</a>-->
-                                        <!--</strong>-->
-                                        <!--<div>-->
-                                            <!--<span class="views">264,708</span>-->
-                                            <!--<span class="comments">-->
-                                                                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhg9b3Slr8Gy99AxLf#disqus_thread"-->
-                                                                                           <!--data-disqus-identifier="134667">12950</a>-->
-                                                                                <!--</span>-->
-                                        <!--</div>-->
-                                    <!--</section>-->
-                                <!--</section>-->
-                                <!--<div class="ad">-->
-                                    <!--<div id="slot8" data-google-query-id="CLOH7NiijuECFYzk1QodLpoJIA"-->
-                                         <!--style="display: none;">-->
+                    <!--<section>-->
+                    <!--<header class="heading">-->
+                    <!--<span class="num">29 VIDEOS</span>-->
+                    <!--<h1>-->
+                    <!--<time datetime="2019-03-16">March-->
+                    <!--<mark>16</mark>-->
+                    <!--<sup>2019</sup>-->
+                    <!--</time>-->
+                    <!--</h1>-->
+                    <!--</header>-->
+                    <!--<section class="videos">-->
+                    <!--<section class="box" itemscope="" itemtype="http://schema.org/ImageObject">-->
+                    <!--<a itemprop="url" href="/videos/video.php?v=wshhg9b3Slr8Gy99AxLf"-->
+                    <!--class="video-box">-->
+                    <!--<img class="lazy"-->
+                    <!--data-original="https://hw-static.worldstarhiphop.com/u/pic/2019/03/OsoanlKU4uLb.jpg"-->
+                    <!--width="222" height="125"-->
+                    <!--alt="Thoughts? Woman Exposes How Law Enforcement Focuses On A Black Person During Protests!"-->
+                    <!--itemprop="thumbnailUrl"-->
+                    <!--src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAANSURBVBhXYzh8+PB/AAffA0nNPuCLAAAAAElFTkSuQmCC">-->
+                    <!--</a>-->
+                    <!--<strong class="title" itemprop="name">-->
+                    <!--<a href="/videos/video.php?v=wshhg9b3Slr8Gy99AxLf">Thoughts? Woman Exposes-->
+                    <!--How Law-->
+                    <!--Enforcement-->
+                    <!--Focuses On A Black Person During-->
+                    <!--Protests!</a>-->
+                    <!--</strong>-->
+                    <!--<div>-->
+                    <!--<span class="views">264,708</span>-->
+                    <!--<span class="comments">-->
+                    <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhg9b3Slr8Gy99AxLf#disqus_thread"-->
+                    <!--data-disqus-identifier="134667">12950</a>-->
+                    <!--</span>-->
+                    <!--</div>-->
+                    <!--</section>-->
+                    <!--</section>-->
+                    <!--<div class="ad">-->
+                    <!--<div id="slot8" data-google-query-id="CLOH7NiijuECFYzk1QodLpoJIA"-->
+                    <!--style="display: none;">-->
 
-                                        <!--<div id="google_ads_iframe_/5529491/newhome_row_5_728x90_0__container__"-->
-                                             <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
-                                    <!--</div>-->
-                                <!--</div>-->
+                    <!--<div id="google_ads_iframe_/5529491/newhome_row_5_728x90_0__container__"-->
+                    <!--style="border: 0pt none; width: 728px; height: 90px;"></div>-->
+                    <!--</div>-->
+                    <!--</div>-->
 
-                            <!--</section>-->
-                            <!--<br>-->
-                            <!--<ul class="paging">-->
-                                <!--<li class="prev">-->
-                                    <!--<a href="javascript:void(0)" class="prev disabled" rel="prev">previous</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/" style="font-weight:bold;color:#991a1a;pointer-events:none">1</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=2">2</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=3">3</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=4">4</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=5">5</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=6">6</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=7">7</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=8">8</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=9">9</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=10">10</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=11">11</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=12">12</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=13">13</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=14">14</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=15">15</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<a href="/videos/?start=15">16</a>-->
-                                <!--</li>-->
-                                <!--<li>-->
-                                    <!--<span>…</span>-->
-                                <!--</li>-->
-                                <!--<li class="next">-->
-                                    <!--<a href="/videos/?start=2" class="next" rel="next">next</a>-->
-                                <!--</li>-->
-                            <!--</ul>-->
-                        <!--</section>-->
+                    <!--</section>-->
+                    <!--<br>-->
+                    <!--<ul class="paging">-->
+                    <!--<li class="prev">-->
+                    <!--<a href="javascript:void(0)" class="prev disabled" rel="prev">previous</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/" style="font-weight:bold;color:#991a1a;pointer-events:none">1</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=2">2</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=3">3</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=4">4</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=5">5</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=6">6</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=7">7</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=8">8</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=9">9</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=10">10</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=11">11</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=12">12</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=13">13</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=14">14</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=15">15</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<a href="/videos/?start=15">16</a>-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<span>…</span>-->
+                    <!--</li>-->
+                    <!--<li class="next">-->
+                    <!--<a href="/videos/?start=2" class="next" rel="next">next</a>-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                    <!--</section>-->
                     <!--</section>-->
                 </main>
-               <%-include('./partials/footer')%>
+                <%- include('./partials/footer') %>
             </div>
         </home-view>
     </div>

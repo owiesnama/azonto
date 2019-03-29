@@ -46,7 +46,7 @@ router.route('/search')
       response.status(200).send(req.videos);
     })
 
-// checks that the session is set for the bellow APIs 
+// checks that the session is set for the bellow APIs
 router.use(authController.isLoggedIn);
 
 router.route('/requests')

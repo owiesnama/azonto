@@ -1,0 +1,84 @@
+<%- include("./partials/header") %>
+<categories-view inline-template
+>
+    <div class="">
+        <div class="main-panel">
+            <!-- Navbar -->
+            <%- include("./partials/navbar") %>
+            <!-- End Navbar -->
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">
+                                        Categories
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <tr>
+                                                <th width="5%">
+                                                    ID
+                                                </th>
+                                                <th width="50%">
+                                                    Category
+                                                </th>
+                                                <th width="45%" class="text-right">
+                                                    <button type="button"
+                                                            @click="$modal.show('addCategory')"
+                                                            class="btn btn-primary">
+                                                        Add Category
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <template v-if="categories.length">
+                                                <tr v-for="category in categories"
+                                                    :key="category.category_id">
+                                                    <td v-text="category.category_id"></td>
+                                                    <td v-text="category.name"></td>
+                                                    <td class="text-right">
+                                                        <button type="button"
+                                                                rel="tooltip"
+                                                                title="Edit Category"
+                                                                @click="edit(category)"
+                                                                class="btn btn-primary btn-link btn-sm">
+                                                            <i class="material-icons">edit</i>
+                                                        </button>
+                                                        <button type="button"
+                                                                rel="tooltip"
+                                                                title="Remove"
+                                                                @click="confirm(category)"
+                                                                class="btn btn-danger btn-link btn-sm"><i
+                                                                    class="material-icons">close</i>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                            <template v-else>
+                                                <tr>
+                                                    <td class="text-muted text-center"
+                                                        colspan="100%">
+                                                        there in no categories for now
+                                                    </td>
+                                                </tr>
+                                            </template>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("./modals/category/all") %>
+    </div>
+</categories-view>
+<%- include("./partials/footer") %>

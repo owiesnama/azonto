@@ -6,7 +6,21 @@
       flex-grow: 1;
       border-radius: 0;
       flex-basis: 100%;
-      align-items: flex-start;
+      align-items: flex-start !important;
+      &.is-horizontal{
+        padding: 5px 15px;
+      }
+      .title{
+        text-align: left;
+      }
+      .flex-column{
+        text-align: left;
+
+        span{
+          color:gray;
+          font-size: small;
+        }
+      }
     }
     .box:not(:last-child) {
       border-bottom: 1px solid #cbcbcb;

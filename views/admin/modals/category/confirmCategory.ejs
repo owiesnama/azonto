@@ -1,0 +1,28 @@
+<modal name="confirmCategory"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <form action="" @submit.prevent="destroy">
+        <div class="card">
+
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Caution</h4>
+                <p class="card-category">you are going to delete this category ,are you sure?</p>
+            </div>
+            <div class="card-body">
+                <div class="p-1 mr-1">
+                    <h5 v-text="category.name"></h5>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit"
+                            class="btn btn-danger">Confirm
+                    </button>
+                    <button @click="$modal.hide('confirmCategory')" type="button" class="btn btn-default">Cancel
+                    </button>
+                </div>
+            </div>
+        </div>
+    </form>
+</modal>

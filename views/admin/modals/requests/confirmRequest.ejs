@@ -1,0 +1,29 @@
+<modal name="confirmRequest"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <form action="" @submit.prevent="destroy(shouldPlayVideo)">
+        <div class="card">
+
+            <div class="card-header card-header-danger">
+                <h4 class="card-title">Caution</h4>
+                <p class="card-category">you are going to delete this video ,are you sure?</p>
+            </div>
+            <div class="card-body">
+                <div class="p-1 mr-1">
+                    <h5 v-text="shouldPlayVideo.title"></h5>
+                    <p class="text-muted"
+                       v-text="shouldPlayVideo.description"></p>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit"
+                            class="btn btn-danger">Confirm
+                    </button>
+                    <button @click="$modal.hide('confirmRequest')" type="button" class="btn btn-default">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</modal>
