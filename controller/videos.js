@@ -135,7 +135,7 @@ exports.findOne = (req, response, next) => {
     });
 }
 
-exports.create = (req, response, next) => {
+exports.createUpload = (req, response, next) => {
   // gets the generated file name from Multer
   const videoName = req.file.filename;
 
@@ -146,8 +146,30 @@ exports.create = (req, response, next) => {
     email: req.body.email,
     description: req.body.description,
     url: videoName,
-    player: req.body.player,
+    player: constants.UPLOADED,
     thumbnail: thumbnail,
+    status_id: constants.PENDING,
+    category_id: req.body.category_id
+  };
+
+  new VideosService().create(video)
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
+exports.createYoutube = (req, response, next) => {
+  const video = {
+    title: req.body.title,
+    email: req.body.email,
+    description: req.body.description,
+    url: req.body.url,
+    player: constants.YOUTUBE,
+    thumbnail: null,
     status_id: constants.PENDING,
     category_id: req.body.category_id
   };

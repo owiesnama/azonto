@@ -26,7 +26,7 @@ module.exports = {
       },
       player: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       views: {
         allowNull: false,
@@ -34,8 +34,7 @@ module.exports = {
         defaultValue: 0
       },      
       thumbnail: {
-        allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },      
       status_id: {
         allowNull: false,
