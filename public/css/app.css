@@ -18693,14 +18693,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   position: relative;
 }
 
-.video a:hover .btn-play {
-  opacity: 0;
-}
-
-.video a:hover .btn-play-hover {
-  opacity: 1;
-}
-
 .video a:hover h2 {
   color: #991a1a;
 }
@@ -18723,6 +18715,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .video-box .btn-play {
   margin: 0 0 0 -29px;
   position: absolute;
+  display: none;
   top: 50%;
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
@@ -18896,14 +18889,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   position: relative;
 }
 
-.featured-videos .video a:hover .btn-play {
-  opacity: 0;
-}
-
-.featured-videos .video a:hover .btn-play-hover {
-  opacity: 1;
-}
-
 .featured-videos .video a:hover h2 {
   color: #991a1a;
 }
@@ -18926,6 +18911,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .featured-videos .btn-play {
   margin: 0 0 0 -29px;
   position: absolute;
+  display: none;
   top: 50%;
   -webkit-transform: translate(0%, -50%);
           transform: translate(0%, -50%);
@@ -18939,6 +18925,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .featured-videos .btn-play-hover {
   opacity: 0;
+  display: none;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19029,7 +19016,24 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     flex-grow: 1;
     border-radius: 0;
     flex-basis: 100%;
-    align-items: flex-start;
+    align-items: flex-start !important;
+  }
+
+  .videos .box.is-horizontal {
+    padding: 5px 15px;
+  }
+
+  .videos .box .title {
+    text-align: left;
+  }
+
+  .videos .box .flex-column {
+    text-align: left;
+  }
+
+  .videos .box .flex-column span {
+    color: gray;
+    font-size: small;
   }
 
   .videos .box:not(:last-child) {
@@ -19090,11 +19094,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   .heading .form-group {
     margin: 0;
   }
-}
 
-.carousel-section {
-  display: none;
-  visibility: hidden;
+  .content-heading h1 {
+    font-size: medium !important;
+  }
 }
 
 .only-mobile {
@@ -19104,6 +19107,11 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 @media (min-width: 300px) and (max-width: 720px) {
   .only-desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+  .carousel-section {
     display: none;
     visibility: hidden;
   }
@@ -19162,6 +19170,9 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   padding: 15px 15px;
   border-bottom: 1px solid #d6d6d6;
   background: black;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .heading h1 {
@@ -19179,14 +19190,11 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 .heading .filter {
-  float: right;
-  margin: -35px 0 -13px;
+  margin: 0;
 }
 
-.heading .filter:after {
-  clear: both;
-  content: "";
-  dispaly: block;
+.heading .filter .form-group {
+  margin: 0;
 }
 
 .heading .filter .form-control {
@@ -19195,37 +19203,16 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   background: none;
   box-shadow: none;
   text-align: center;
+  height: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .heading .num {
-  float: right;
   text-transform: uppercase;
   color: #e2e2e2;
   font-size: 0.923em;
   line-height: 1.25em;
-  margin: -20px 9px 0 0;
-}
-
-.heading.with--background {
-  position: relative;
-}
-
-.heading.with--background * {
-  position: relative;
-  z-index: 1;
-}
-
-.heading.with--background:before {
-  content: " ";
-  display: block;
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 0;
-  opacity: 0.3;
-  background: url(/images/pattern2.jpeg?5ff36a0bdd0d4a9dafe6f730419eb03a);
 }
 
 .video-box {
@@ -19245,6 +19232,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 #main {
   max-width: 990px;
+  min-height: 100vh;
   margin: 0 auto;
   background: #fff;
   position: relative;
@@ -19396,13 +19384,24 @@ input[type=checkbox] {
 .box.is-horizontal {
   display: flex;
   width: auto;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   padding: 0;
 }
 
 .box.is-horizontal .video-box {
   height: 90px;
+  margin: 0;
+}
+
+.box.is-horizontal .flex-column {
+  padding-top: 0;
+  text-align: left;
+}
+
+.box.is-horizontal .flex-column span {
+  color: gray;
+  font-size: small;
 }
 
 .box.is-horizontal strong {

@@ -3,7 +3,7 @@
     <div class="">
         <submit-view inline-template>
             <main id="main" role="main">
-                <div class="promo-image"></div>
+                <div class="ad"></div>
                 <section>
                     <header class="heading with--background">
                         <h1>submit
@@ -50,14 +50,14 @@
                                 <label>Video Type
                                     <mark>(required)</mark>
                                 </label>
-                                <select name="player"
+                                <select name="category_id"
                                         required
                                         class="jcf-hidden">
                                     <option></option>
-                                    <option>Music Video</option>
-                                    <option>Promotional Video</option>
-                                    <option>Fight / Vine / Funny Video</option>
-                                    <option>Other</option>
+                                    <option v-for="category in categories"
+                                            :key="category.category_id"
+                                            :value="category.category_id"
+                                            v-text="category.name"></option>
                                 </select>
 
                                 <template v-if="!isLocalVideo">
@@ -78,6 +78,7 @@
                                     <input name="video"
                                            id="video"
                                            type="file"
+                                           accept="video/*"
                                            required
                                            class="mb-1"
                                            placeholder="https://we.tl/0as0bCysax">
@@ -85,7 +86,8 @@
 
                                 <div class="d-flex  align-items-center">
                                     <input type="checkbox"
-                                           :value="true"
+                                           name="player"
+                                           :value="isLocalVideo ? 0 : 1"
                                            v-model="isLocalVideo"
                                            required
                                     >

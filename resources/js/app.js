@@ -54,6 +54,10 @@ import UsersView from './Views/Users'
 
 Vue.component('UsersView', UsersView);
 
+import CategoriesView from './Views/Categories'
+
+Vue.component('CategoriesView', CategoriesView);
+
 
 import VueDisqus from 'vue-disqus'
 

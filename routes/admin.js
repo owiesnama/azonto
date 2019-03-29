@@ -11,9 +11,9 @@ router.route('/')
     );
 
 router.route('/users')
-    .get(usersController.list,(req, response) => {
-        response.render('admin/users',{
-            users:req.users
+    .get(usersController.list, (req, response) => {
+        response.render('admin/users', {
+            users: req.users
         });
     });
 
@@ -34,6 +34,12 @@ router.route('/requests')
 router.route('/videos')
     .get((req, response) => {
             response.render('admin/videos');
+        }
+    );
+
+router.route('/categories')
+    .get((req, response) => {
+            response.render('admin/categories');
         }
     );
 

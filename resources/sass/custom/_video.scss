@@ -59,12 +59,6 @@
     color: #991a1a;
     display: block;
     position: relative;
-    .btn-play {
-      opacity: 0;
-    }
-    .btn-play-hover {
-      opacity: 1;
-    }
     h2 {
       color: #991a1a;
     }
@@ -89,6 +83,7 @@
   .btn-play {
     margin: 0 0 0 -29px;
     position: absolute;
+    display: none;
     top: 50%;
     transform: translate(0%, -50%);
     left: 50%;

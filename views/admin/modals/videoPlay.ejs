@@ -12,9 +12,14 @@
             <video class="video-js vjs-default-skin"
                    controls
                    autoplay
-                   width="640" height="264"
-                   data-setup='{ "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/k-RtYiiB47E"}] }'>
+                   :src="'/videos/'+shouldPlayVideo.url"
+                   width="640" height="264">
             </video>
+
+            <div class="text-center">
+                <h6 v-text="shouldPlayVideo.title"></h6>
+                <p class="text-muted" v-text="shouldPlayVideo.description"></p>
+            </div>
         </div>
     </div>
 </modal>

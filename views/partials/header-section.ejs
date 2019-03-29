@@ -26,8 +26,13 @@
                 </ul>
                 <div class="ml-auto d-flex right-nav">
 
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control search-control mr-sm-2" type="search" placeholder="Search"
+                    <form class="form-inline my-2 my-lg-0"
+                          method="post"
+                          action="/videos/search">
+                        <input class="form-control search-control mr-sm-2"
+                               name="title"
+                               type="search"
+                               placeholder="Search"
                                aria-label="Search">
                     </form>
                     <ul class="social-networks">
