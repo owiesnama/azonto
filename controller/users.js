@@ -140,10 +140,10 @@ exports.login = (req, response, next) => {
         const user = {
           user_id: result.user_id,
           name: result.name,
-          // role: result.role,
+          role_id: result.role_id
         }
 
-        req.session.user = user;
+        req.session.user = user;        
         response.locals.user = user;
         next();
       }

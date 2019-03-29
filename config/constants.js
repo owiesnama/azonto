@@ -7,6 +7,7 @@ function define(name, value) {
 
 // users
 define("ADMIN", 1);
+define("REVIEWER", 2);
 
 // videos
 define("PENDING", 0);
