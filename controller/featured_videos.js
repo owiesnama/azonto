@@ -28,6 +28,17 @@ exports.create = (req, response, next) => {
     });
 }
 
+exports.updateOrder = (req, response, next) => {
+  new FeaturedVideosService().updateOrder(req.body)
+    .then((result) => {
+      // req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
 exports.delete = (req, response, next) => {
   const featuredVideoId = parseInt(req.params.featured_video_id);
 

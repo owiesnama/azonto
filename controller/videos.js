@@ -15,12 +15,13 @@ exports.list = (req, response, next) => {
       // TODO: set the status
       // status_id: constants.APPROVED
     }, pageSize, pageNumber)
-    .then((result) => {
-      const pages = Math.ceil((result.length) / _pageLimit);
+    .then(async (result) => {
+      // calc Number of pages
+      const videosCount = await new VideosService().findAll(null, null, null, null);
+      const pages = Math.ceil((videosCount.length) / _pageLimit);
       req.pages = pages
 
       req.videos = groupArray(result, 'created_at');
-      console.log(req.videos)
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
@@ -36,8 +37,10 @@ exports.pending = (req, response, next) => {
   new VideosService().findAll({
       status_id: constants.PENDING
     }, pageSize, pageNumber)
-    .then((result) => {
-      const pages = Math.ceil((result.length) / _pageLimit);
+    .then(async (result) => {
+      // calc Number of pages
+      const videosCount = await new VideosService().findAll(null, null, null, null);
+      const pages = Math.ceil((videosCount.length) / _pageLimit);
       req.pages = pages
 
       req.videos = result;
@@ -58,6 +61,10 @@ exports.trending = (req, response, next) => {
     }, pageSize, pageNumber, [
       ['views', 'DESC']
     ])
+    .then(async (result) => {
+      // calc Number of pages
+      const videosCount = await new VideosService().findAll(null, null, null, null);
+      const pages = Math.ceil((videosCount.length) / _pageLimit);
     .then((result) => {
       req.trending = result;
       const pages = Math.ceil((result.length) / _pageLimit);
@@ -81,8 +88,10 @@ exports.recommended = (req, response, next) => {
     }, pageSize, pageNumber, [
       ['views', 'DESC']
     ])
-    .then((result) => {
-      const pages = Math.ceil((result.length) / _pageLimit);
+    .then(async (result) => {
+      // calc Number of pages
+      const videosCount = await new VideosService().findAll(null, null, null, null);
+      const pages = Math.ceil((videosCount.length) / _pageLimit);
       req.pages = pages
 
       req.videos = result;
@@ -123,8 +132,10 @@ exports.search = (req, response, next) => {
       [
         ['created_at', 'DESC']
       ])
-    .then((result) => {
-      const pages = Math.ceil((result.length) / _pageLimit);
+    .then(async (result) => {
+      // calc Number of pages
+      const videosCount = await new VideosService().findAll(null, null, null, null);
+      const pages = Math.ceil((videosCount.length) / _pageLimit);
       req.pages = pages
 
       req.videos = result;

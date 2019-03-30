@@ -24,6 +24,22 @@ router.route('/')
       response.redirect('/featured_videos');
     });
 
+// update videos order API
+router.route('/update_order')
+  .put(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).createAny('featured_videos');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    featuredVideosController.updateOrder,
+    (req, response) => {
+      response.redirect('/featured_videos');
+    });
+
 // delete API
 router.route('/:featured_video_id')
   .delete(authController.isLoggedIn,
