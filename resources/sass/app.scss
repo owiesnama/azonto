@@ -324,19 +324,54 @@ input[type="checkbox"] {
     padding: 0;
     .video-box {
       height: 90px;
+      width: 133px;
+      min-height: 90px;
+      min-width: 133px;
       margin: 0;
+      img {
+        height: 100%;
+        width: 100%;
+        max-width: 100%;
+        max-height: 100%;
+      }
     }
-    .flex-column{
+    .flex-column {
       padding-top: 0;
       text-align: left;
 
-      span{
+      span {
         color: gray;
         font-size: small;
       }
     }
     strong {
       font-size: medium;
+    }
+  }
+}
+
+.paging {
+
+  li {
+    display: inline-block;
+    vertical-align: top;
+    height: 35px;
+    width: 36px;
+    margin: 0 0 0 3px
+  }
+  li:first-child {
+    font-weight: bold;
+    width: 104px;
+    margin: 0;
+  }
+  li:last-child {
+    font-weight: bold;
+    width: 104px;
+    margin: 0;
+  }
+  li.active {
+    a {
+      color: red;
     }
   }
 }

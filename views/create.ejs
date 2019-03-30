@@ -16,8 +16,7 @@
                             <p>Thank you for submiting your video to our website. To ensure proper submission, please
                                 include in your submission the title, description, and the video URL. (Upload video to
                                 <a
-                                        href="https://wetransfer.com" target="_blank">wetransfer.com</a> or <a
-                                        href="https://sendspace.com" target="_blank">sendspace.com</a>). All video
+                                        href="https://youtube.com" target="_blank">youtube.com</a>). All video
                                 submissions will get proper credit if accepted.</p>
                             <p>By submitting your video, you are representing to Azonto that you have all
                                 necessary rights in the video to authorize our use and reuse of the audio and visual
@@ -25,8 +24,8 @@
                                         href="agree.php">On Line Video Submission Agreement</a>, and that you have read,
                                 understood and agreed to the terms and conditions of that Agreement.</p>
                         </div>
-                        <form action="/videos" method="POST"
-                              enctype="multipart/form-data"
+                        <form :action="isLocalVideo ? '/videos/upload':'/videos/YouTube'" method="POST"
+                              :enctype="isLocalVideo ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
                               class="contact-form">
                             <fieldset>
                                 <label for="video-title">Title
@@ -89,7 +88,6 @@
                                            name="player"
                                            :value="isLocalVideo ? 0 : 1"
                                            v-model="isLocalVideo"
-                                           required
                                     >
                                     <span class="text-sm text-muted">upload video form my device</span>
                                 </div>

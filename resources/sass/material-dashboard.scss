@@ -139,3 +139,12 @@
 .min-h-full{
   min-height: 100%;
 }
+#app.login{
+  background-image: url(/images/pattern.jpeg);
+}
+.centerd{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}

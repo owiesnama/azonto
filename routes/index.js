@@ -6,34 +6,39 @@ const router = express.Router();
 // const attachmentsController = require('../controller/attachments');
 
 router.get('/',
-  videosController.list,
-  (req, response) => {
-    response.render('home', {
-      videos: req.videos
+    videosController.list,
+    videosController.trending,
+    (req, response) => {
+        response.render('home', {
+            videos: req.videos,
+            trending: req.trending,
+            pages: req.pages,
+            pageNumber: req.pageNumber
+        });
+
     });
-  });
 
 router.get('/contact',
-  (req, response) => {
-    response.render('contact_us');
-  });
+    (req, response) => {
+        response.render('contact_us');
+    });
 router.get('/upload',
-  (req, response) => {
-    response.render('create');
-  });
+    (req, response) => {
+        response.render('create');
+    });
 router.get('/privacy',
-  (req, response) => {
-    response.render('privacy');
-  });
+    (req, response) => {
+        response.render('privacy');
+    });
 
 router.get('/terms',
-  (req, response) => {
-    response.render('terms');
-  });
+    (req, response) => {
+        response.render('terms');
+    });
 
 router.get('/thanks',
-  (req, response) => {
-    response.render('contact-thanks');
-  });
+    (req, response) => {
+        response.render('contact-thanks');
+    });
 
 module.exports = router;
