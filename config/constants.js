@@ -12,3 +12,7 @@ define("REVIEWER", 2);
 // videos
 define("PENDING", 0);
 define("APPROVED", 1);
+
+// videos uploading
+define("UPLOADED", 0);
+define("YOUTUBE", 1);

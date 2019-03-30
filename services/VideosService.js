@@ -11,8 +11,8 @@ const schema = {
   email: Joi.string().required(),
   description: Joi.string().required(),
   url: Joi.string().required(),
-  player: Joi.string().required(),
-  thumbnail: Joi.string().required(),
+  player: Joi.number().required(),
+  thumbnail: Joi.string().allow(null),
   status_id: Joi.number().required(),
   category_id: Joi.number().required()
 };
@@ -21,8 +21,8 @@ const updateSchema = {
   title: Joi.string().required(),
   email: Joi.string().required(),
   description: Joi.string().required(),
-  player: Joi.string().required(),
-  thumbnail: Joi.string().required(),
+  player: Joi.number().required(),
+  thumbnail: Joi.string().allow(null),
   status_id: Joi.number().required(),
   category_id: Joi.number().required()
 };

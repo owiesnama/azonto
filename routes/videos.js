@@ -18,12 +18,19 @@ router.route('/')
     categoriesController.list,
     (req, response) => {
       response.status(200).send(req.videos);
-    })
-  .post(
-    uploadController.upload,
+    });
+
+router.route('/upload')
+  .post(uploadController.upload,
     screenshotLib.takeScreenshot,
     // watermark.generateWatermark,
-    videosController.create,
+    videosController.createUpload,
+    (req, response) => {
+      response.redirect('/');
+    });
+
+router.route('/youtube')
+  .post(videosController.createYoutube,
     (req, response) => {
       response.redirect('/');
     });
@@ -41,7 +48,7 @@ router.route('/recommended/:category_id')
     })
 
 router.route('/search')
-  .post(videosController.search,
+  .get(videosController.search,
     (req, response) => {
       response.status(200).send(req.videos);
     })

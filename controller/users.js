@@ -14,38 +14,6 @@ exports.list = (req, response, next) => {
     });
 }
 
-// exports.findById = (req, response, next) => {
-//   const user_id = req.query.user_id;
-
-//   new UsersService().findById(user_id)
-//     .then((result) => {
-//       req.result = result;
-//       next();
-//     }).catch((error) => {
-//       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-//       console.log('\n---------------- error ----------------\n'.red, error);
-//     });
-// }
-
-// exports.findOne = (req, response, next) => {
-//   const userId = req.params.user_id;
-
-//   new UsersService().findOne({
-//       user_id: userId
-//     })
-//     .then((result) => {
-//       if (!result) {
-//         response.status(404).send('not found');
-//         return;
-//       }
-//       req.user = result;
-//       next();
-//     }).catch((error) => {
-//       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-//       console.log('\n---------------- error ----------------\n'.red, error);
-//     });
-// }
-
 exports.create = (req, response, next) => {
   const roleId = req.body.role_id;
 
@@ -68,6 +36,14 @@ exports.create = (req, response, next) => {
 
   new UsersService().create(user)
     .then((result) => {
+      // set the needed user attributes only
+      const createdUser = {
+        user_id: result.user_id,
+        name: result.name,
+        email: result.email,
+      }
+
+      req.user = createdUser;
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
@@ -136,14 +112,13 @@ exports.login = (req, response, next) => {
         return;
       } else {
         //set only the needed user attributes
-        // TODO: sets the user session 
         const user = {
           user_id: result.user_id,
           name: result.name,
           role_id: result.role_id
         }
 
-        req.session.user = user;        
+        req.session.user = user;
         response.locals.user = user;
         next();
       }

@@ -82,11 +82,10 @@ exports.search = (req, response, next) => {
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   const _sequelizeLikeOperator = Sequelize.Op.like;
-  const title = req.body.title;
-  const description = req.body.description;
+  const title = req.query.title;
+  const description = req.query.description;
   let where = {
-    // TODO: set status id
-    // status_id: constants.APPROVED
+    status_id: constants.APPROVED
   };
 
   if (title) {
@@ -121,7 +120,8 @@ exports.findOne = (req, response, next) => {
   const videoId = parseInt(req.params.video_id);
 
   new VideosService().findOne({
-      video_id: videoId
+      video_id: videoId,
+      status_id: constants.APPROVED
     })
     .then((result) => {
       if (!result) {
@@ -135,7 +135,7 @@ exports.findOne = (req, response, next) => {
     });
 }
 
-exports.create = (req, response, next) => {
+exports.createUpload = (req, response, next) => {
   // gets the generated file name from Multer
   const videoName = req.file.filename;
 
@@ -146,12 +146,32 @@ exports.create = (req, response, next) => {
     email: req.body.email,
     description: req.body.description,
     url: videoName,
-    player: req.body.player,
+    player: constants.UPLOADED,
     thumbnail: thumbnail,
     status_id: constants.PENDING,
-    // FIXME: change to real value
-    // category_id: req.body.category_id
-    category_id: 1
+    category_id: req.body.category_id
+  };
+
+  new VideosService().create(video)
+    .then((result) => {
+      req.result = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
+exports.createYoutube = (req, response, next) => {
+  const video = {
+    title: req.body.title,
+    email: req.body.email,
+    description: req.body.description,
+    url: req.body.url,
+    player: constants.YOUTUBE,
+    thumbnail: null,
+    status_id: constants.PENDING,
+    category_id: req.body.category_id
   };
 
   new VideosService().create(video)
@@ -200,30 +220,3 @@ exports.delete = (req, response, next) => {
       console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
-
-
-// exports.create = async (req, response, next) => {
-//   if (req.files.length > 0) {
-//     let attachments = [];
-
-//     for (let file = 0; file < req.files.length; file++) {
-//       let currentAttachment = {};
-//       const doc = req.files[file];
-//       currentAttachment.user_id = req.session.user.user_id;
-//       // TODO:FIXME: sets the folder id
-//       currentAttachment.folder_id = 1;
-//       currentAttachment.url = doc.filename;
-//       currentAttachment.display_name = doc.originalname;
-//       currentAttachment.size = doc.size;
-
-//       attachments.push(currentAttachment);
-//     }
-
-//     await new VideosService().bulkCreate(attachments);
-
-//     next();
-//     return;
-//   }
-
-//   response.status(400).send(i18n.__('select_files'));
-// }

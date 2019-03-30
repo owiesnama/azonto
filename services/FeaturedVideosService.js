@@ -29,6 +29,17 @@ class FeaturedVideosService extends BaseService {
   create(featuredVideo) {
     return new Promise(async (resolve, reject) => {
       try {
+
+        // checks that the videos count is less than 4
+        const count = await this.findAll();
+        if (count.length >= 4) {
+          reject({
+            code: 400,
+            message: "featured videos sholud not be more than 4"
+          })
+          return;
+        }
+
         const isError = this.validateInputs(featuredVideo, schema);
         if (isError.error) {
           reject({

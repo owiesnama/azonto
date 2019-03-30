@@ -5,7 +5,9 @@ const models = require('../DB/models/index');
 const messagesModel = models.messages;
 
 const schema = {
+  name: Joi.string().required(),
   sender: Joi.string().required(),
+  attention: Joi.string().required(),
   message: Joi.string().required()
 };
 
