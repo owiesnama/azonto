@@ -10,8 +10,8 @@ require('chart.js');
 
 moment.updateLocale('en', {
     calendar : {
-        lastDay : '[Yesterday]',
-        sameDay : '[Today]',
+        lastDay : '[Yesterday\'s]',
+        sameDay : '[Today\'s]',
         nextDay : '[Tomorrow]',
         lastWeek : '[Last] dddd',
         nextWeek : '[Next] dddd',
@@ -24,7 +24,8 @@ Vue.filter('ago', function (time) {
 });
 
 Vue.filter('calendar', function (time) {
-    return window.moment(time).calendar();
+    console.log(time)
+    return window.moment(new Date(time).toDateString()).calendar();
 });
 
 
@@ -61,6 +62,10 @@ Vue.component('CategoriesView', CategoriesView);
 import FeaturedView from './Views/Featured'
 
 Vue.component('FeaturedView', FeaturedView);
+
+import VideosView from './Views/Videos'
+
+Vue.component('VideosView', VideosView);
 
 
 import VueDisqus from 'vue-disqus'

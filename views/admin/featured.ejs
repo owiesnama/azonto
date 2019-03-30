@@ -15,72 +15,7 @@
                                 </h4>
                             </div>
                             <div class="card-body">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead class=" text-primary">
-                                        <tr>
-                                            <th>
-                                                Video
-                                            </th>
-                                            <th>
-                                                Name
-                                            </th>
-                                            <th>
-                                                description
-                                            </th>
-                                            <th>
-                                                Date
-                                            </th>
-                                            <th>
-                                                actions
-                                            </th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td>
-
-                                                <div class="video-thumbnail"
-                                                     @click="$modal.show('videoPlay')"
-                                                >
-                                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/W2hp9gfDqbMU.jpg"
-                                                         alt="">
-                                                    <span class="play-button"></span>
-                                                </div>
-
-                                            </td>
-                                            <td>
-                                                Dakota Rice
-                                            </td>
-                                            <td>
-                                                daskota@gmail.com
-                                            </td>
-                                            <td>
-                                                two month ago
-                                            </td>
-                                            <td class="td-actions">
-                                                <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
-                                                        class="btn btn-primary btn-link btn-sm">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
-                                                        class="btn btn-success btn-link btn-sm">
-                                                    <i class="material-icons">check</i>
-                                                </button>
-                                                <button type="button"
-                                                        rel="tooltip"
-                                                        title="Remove"
-                                                        @click="$modal.show('confirmDelete')"
-                                                        class="btn btn-danger btn-link btn-sm"><i
-                                                            class="material-icons">close</i>
-                                                </button>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <Featured-tabel></Featured-tabel>
                             </div>
                         </div>
                     </div>

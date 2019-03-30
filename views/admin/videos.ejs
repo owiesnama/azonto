@@ -1,8 +1,8 @@
 <%- include("./partials/header") %>
-<requests-view inline-template>
+<videos-view inline-template>
     <div class="main-panel">
         <!-- Navbar -->
-        <%-include("./partials/navbar")%>
+        <%- include("./partials/navbar") %>
         <!-- End Navbar -->
         <div class="content">
             <div class="container-fluid">
@@ -37,45 +37,53 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
-                                            <td>
+                                        <template v-for="(videos,key) in videosCollection" v-if="videosCollection">
+                                            <tr>
+                                                <td class="text-center"
+                                                    colspan="100%">
+                                                    {{new Date(key).toDateString()|calendar}} videos
+                                                </td>
+                                            </tr>
+                                            <tr v-for="video in videos">
+                                                <td>
+                                                    <div class="video-thumbnail"
+                                                         @click="playVideo(video)"
+                                                    >
+                                                        <img :src="'/thumbnails/'+video.thumbnail"
+                                                             alt="">
+                                                        <span class="play-button"></span>
+                                                    </div>
 
-                                                <div class="video-thumbnail"
-                                                     @click="$modal.show('videoPlay')"
-                                                >
-                                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/W2hp9gfDqbMU.jpg"
-                                                         alt="">
-                                                    <span class="play-button"></span>
-                                                </div>
+                                                </td>
+                                                <td v-text="video.title"></td>
+                                                <td v-text="video.description"></td>
+                                                <td>{{video.created_at | ago}}</td>
+                                                <td class="td-actions">
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            @click="edit(video)"
+                                                            class="btn btn-primary btn-link btn-sm">
+                                                        <i class="material-icons">edit</i>
+                                                    </button>
+                                                    <button type="button" rel="tooltip" title="Edit Task"
+                                                            @click="approve(video)"
+                                                            class="btn btn-success btn-link btn-sm">
+                                                        <i class="material-icons">check</i>
+                                                    </button>
+                                                    <button type="button"
+                                                            rel="tooltip"
+                                                            title="Remove"
+                                                            @click="confirm(video)"
+                                                            class="btn btn-danger btn-link btn-sm"><i
+                                                                class="material-icons">close</i>
+                                                    </button>
+                                                </td>
 
-                                            </td>
-                                            <td>
-                                                Dakota Rice
-                                            </td>
-                                            <td>
-                                                daskota@gmail.com
-                                            </td>
-                                            <td>
-                                                two month ago
-                                            </td>
-                                            <td class="td-actions">
-                                                <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
-                                                        class="btn btn-primary btn-link btn-sm">
-                                                    <i class="material-icons">edit</i>
-                                                </button>
-                                                <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
-                                                        class="btn btn-success btn-link btn-sm">
-                                                    <i class="material-icons">check</i>
-                                                </button>
-                                                <button type="button"
-                                                        rel="tooltip"
-                                                        title="Remove"
-                                                        @click="$modal.show('confirmDelete')"
-                                                        class="btn btn-danger btn-link btn-sm"><i
-                                                            class="material-icons">close</i>
-                                                </button>
+                                            </tr>
+                                        </template>
+                                        <tr v-else>
+                                            <td class="text-center"
+                                            colspan="100%">
+                                                There is no videos for now
                                             </td>
                                         </tr>
                                         </tbody>
@@ -87,7 +95,8 @@
                 </div>
             </div>
         </div>
-        <%-include("./modals/videoPlay")%>
+        <%- include("./modals/videoPlay") %>
+        <%- include("./modals/requests/all") %>
     </div>
-</requests-view>
+</videos-view>
 <%- include("./partials/footer") %>

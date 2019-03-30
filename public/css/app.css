@@ -18947,7 +18947,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   padding: 10px 10px 15px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  justify-content: flex-start;
 }
 
 .videos .video-box {
@@ -19021,6 +19021,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
   .videos .box.is-horizontal {
     padding: 5px 15px;
+    justify-content: flex-start;
   }
 
   .videos .box .title {
@@ -19391,7 +19392,17 @@ input[type=checkbox] {
 
 .box.is-horizontal .video-box {
   height: 90px;
+  width: 133px;
+  min-height: 90px;
+  min-width: 133px;
   margin: 0;
+}
+
+.box.is-horizontal .video-box img {
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .box.is-horizontal .flex-column {
@@ -19406,5 +19417,25 @@ input[type=checkbox] {
 
 .box.is-horizontal strong {
   font-size: medium;
+}
+
+.paging li {
+  display: inline-block;
+  vertical-align: top;
+  height: 35px;
+  width: 36px;
+  margin: 0 0 0 3px;
+}
+
+.paging li:first-child {
+  font-weight: bold;
+  width: 104px;
+  margin: 0;
+}
+
+.paging li:last-child {
+  font-weight: bold;
+  width: 104px;
+  margin: 0;
 }
 

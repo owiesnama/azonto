@@ -20,6 +20,7 @@ exports.list = (req, response, next) => {
       req.pages = pages
 
       req.videos = groupArray(result, 'created_at');
+      console.log(req.videos)
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);

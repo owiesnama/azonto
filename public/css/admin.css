@@ -19777,3 +19777,15 @@ Copyright (c) 2015 Daniel Eden
   min-height: 100%;
 }
 
+#app.login {
+  background-image: url(/images/pattern.jpeg);
+}
+
+.centerd {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
