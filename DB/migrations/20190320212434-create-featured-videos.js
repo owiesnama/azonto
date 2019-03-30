@@ -10,11 +10,17 @@ module.exports = {
       },
       video_id: {
         allowNull: false,
+        unique: true,
         type: Sequelize.INTEGER,
         references:{
           model: 'videos',
           key: 'video_id'
         }
+      },
+      order: {
+        allowNull: false,
+        defaultValue: 0, 
+        type: Sequelize.INTEGER        
       },
       created_at: {
         allowNull: false,

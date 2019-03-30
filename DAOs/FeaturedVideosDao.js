@@ -15,7 +15,9 @@ class FeaturedVideosDao extends BaseDao {
   findAll(where = {}, pageSize, pageNumber) {
     return new Promise(async (resolve, reject) => {
       try {
-        const result = await super.findAll(where, include, pageSize, pageNumber);
+        const result = await super.findAll(where, include, pageSize, pageNumber, [
+          ['order', 'DESC']
+        ]);
         resolve(result);
       } catch (error) {
         reject(error);

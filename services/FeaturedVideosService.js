@@ -7,7 +7,7 @@ const FeaturedVideosDao = require('../DAOs/FeaturedVideosDao');
 const featuredVideosModel = models.featured_videos;
 
 const schema = {
-  video_id: Joi.number().required()
+  video_id: Joi.number().required(),
 };
 
 class FeaturedVideosService extends BaseService {
@@ -32,10 +32,11 @@ class FeaturedVideosService extends BaseService {
 
         // checks that the videos count is less than 4
         const count = await this.findAll();
-        if (count.length >= 4) {
+
+        if (count && count.length >= 4) {
           reject({
             code: 400,
-            message: "featured videos sholud not be more than 4"
+            message: "featured videos should not be more than 4"
           })
           return;
         }
@@ -54,6 +55,46 @@ class FeaturedVideosService extends BaseService {
         resolve();
       } catch (error) {
         reject(error);
+      }
+    });
+  }
+
+  updateOrder(featuredVideos) {
+    return new Promise(async (resolve, reject) => {
+      try {
+        if (!featuredVideos || featuredVideos.length < 1) {
+          reject({
+            code: 400,
+            message: i18n.__("required field", "")
+          });
+          return;
+        }
+
+        //loop throw ever object in the `featured videos` array to get it's needed attributes
+        featuredVideos.forEach(async video => {
+          const featuredVideoId = video.featured_video_id;
+          let newVideo = {};
+
+          newVideo.order = video.order;
+
+          if (!featuredVideoId) {
+            reject({
+              code: 400,
+              key: 'featured_video_id',
+              message: i18n.__("pk is not provided")
+            });
+            return;
+          }
+
+          await super.update(newVideo, {
+            featured_video_id: featuredVideoId
+          });
+        });
+
+        return resolve();
+      } catch (error) {
+        reject(error);
+        console.log('\n ---------------- Error ----------------\n'.red, error);
       }
     });
   }
