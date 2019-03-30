@@ -58,10 +58,17 @@ import CategoriesView from './Views/Categories'
 
 Vue.component('CategoriesView', CategoriesView);
 
+import FeaturedView from './Views/Featured'
+
+Vue.component('FeaturedView', FeaturedView);
+
 
 import VueDisqus from 'vue-disqus'
 
 Vue.use(VueDisqus)
+
+import Paginate from 'vuejs-paginate'
+Vue.component('paginate', Paginate)
 
 const app = new Vue({
     el: '#app'

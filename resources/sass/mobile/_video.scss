@@ -9,6 +9,7 @@
       align-items: flex-start !important;
       &.is-horizontal{
         padding: 5px 15px;
+        justify-content: flex-start;
       }
       .title{
         text-align: left;

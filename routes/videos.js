@@ -46,6 +46,32 @@ router.route('/search')
       response.status(200).send(req.videos);
     })
 
+
+
+// find one & update API
+router.route('/:video_id')
+    .get(videosController.findOne,
+        categoriesController.list,
+        videosController.trending,
+        (req, response) => {
+            response.render('show', {
+                video: req.video,
+                categories: req.categories,
+                trending: req.trending
+            });
+        })
+    .put((req, response, next) => {
+            const permission = ac.can('' + req.session.user.role_id).updateAny('videos');
+            if (permission.granted) {
+                next();
+            } else {
+                response.status(403).send('unauthorized');
+            }
+        }, videosController.update,
+        (req, response) => {
+            response.sendStatus(200);
+        })
+
 // checks that the session is set for the bellow APIs
 router.use(authController.isLoggedIn);
 
@@ -64,36 +90,6 @@ router.route('/requests')
         videos: req.videos
       });
     });
-
-// find one & update API
-router.route('/:video_id')
-  .get((req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).readAny('videos');
-      if (permission.granted) {
-        next();
-      } else {
-        response.status(403).send('unauthorized');
-      }
-    },
-    videosController.findOne,
-    categoriesController.list,
-    (req, response) => {
-      response.render('show', {
-        video: req.video,
-        categories: req.categories
-      });
-    })
-  .put((req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).updateAny('videos');
-      if (permission.granted) {
-        next();
-      } else {
-        response.status(403).send('unauthorized');
-      }
-    }, videosController.update,
-    (req, response) => {
-      response.sendStatus(200);
-    })
 
 // delete API
 router.route('/:video_id')

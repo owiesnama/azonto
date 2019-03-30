@@ -92,6 +92,12 @@ router.route('/categories')
         }
     );
 
+router.route('/featured')
+    .get((req, response) => {
+            response.render('admin/featured');
+        }
+    );
+
 router.route('/login')
     .get((req, response) => {
             response.render('admin/login');

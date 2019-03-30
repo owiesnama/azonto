@@ -49,7 +49,7 @@ exports.trending = (req, response, next) => {
       ['views', 'DESC']
     ])
     .then((result) => {
-      req.videos = result;
+      req.trending = result;
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
