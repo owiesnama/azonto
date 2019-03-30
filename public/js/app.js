@@ -1863,6 +1863,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
     Carousel: _components_Carousel__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
+  methods: {
+    changePage: function changePage(pageNumber) {
+      location.replace("?page_number=".concat(pageNumber - 1));
+    }
   }
 });
 

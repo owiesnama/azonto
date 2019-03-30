@@ -261,8 +261,8 @@
                     <section>
                         <section>
                             <paginate
-                                    :page-count="20"
-                                    :click-handler="functionName"
+                                    :page-count="<%=pages%>"
+                                    :click-handler="changePage"
                                     :prev-text="'Previous'"
                                     :next-text="'Next'"
                                     :container-class="'paging'">

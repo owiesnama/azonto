@@ -11,8 +11,10 @@ router.get('/',
     (req, response) => {
         response.render('home', {
             videos: req.videos,
-            trending: req.trending
+            trending: req.trending,
+            pages: req.pages
         });
+
     });
 
 router.get('/contact',

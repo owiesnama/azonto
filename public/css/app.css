@@ -19439,3 +19439,7 @@ input[type=checkbox] {
   margin: 0;
 }
 
+.paging li.active a {
+  color: red;
+}
+
