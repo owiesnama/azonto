@@ -17,7 +17,10 @@ router.route('/')
   .get(videosController.list,
     categoriesController.list,
     (req, response) => {
-      response.status(200).send(req.videos);
+      response.status(200).send({
+        videos: req.videos,
+        pages: req.pages
+      });
     });
 
 router.route('/upload')
@@ -38,19 +41,28 @@ router.route('/youtube')
 router.route('/trending')
   .get(videosController.trending,
     (req, response) => {
-      response.status(200).send(req.videos);
+      response.status(200).send({
+        videos: req.videos,
+        pages: req.pages
+      });
     })
 
 router.route('/recommended/:category_id')
   .get(videosController.recommended,
     (req, response) => {
-      response.status(200).send(req.videos);
+      response.status(200).send({
+        videos: req.videos,
+        pages: req.pages
+      });
     })
 
 router.route('/search')
   .get(videosController.search,
     (req, response) => {
-      response.status(200).send(req.videos);
+      response.status(200).send({
+        videos: req.videos,
+        pages: req.pages
+      });
     })
 
 // checks that the session is set for the bellow APIs

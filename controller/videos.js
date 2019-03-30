@@ -4,8 +4,10 @@ const Sequelize = require('sequelize');
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
 
+const _pageLimit = 20;
+
 exports.list = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   // get  approved videos
@@ -14,6 +16,9 @@ exports.list = (req, response, next) => {
       // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then((result) => {
+      const pages = Math.ceil((result.length) / _pageLimit);
+      req.pages = pages
+
       req.videos = groupArray(result, 'created_at');
       next();
     }).catch((error) => {
@@ -22,14 +27,18 @@ exports.list = (req, response, next) => {
 }
 
 exports.pending = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
+
 
   // get pending videos
   new VideosService().findAll({
       status_id: constants.PENDING
     }, pageSize, pageNumber)
     .then((result) => {
+      const pages = Math.ceil((result.length) / _pageLimit);
+      req.pages = pages
+
       req.videos = result;
       next();
     }).catch((error) => {
@@ -38,7 +47,7 @@ exports.pending = (req, response, next) => {
 }
 
 exports.trending = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   // get APPROVED videos
@@ -49,6 +58,9 @@ exports.trending = (req, response, next) => {
       ['views', 'DESC']
     ])
     .then((result) => {
+      const pages = Math.ceil((result.length) / _pageLimit);
+      req.pages = pages
+
       req.videos = result;
       next();
     }).catch((error) => {
@@ -57,7 +69,7 @@ exports.trending = (req, response, next) => {
 }
 
 exports.recommended = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
   const categoryId = parseInt(req.params.category_id);
 
@@ -70,6 +82,9 @@ exports.recommended = (req, response, next) => {
       ['views', 'DESC']
     ])
     .then((result) => {
+      const pages = Math.ceil((result.length) / _pageLimit);
+      req.pages = pages
+
       req.videos = result;
       next();
     }).catch((error) => {
@@ -78,7 +93,7 @@ exports.recommended = (req, response, next) => {
 }
 
 exports.search = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 20;
+  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   const _sequelizeLikeOperator = Sequelize.Op.like;
@@ -109,6 +124,9 @@ exports.search = (req, response, next) => {
         ['created_at', 'DESC']
       ])
     .then((result) => {
+      const pages = Math.ceil((result.length) / _pageLimit);
+      req.pages = pages
+
       req.videos = result;
       next();
     }).catch((error) => {
