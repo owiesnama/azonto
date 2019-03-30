@@ -17,7 +17,7 @@
 <div id="wrapper">
     <%- include('partials/header-section') %>
     <div id="app" class="min-container">
-        <home-view inline-template>
+        <home-view inline-template :page-number="<%=pageNumber%>">
             <div class="">
                 <main id="main" role="main">
                     <div class="ad">
@@ -258,9 +258,10 @@
                     </section>
                     <% } %>
 
-                    <section>
+                    <section v-if="<%=pages%>">
                         <section>
                             <paginate
+                                    ref="pagination"
                                     :page-count="<%=pages%>"
                                     :click-handler="changePage"
                                     :prev-text="'Previous'"

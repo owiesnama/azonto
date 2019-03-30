@@ -1861,13 +1861,31 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_Carousel__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/Carousel */ "./resources/js/components/Carousel.vue");
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['pageNumber'],
   components: {
     Carousel: _components_Carousel__WEBPACK_IMPORTED_MODULE_0__["default"]
   },
   methods: {
     changePage: function changePage(pageNumber) {
+      console.log(pageNumber);
       location.replace("?page_number=".concat(pageNumber - 1));
+    },
+    markActiveLink: function markActiveLink() {
+      var _this = this;
+
+      document.querySelectorAll('.paging li').forEach(function (element) {
+        if (_this.pageNumber + 1 == element.innerText) {
+          element.classList.add('active');
+        } else {
+          element.classList.remove('active');
+        }
+
+        _this.$refs.pagination.innerValue = _this.pageNumber + 1;
+      });
     }
+  },
+  mounted: function mounted() {
+    this.markActiveLink();
   }
 });
 

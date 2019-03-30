@@ -14,57 +14,57 @@ const authController = require('../controller/auth');
 
 // list && create API
 router.route('/')
-  .get(videosController.list,
-    categoriesController.list,
-    (req, response) => {
-      response.status(200).send({
-        videos: req.videos,
-        pages: req.pages
-      });
-    });
+    .get(videosController.list,
+        categoriesController.list,
+        (req, response) => {
+            response.status(200).send({
+                videos: req.videos,
+                pages: req.pages,
+                pageNumber: req.pageNumber
+            });
+        });
 
 router.route('/upload')
-  .post(uploadController.upload,
-    screenshotLib.takeScreenshot,
-    // watermark.generateWatermark,
-    videosController.createUpload,
-    (req, response) => {
-      response.redirect('/');
-    });
+    .post(uploadController.upload,
+        screenshotLib.takeScreenshot,
+        // watermark.generateWatermark,
+        videosController.createUpload,
+        (req, response) => {
+            response.redirect('/');
+        });
 
 router.route('/youtube')
-  .post(videosController.createYoutube,
-    (req, response) => {
-      response.redirect('/');
-    });
+    .post(videosController.createYoutube,
+        (req, response) => {
+            response.redirect('/');
+        });
 
 router.route('/trending')
-  .get(videosController.trending,
-    (req, response) => {
-      response.status(200).send({
-        videos: req.videos,
-        pages: req.pages
-      });
-    })
+    .get(videosController.trending,
+        (req, response) => {
+            response.status(200).send({
+                videos: req.videos,
+                pages: req.pages
+            });
+        })
 
 router.route('/recommended/:category_id')
-  .get(videosController.recommended,
-    (req, response) => {
-      response.status(200).send({
-        videos: req.videos,
-        pages: req.pages
-      });
-    })
+    .get(videosController.recommended,
+        (req, response) => {
+            response.status(200).send({
+                videos: req.videos,
+                pages: req.pages
+            });
+        })
 
 router.route('/search')
-  .get(videosController.search,
-    (req, response) => {
-      response.status(200).send({
-        videos: req.videos,
-        pages: req.pages
-      });
-    })
-
+    .get(videosController.search,
+        (req, response) => {
+            response.status(200).send({
+                videos: req.videos,
+                pages: req.pages
+            });
+        })
 
 
 // find one & update API
@@ -95,45 +95,45 @@ router.route('/:video_id')
 router.use(authController.isLoggedIn);
 
 router.route('/requests')
-  .get((req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).readAny('videos');
-      if (permission.granted) {
-        next();
-      } else {
-        response.status(403).send('unauthorized');
-      }
-    },
-    videosController.pending,
-    (req, response) => {
-      response.render('admin/requests', {
-        videos: req.videos
-      });
-    });
+    .get((req, response, next) => {
+            const permission = ac.can('' + req.session.user.role_id).readAny('videos');
+            if (permission.granted) {
+                next();
+            } else {
+                response.status(403).send('unauthorized');
+            }
+        },
+        videosController.pending,
+        (req, response) => {
+            response.render('admin/requests', {
+                videos: req.videos
+            });
+        });
 
 // delete API
 router.route('/:video_id')
-  .delete((req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).deleteAny('videos');
-      if (permission.granted) {
-        next();
-      } else {
-        response.status(403).send('unauthorized');
-      }
-    },
-    videosController.findOne,
-    // deleting the file from uploads folder
-    (req, response, next) => {
-      try {
-        fs.unlinkSync(videoPath + req.video.url)
-        fs.unlinkSync(screenshotPath + req.video.thumbnail)
-        next();
-      } catch (error) {
-        response.status(500).send(error);
-      }
-    },
-    videosController.delete,
-    (req, response) => {
-      response.sendStatus(200);
-    })
+    .delete((req, response, next) => {
+            const permission = ac.can('' + req.session.user.role_id).deleteAny('videos');
+            if (permission.granted) {
+                next();
+            } else {
+                response.status(403).send('unauthorized');
+            }
+        },
+        videosController.findOne,
+        // deleting the file from uploads folder
+        (req, response, next) => {
+            try {
+                fs.unlinkSync(videoPath + req.video.url)
+                fs.unlinkSync(screenshotPath + req.video.thumbnail)
+                next();
+            } catch (error) {
+                response.status(500).send(error);
+            }
+        },
+        videosController.delete,
+        (req, response) => {
+            response.sendStatus(200);
+        })
 
 module.exports = router;

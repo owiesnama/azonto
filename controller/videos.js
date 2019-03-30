@@ -7,7 +7,7 @@ const constants = require('../config/constants');
 const _pageLimit = 20;
 
 exports.list = (req, response, next) => {
-    const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 1;
+    const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
     const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
     // get  approved videos
@@ -20,7 +20,7 @@ exports.list = (req, response, next) => {
             const videosCount = await new VideosService().findAll(null, null, null, null);
             const pages = Math.round((videosCount.length) / pageSize);
             req.pages = pages
-
+            req.pageNumber = pageNumber
             req.videos = groupArray(result, 'created_at');
             next();
         }).catch((error) => {

@@ -12,7 +12,8 @@ router.get('/',
         response.render('home', {
             videos: req.videos,
             trending: req.trending,
-            pages: req.pages
+            pages: req.pages,
+            pageNumber: req.pageNumber
         });
 
     });
