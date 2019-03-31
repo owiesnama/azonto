@@ -12,7 +12,7 @@ exports.list = (req, response, next) => {
 
   // get  approved videos
   new VideosService().findAll({
-      // TODO: set the status
+      // TODO: does it need to set the status
       // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then(async (result) => {
@@ -54,8 +54,7 @@ exports.trending = (req, response, next) => {
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   // get APPROVED videos
   new VideosService().findAll({
-      // TODO: set status id
-      // status_id: constants.APPROVED
+      status_id: constants.APPROVED
     }, pageSize, null, [
       ['views', 'DESC']
     ])
@@ -77,8 +76,7 @@ exports.recommended = (req, response, next) => {
 
   // get APPROVED videos
   new VideosService().findAll({
-      // TODO: set status id
-      // status_id: constants.APPROVED
+      status_id: constants.APPROVED,
       category_id: categoryId
     }, pageSize, pageNumber, [
       ['views', 'DESC']
