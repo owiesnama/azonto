@@ -32,7 +32,9 @@
                                                 Date
                                             </th>
                                             <th>
-                                                actions
+                                                <button class="btn btn-primary"
+                                                @click="$modal.show('addVideo')"
+                                                >Upload Video</button>
                                             </th>
                                         </tr>
                                         </thead>
@@ -97,6 +99,7 @@
         </div>
         <%- include("./modals/videoPlay") %>
         <%- include("./modals/requests/all") %>
+        <%- include("./modals/videos/all") %>
     </div>
 </videos-view>
 <%- include("./partials/footer") %>

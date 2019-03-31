@@ -23,4 +23,8 @@
    display: flex;
     visibility: inherit;
   }
+
+  .min-container{
+    max-width: 100% !important;
+  }
 }

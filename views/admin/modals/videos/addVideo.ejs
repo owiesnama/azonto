@@ -1,0 +1,108 @@
+<modal name="addVideo"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <div class="card">
+        <div class="card-body">
+            <submit-view inline-template>
+                <main id="main" role="main">
+                    <section>
+                        <section class="section">
+                            <form :action="isLocalVideo ? '/videos/upload':'/videos/YouTube'" method="POST"
+                                  :enctype="isLocalVideo ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
+                                  class="contact-form">
+                                <fieldset>
+                                    <label for="video-title">Title
+                                    </label>
+                                    <input class="form-control" name="title"
+                                           id="video-title"
+                                           type="text"
+                                           required
+                                    >
+
+                                    <label for="email">Email
+                                    </label>
+                                    <input class="form-control" name="email"
+                                           id="email"
+                                           type="text"
+                                           required
+                                    >
+
+                                    <label>Video Type
+                                    </label>
+                                    <select name="category_id"
+                                            class="form-control"
+                                            required
+                                            class="jcf-hidden">
+                                        <option></option>
+                                        <option v-for="category in categories"
+                                                :key="category.category_id"
+                                                :value="category.category_id"
+                                                v-text="category.name"></option>
+                                    </select>
+
+                                    <template v-if="!isLocalVideo">
+                                        <label for="video-url">Video URL
+                                        </label>
+                                        <input class="form-control" name="video-url"
+                                               class="mb-1"
+                                               type="text"
+                                               required
+                                        >
+                                    </template>
+
+
+                                    <template v-if="isLocalVideo">
+                                        <label for="video">Video
+                                        </label>
+                                        <input class="form-control" name="video"
+                                               id="video"
+                                               type="file"
+                                               accept="video/*"
+                                               required
+                                               class="mb-1"
+                                        >
+                                    </template>
+
+                                    <div class="form-check">
+                                        <div class="checkbox">
+                                            <label class="form-check-label">
+                                                <input type="checkbox"
+                                                       class="form-check-input"
+                                                       name="player"
+                                                       :value="isLocalVideo ? 0 : 1"
+                                                       v-model="isLocalVideo"
+                                                >upload video
+                                                form my device
+
+                                                <span class="form-check-sign">
+                                                  <span class="check"></span>
+                                                </span>
+                                            </label>
+                                        </div>
+                                    </div>
+
+
+                                    <label for="description">Video Description
+                                    </label>
+                                    <textarea name="description"
+                                              id="description"
+                                              class="form-control"
+                                              cols="3"
+                                              required
+
+                                              rows="1"></textarea>
+
+                                    <button type="submit" class="btn btn-success"> Submit Video
+                                    </button>
+                                </fieldset>
+                            </form>
+                        </section>
+                    </section>
+                </main>
+            </submit-view>
+        </div>
+    </div>
+</modal>

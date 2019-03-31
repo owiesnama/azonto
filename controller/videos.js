@@ -32,16 +32,11 @@ exports.pending = (req, response, next) => {
     const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
     const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
-
     // get pending videos
     new VideosService().findAll({
         status_id: constants.PENDING
     }, pageSize, pageNumber)
-        .then(async (result) => {
-            // calc Number of pages
-            const videosCount = await new VideosService().findAll(null, null, null, null);
-            const pages = Math.ceil((videosCount.length) / _pageLimit);
-            req.pages = pages
+        .then((result) => {
 
             req.videos = result;
             next();

@@ -18602,7 +18602,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   text-align: center;
   background: #16181b;
   border-bottom: 1px solid #212529;
-  height: 65px;
+  height: 70px;
 }
 
 .header-section .ads.top-banner {
@@ -18710,6 +18710,12 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   bottom: 0;
   background: url(/images/bg-video-box.png?d48c42a212b5cf11fc09ff3cc3601c82);
   opacity: 0;
+}
+
+.video-box .title span {
+  color: gray;
+  font-size: small;
+  font-weight: lighter;
 }
 
 .video-box .btn-play {
@@ -18843,8 +18849,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   vertical-align: top;
   position: relative;
   z-index: -1;
-  max-height: 100%;
-  max-width: 100%;
+  width: 100%;
 }
 
 .featured-videos .video .caption {
@@ -19061,6 +19066,9 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
   .videos a {
     color: black;
+    font-weight: 800;
+    font-size: 14px;
+    line-height: 0.88;
   }
 
   .videos .views {
@@ -19075,8 +19083,10 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 @media (min-width: 300px) and (max-width: 720px) {
   .heading {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-between !important;
     align-items: center;
+    padding: 10px 10px !important;
+    min-height: 35px !important;
   }
 
   .heading.with--background:before {
@@ -19084,12 +19094,17 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   }
 
   .heading h1 {
-    font-weight: bolder !important;
+    font-weight: 400 !important;
     font-size: 16px !important;
+    position: static !important;
+    -webkit-transform: translate(0, 0) !important;
+            transform: translate(0, 0) !important;
   }
 
   .heading .num {
     margin: 0 !important;
+    font-weight: 400 !important;
+    font-style: 14px !important;
   }
 
   .heading .form-group {
@@ -19121,10 +19136,14 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     display: flex;
     visibility: inherit;
   }
+
+  .min-container {
+    max-width: 100% !important;
+  }
 }
 
 .min-container {
-  max-width: 990px;
+  max-width: 80%;
   margin: 0 auto;
   overflow: hidden;
 }
@@ -19173,10 +19192,17 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   background: black;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-end;
+  min-height: 60px;
+  position: relative;
 }
 
 .heading h1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   font-size: 1.538em;
   color: white;
   line-height: 1.2em;
@@ -19232,7 +19258,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 #main {
-  max-width: 990px;
   min-height: 100vh;
   margin: 0 auto;
   background: #fff;
