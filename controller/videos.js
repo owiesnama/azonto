@@ -3,6 +3,8 @@ const groupArray = require('group-array');
 const Sequelize = require('sequelize');
 const VideosService = require('../services/VideosService');
 const constants = require('../config/constants');
+const models = require('../DB/models');
+const videosModel = models.videos;
 
 const _pageLimit = 20;
 
@@ -30,7 +32,7 @@ exports.list = (req, response, next) => {
 
 exports.pending = (req, response, next) => {
   console.log('\n================== pending videos ==================\n'.green);
-  
+
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
@@ -140,6 +142,8 @@ exports.search = (req, response, next) => {
 }
 
 exports.findOne = (req, response, next) => {
+  console.log('\n============= find a video =============\n');
+
   const videoId = parseInt(req.params.video_id);
 
   new VideosService().findOne({
@@ -149,6 +153,32 @@ exports.findOne = (req, response, next) => {
       if (!result) {
         response.sendStatus(404);
       } else {
+        req.video = result;
+        next();
+      }
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+    });
+}
+
+exports.findOneAndIncreaseViews = (req, response, next) => {
+  console.log('\n============= find a video + increase views =============\n');
+
+  const videoId = parseInt(req.params.video_id);
+
+  new VideosService().findOne({
+      video_id: videoId
+    })
+    .then(async (result) => {
+      if (!result) {
+        response.sendStatus(404);
+      } else {
+        // increasing the video views by 1
+        await videosModel.increment('views', {
+          where: {
+            video_id: videoId
+          }
+        });
         req.video = result;
         next();
       }
