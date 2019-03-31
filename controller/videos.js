@@ -237,7 +237,6 @@ exports.delete = (req, response, next) => {
       video_id: videoId
     })
     .then((result) => {
-      req.result = result;
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
