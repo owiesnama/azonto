@@ -184,9 +184,6 @@ exports.createUpload = (req, response, next) => {
 }
 
 exports.createYoutube = (req, response, next) => {
-  console.log(JSON.stringify(req.body.video_url));
-  // return;
-
   const video = {
     title: req.body.title,
     email: req.body.email,
