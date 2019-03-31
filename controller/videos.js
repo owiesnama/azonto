@@ -29,9 +29,10 @@ exports.list = (req, response, next) => {
 }
 
 exports.pending = (req, response, next) => {
+  console.log('\n================== pending videos ==================\n'.green);
+  
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
-
 
   // get pending videos
   new VideosService().findAll({

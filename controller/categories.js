@@ -46,3 +46,17 @@ exports.update = (req, response, next) => {
       console.log('\n---------------- error ----------------\n'.red, error);
     });
 }
+
+exports.delete = (req, response, next) => {
+  const categoryId = parseInt(req.params.category_id);
+
+  new CategoriesService().delete({
+      category_id: categoryId
+    })
+    .then((result) => {
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}

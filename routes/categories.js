@@ -4,7 +4,6 @@ const router = express.Router();
 const categoriesController = require('../controller/categories');
 const authController = require('../controller/auth');
 
-
 // list && create API
 router.route('/')
   .get(categoriesController.list,
@@ -25,7 +24,7 @@ router.route('/')
       response.status(200).send(req.category);
     });
 
-// update API
+// update, delete APIs
 router.route('/:category_id')
   .put(authController.isLoggedIn,
     (req, response, next) => {
@@ -37,6 +36,19 @@ router.route('/:category_id')
       }
     },
     categoriesController.update,
+    (req, response) => {
+      response.sendStatus(200);
+    })
+  .delete(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).deleteAny('categories');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    categoriesController.delete,
     (req, response) => {
       response.sendStatus(200);
     })
