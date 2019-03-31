@@ -142,8 +142,7 @@ exports.findOne = (req, response, next) => {
   const videoId = parseInt(req.params.video_id);
 
   new VideosService().findOne({
-      video_id: videoId,
-      status_id: constants.APPROVED
+      video_id: videoId
     })
     .then((result) => {
       if (!result) {

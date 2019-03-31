@@ -21,6 +21,7 @@ exports.create = (req, response, next) => {
 
   new CategoriesService().create(category)
     .then((result) => {
+      req.category = result;
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);

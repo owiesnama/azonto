@@ -37,8 +37,8 @@ class CategoriesService extends BaseService {
           return;
         }
 
-        await super.create(category);
-        resolve();
+        const result = await super.create(category);
+        resolve(result);
       } catch (error) {
         reject(error);
       }

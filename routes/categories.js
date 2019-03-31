@@ -22,7 +22,7 @@ router.route('/')
     },
     categoriesController.create,
     (req, response) => {
-      response.sendStatus(200);
+      response.status(200).send(req.category);
     });
 
 // update API
