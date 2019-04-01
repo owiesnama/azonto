@@ -2067,6 +2067,7 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         email: '',
         password: '',
+        role_id: '',
         password_confirmation: ''
       },
       userIndex: false
@@ -2075,7 +2076,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     edit: function edit() {
       var user = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.user;
-      user.password = "";
+      user.password_confirmation = user.password;
       this.userIndex = this.users.indexOf(this.user);
       this.user = user;
       this.$modal.show("editUser");
@@ -2088,10 +2089,13 @@ __webpack_require__.r(__webpack_exports__);
     store: function store() {
       var _this = this;
 
-      axios.post("/users", clone(this.user)).then(function (data) {
+      axios.post("/users", clone(this.user)).then(function (_ref) {
+        var data = _ref.data;
+        console.log(data);
+
         _this.$modal.hide('addUser');
 
-        _this.users.push(_this.user);
+        _this.users.push(data.user);
       });
     },
     update: function update() {
@@ -2110,7 +2114,7 @@ __webpack_require__.r(__webpack_exports__);
       axios.delete("/users/".concat(this.user.user_id)).then(function () {
         _this3.users.splice(_this3.users.indexOf(user));
 
-        _this3.$modal.hide('confirmMessage');
+        _this3.$modal.hide('confirmDelete');
       });
     }
   },
@@ -2174,7 +2178,9 @@ __webpack_require__.r(__webpack_exports__);
 
       video.status_id = 1;
       axios.put("/videos/".concat(video.video_id), clone(video)).then(function () {
-        return _this2.getRequests;
+        _this2.$modal.hide('approveRequest');
+
+        _this2.getRequests();
       });
     },
     destroy: function destroy(video) {

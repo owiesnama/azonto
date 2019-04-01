@@ -39,6 +39,23 @@ router.route('/youtube')
             response.redirect('/');
         });
 
+
+
+router.route('/admin/upload')
+    .post(uploadController.upload,
+        screenshotLib.takeScreenshot,
+        // watermark.generateWatermark,
+        videosController.createUpload,
+        (req, response) => {
+            response.redirect('/admin/videos');
+        });
+
+router.route('/admin/youtube')
+    .post(videosController.createYoutube,
+        (req, response) => {
+            response.redirect('/admin/videos');
+        });
+
 router.route('/trending')
     .get(videosController.trending,
         (req, response) => {
@@ -67,6 +84,22 @@ router.route('/search')
         })
 
 
+router.route('/requests')
+    .get((req, response, next) => {
+            const permission = ac.can('' + req.session.user.role_id).readAny('videos');
+            if (permission.granted) {
+                next();
+            } else {
+                response.status(403).send('unauthorized');
+            }
+        },
+        videosController.pending,
+        (req, response) => {
+            response.send({
+                videos: req.videos
+            });
+        });
+
 // find one & update API
 router.route('/:video_id')
     .get(videosController.findOne,
@@ -93,22 +126,6 @@ router.route('/:video_id')
 
 // checks that the session is set for the bellow APIs
 router.use(authController.isLoggedIn);
-
-router.route('/requests')
-    .get((req, response, next) => {
-            const permission = ac.can('' + req.session.user.role_id).readAny('videos');
-            if (permission.granted) {
-                next();
-            } else {
-                response.status(403).send('unauthorized');
-            }
-        },
-        videosController.pending,
-        (req, response) => {
-            response.render('admin/requests', {
-                videos: req.videos
-            });
-        });
 
 // delete API
 router.route('/:video_id')

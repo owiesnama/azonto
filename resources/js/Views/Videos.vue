@@ -44,7 +44,11 @@
 
             put(video){
                 video.status_id = 1;
-                axios.put(`/videos/${video.video_id}`, clone(video)).then(() => this.getRequests)
+                axios.put(`/videos/${video.video_id}`, clone(video))
+                    .then(() => {
+                    this.$modal.hide('approveRequest')
+                    this.getRequests()
+                })
             },
 
             destroy(video) {

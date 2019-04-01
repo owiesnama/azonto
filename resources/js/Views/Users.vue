@@ -8,6 +8,7 @@
                     name: '',
                     email: '',
                     password: '',
+                    role_id: '',
                     password_confirmation: ''
                 },
                 userIndex: false
@@ -16,7 +17,7 @@
 
         methods: {
             edit(user = this.user) {
-                user.password = "";
+                user.password_confirmation = user.password
                 this.userIndex = this.users.indexOf(this.user)
                 this.user = user;
                 this.$modal.show("editUser")
@@ -28,9 +29,10 @@
             },
             store() {
                 axios.post(`/users`, clone(this.user))
-                    .then((data) => {
+                    .then(({data}) => {
+                        console.log(data)
                         this.$modal.hide('addUser');
-                        this.users.push(this.user)
+                        this.users.push(data.user)
                     })
             },
 
@@ -46,7 +48,7 @@
                 axios.delete(`/users/${this.user.user_id}`)
                     .then(() => {
                         this.users.splice(this.users.indexOf(user))
-                        this.$modal.hide('confirmMessage')
+                        this.$modal.hide('confirmDelete')
                     })
             }
         },
