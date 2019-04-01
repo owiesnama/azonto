@@ -42,10 +42,7 @@ router.route('/youtube')
 router.route('/trending')
   .get(videosController.trending,
     (req, response) => {
-      response.status(200).send({
-        videos: req.videos,
-        pages: req.pages
-      });
+      response.status(200).send(req.videos);
     })
 
 router.route('/recommended/:category_id')
