@@ -18,6 +18,15 @@ exports.list = (req, response, next) => {
       // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then(async (result) => {
+      //TODO: check if featured or not
+      // result.map(video => {
+      //   if (video.featured_video.length > 0) {
+      //     video.isFeatured = true;
+      //   } else {
+      //     video.isFeatured = false;
+      //   }
+      // })
+
       // calc Number of pages
       const videosCount = await new VideosService().findAll(null, null, null, null);
       const pages = Math.round((videosCount.length) / pageSize);
