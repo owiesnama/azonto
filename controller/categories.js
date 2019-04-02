@@ -21,6 +21,7 @@ exports.create = (req, response, next) => {
 
   new CategoriesService().create(category)
     .then((result) => {
+      req.category = result;
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
@@ -39,6 +40,20 @@ exports.update = (req, response, next) => {
     })
     .then((result) => {
       req.categories = result;
+      next();
+    }).catch((error) => {
+      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+      console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
+exports.delete = (req, response, next) => {
+  const categoryId = parseInt(req.params.category_id);
+
+  new CategoriesService().delete({
+      category_id: categoryId
+    })
+    .then((result) => {
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
