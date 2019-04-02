@@ -20,51 +20,45 @@
                 this.$modal.show("videoPlay")
             },
 
-            approve(video){
-                this.shouldPlayVideo = video;
-                this.$modal.show("approveRequest")
-            },
-
             edit(video) {
                 this.shouldPlayVideo = video;
-                this.$modal.show("editRequest")
+                this.$modal.show("editVideo")
             },
             confirm(video) {
                 this.shouldPlayVideo = video;
 
-                this.$modal.show('confirmRequest')
+                this.$modal.show('confirmVideo')
             },
             update() {
                 axios.put(`/videos/${this.shouldPlayVideo.video_id}`, clone(this.shouldPlayVideo))
                     .then((data) => {
                         this.shouldPlayVideo[this.requestIndex] = clone(this.shouldPlayVideo);
-                        this.$modal.hide('editCategory')
-                    })
-            },
-
-            put(video){
-                video.status_id = 1;
-                axios.put(`/videos/${video.video_id}`, clone(video))
-                    .then(() => {
-                    this.$modal.hide('approveRequest')
-                    this.getRequests()
+                        this.$modal.hide('editVideo')
+                    }).catch(e => {
+                    this.$modal.hide('editVideo')
+                    this.flashError('Opps, Something goes wrong');
                 })
             },
 
             destroy(video) {
                 axios.delete(`/videos/${this.shouldPlayVideo.video_id}`)
                     .then(() => {
-                        this.videos.splice(this.videos.indexOf(request))
-                        this.$modal.hide('confirmRequests')
-                    })
+                        this.$modal.hide('confirmVideo')
+                        this.getVideos()
+                    }).catch(e => {
+                    this.$modal.hide('confirmVideo')
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
-            getRequests(){
+            getVideos(){
                 axios.get("/videos")
                     .then(({data}) => {
                         console.log(data)
                         this.videosCollection = data.videos
-                    })
+                    }).catch(e => {
+                    this.flashError('Opps, Something goes wrong');
+                })
 
             },
 
@@ -72,7 +66,7 @@
 
 
         created() {
-            this.getRequests();
+            this.getVideos();
             axios.get("/categories")
                 .then(({data}) => this.categories = data)
         }

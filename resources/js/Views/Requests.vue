@@ -39,7 +39,10 @@
                     .then((data) => {
                         this.shouldPlayVideo[this.requestIndex] = clone(this.shouldPlayVideo);
                         this.$modal.hide('editCategory')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('editCategory')
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             put(video){
@@ -52,12 +55,17 @@
                     .then(() => {
                         this.requests.splice(this.requests.indexOf(request))
                         this.$modal.hide('confirmRequests')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('confirmRequests')
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             getRequests(){
                 axios.get("/videos/requests")
-                    .then(({data}) => this.requests = data.videos)
+                    .then(({data}) => this.requests = data.videos).catch(e => {
+                    this.flashError('Opps, Something goes wrong');
+                })
 
             },
 

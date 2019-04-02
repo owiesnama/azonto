@@ -16,6 +16,11 @@
         },
 
         methods: {
+
+            create(){
+                this.$modal.show('addUser');
+            },
+
             edit(user = this.user) {
                 user.password_confirmation = user.password
                 this.userIndex = this.users.indexOf(this.user)
@@ -33,7 +38,11 @@
                         console.log(data)
                         this.$modal.hide('addUser');
                         this.users.push(data.user)
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('addUser');
+
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             update() {
@@ -41,7 +50,10 @@
                     .then((data) => {
                         this.user[this.userIndex] = clone(this.user);
                         this.$modal.hide('editUser')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('editUser')
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             destroy(user = this.user) {
@@ -49,7 +61,10 @@
                     .then(() => {
                         this.users.splice(this.users.indexOf(user))
                         this.$modal.hide('confirmDelete')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('confirmDelete')
+                    this.flashError('Opps, Something goes wrong');
+                })
             }
         },
 

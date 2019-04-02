@@ -9,13 +9,13 @@ require('chart.js');
 
 
 moment.updateLocale('en', {
-    calendar : {
-        lastDay : '[Yesterday\'s]',
-        sameDay : '[Today\'s]',
-        nextDay : '[Tomorrow]',
-        lastWeek : '[Last] dddd',
-        nextWeek : '[Next] dddd',
-        sameElse : 'L'
+    calendar: {
+        lastDay: '[Yesterday\'s]',
+        sameDay: '[Today\'s]',
+        nextDay: '[Tomorrow]',
+        lastWeek: 'D MMMM',
+        nextWeek: 'D MMMM',
+        sameElse: 'L'
     }
 });
 
@@ -68,6 +68,11 @@ import VideosView from './Views/Videos'
 Vue.component('VideosView', VideosView);
 
 
+import ShowView from './Views/Show.vue'
+
+Vue.component('ShowView', ShowView);
+
+
 import VueDisqus from 'vue-disqus'
 
 Vue.use(VueDisqus)
@@ -75,6 +80,31 @@ Vue.use(VueDisqus)
 import Paginate from 'vuejs-paginate'
 Vue.component('paginate', Paginate)
 
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage, {
+    messageOptions: {
+        timeout: 1000,
+        important: true,
+        autoEmit: false,
+        pauseOnInteract: true
+    }
+});
+
+require('vue-flash-message/dist/vue-flash-message.min.css');
+
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    methods: {
+        getVideoId(url) {
+            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var match = url.match(regExp);
+
+            if (match && match[2].length == 11) {
+                return match[2];
+            } else {
+                return 'error';
+            }
+        }
+    }
 });

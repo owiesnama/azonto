@@ -3,27 +3,25 @@
         <table class="table align-items-center table-flush files--table">
             <thead>
             <tr>
-                <th>order</th>
-                <th>name</th>
+                <th>id</th>
+                <th>title</th>
                 <th>description</th>
-                <th>initiator</th>
-                <th>type</th>
                 <th></th>
             </tr>
             </thead>
 
 
-            <draggable v-model="steps"
+            <draggable v-model="featured"
                        :tag="'tbody'"
                        handle=".handle">
-                <tr v-for="step in steps" :key="step.order">
-                    <td>{{ step.order}}</td>
-                    <td>{{ step.name }}</td>
-                    <td>{{ step.description}}</td>
-                    <td>{{ step.initiator}}</td>
-                    <td>{{ step.type}}</td>
+                <tr v-for="featuredVideo in featured" :key="featuredVideo.order">
+                    <td>{{ featuredVideo.video.id}}</td>
+                    <td>{{ featuredVideo.video.title }}</td>
+                    <td>{{ featuredVideo.video.description}}</td>
                     <td>
-                        <i class="material-icons">drag_handel</i>
+                        <span class="handle">
+                            <i class="material-icons">drag_handel</i>
+                        </span>
                     </td>
                 </tr>
             </draggable>
@@ -38,48 +36,33 @@
     export default {
         components: {draggable},
 
-        props: [],
+        props: ['initialFeatured'],
 
         data() {
             return {
-                list: [
-                    {id: 1, name: "Abby", sport: "basket"},
-                    {id: 2, name: "Brooke", sport: "foot"},
-                    {id: 3, name: "Courtenay", sport: "volley"},
-                    {id: 4, name: "David", sport: "rugby"}
-                ],
-                steps: [
-                    {
-                        name: 'prepare',
-                        order: 1,
+                videos: [],
+                featured: [{
+                    video: {
+                        title: 'some title',
                         description: 'some description',
-                        initiator: 'Owiesnama',
-                        type: 'condition'
+                        id: '1',
                     },
+                    order: 1
+                },
                     {
-                        name: 'review',
-                        order: 2,
-                        description: 'some fine description',
-                        initiator: 'Musab Khiniger',
-                        type: 'condition'
-                    },
-                    {
-                        name: 'verify',
-                        order: 3,
-                        description: 'some awesome description',
-                        initiator: 'Faraoq',
-                        type: 'condition'
-                    },
-                    {
-                        name: 'order',
-                        order: 4,
-                        description: 'some great description',
-                        initiator: 'Musa',
-                        type: 'condition'
-                    },
-                ],
-                dragging: false
+                        video: {
+                            title: 'title',
+                            description: 'description',
+                            id: '2',
+                        },
+                        order: 2
+                    }]
             };
         },
+
+
+        mounted(){
+//            this.featured = this.initialFeatured;
+        }
     };
 </script>

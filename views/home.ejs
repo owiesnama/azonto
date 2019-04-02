@@ -17,7 +17,7 @@
 <div id="wrapper">
     <%- include('partials/header-section') %>
     <div id="app" class="min-container">
-        <home-view inline-template :page-number="<%=pageNumber%>">
+        <home-view inline-template :page-number="<%= pageNumber %>">
             <div class="">
                 <main id="main" role="main">
                     <div class="ad">
@@ -219,11 +219,15 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
                                     <img class="lazy"
-                                         data-original="/thumbnails/<%= video.thumbnail %>"
+                                        <% if(video.player == 0 ){ %>
+                                         src="/thumbnails/<%= video.thumbnail %>"
+                                        <% } else{ %>
+                                         :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+
+                                        <% } %>
                                          width="222" height="125"
                                          alt="<%= video.description %>"
-                                         itemprop="thumbnailUrl"
-                                         src="/thumbnails/<%= video.thumbnail %>">
+                                         itemprop="thumbnailUrl">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -248,11 +252,11 @@
                     </section>
                     <% } %>
 
-                    <section v-if="<%=pages%>">
+                    <section v-if="<%= pages %>">
                         <section>
                             <paginate
                                     ref="pagination"
-                                    :page-count="<%=pages%>"
+                                    :page-count="<%= pages %>"
                                     :click-handler="changePage"
                                     :prev-text="'Previous'"
                                     :next-text="'Next'"

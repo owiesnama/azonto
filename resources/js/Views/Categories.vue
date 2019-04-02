@@ -29,7 +29,10 @@
                         console.log(data)
                         this.categories.push(this.category)
                         this.category.name = ""
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('addCategory');
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
 
@@ -38,7 +41,9 @@
                     .then((data) => {
                         this.category[this.categoryIndex] = clone(this.category);
                         this.$modal.hide('editCategory')
-                    })
+                    }).catch(e => {
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             destroy(category = this.category) {
@@ -46,7 +51,11 @@
                     .then(() => {
                         this.categories.splice(this.categories.indexOf(category))
                         this.$modal.hide('confirmCategory')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('confirmCategory')
+
+                    this.flashError('Opps, Something goes wrong');
+                })
             }
         },
 

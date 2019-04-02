@@ -118,14 +118,15 @@
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  min-height:60px;
+  min-height: 60px;
   position: relative;
   h1 {
     position: absolute;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
-    font-size: 1.538em;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, -50%);
+    font-size: 1.2em;
     color: white;
     line-height: 1.2em;
     text-transform: uppercase;
@@ -196,6 +197,7 @@
   border-radius: 4px;
   width: 223px;
   position: relative;
+
   z-index: 1;
   .title {
     display: block;
@@ -204,6 +206,9 @@
     padding: 1px 0 0;
     margin: 0 0 5px;
     font-family: Arial, Verdana, sans-serif;
+  }
+  .video-box{
+    border: 1px solid gray;
   }
 }
 

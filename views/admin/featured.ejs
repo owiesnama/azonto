@@ -5,6 +5,7 @@
         <%- include("./partials/navbar") %>
         <!-- End Navbar -->
         <div class="content">
+            <flash-message ></flash-message>
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -15,7 +16,7 @@
                                 </h4>
                             </div>
                             <div class="card-body">
-                                <Featured-tabel></Featured-tabel>
+                                <Featured-tabel :initial-featured="featured"></Featured-tabel>
                             </div>
                         </div>
                     </div>

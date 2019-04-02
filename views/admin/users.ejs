@@ -5,8 +5,11 @@
        <div class="main-panel">
            <!-- Navbar -->
            <%-include("./partials/navbar")%>
+
            <!-- End Navbar -->
            <div class="content">
+               <flash-message ></flash-message>
+
                <div class="container-fluid">
                    <div class="row">
                        <div class="col-md-12">
@@ -35,7 +38,7 @@
                                                </th>
                                                <th class="text-right">
                                                    <button type="button"
-                                                           @click="$modal.show('addUser')"
+                                                           @click="create()"
                                                            class="btn btn-primary">
                                                        Add User
                                                    </button>
