@@ -36,7 +36,9 @@
                                 <p class="text-muted"><%= video.description %></p>
                             </div>
                             <div class="comments-holder">
-                                <vue-disqus shortname="azonto-tv" identifier="<%= video.video_id %>"></vue-disqus>
+                                <vue-disqus shortname="azonto-tv-1"
+                                            identifier="'videos'+<%= video.video_id %>">
+                                </vue-disqus>
                             </div>
                         </article>
                     </div>
@@ -54,11 +56,14 @@
                                 <% recommended.forEach(video => { %>
                                 <section class="box is-horizontal">
                                     <a itemprop="url" href="/videos/<%=video.video_id%>" class="video-box">
-                                        <img class="lazy"
-                                             width="222" 
-                                             height="125"
-                                             alt="<%=video.description%>"
-                                             src="/thumbnails/<%=video.thumbnail%>">
+                                        <% if(video.player == 0){ %>
+                                        <img src="/thumbnails/<%= video.thumbnail %>"
+                                             alt="<%=video.description%>">
+                                        <% } else { %>
+                                        <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+                                             alt="<%=video.description%>">
+                                        <% } %>
+
                                     </a>
                                     <div class="p-1 d-flex flex-column ">
                                         <strong class="title" itemprop="name">
