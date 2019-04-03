@@ -21,7 +21,7 @@ exports.list = (req, response, next) => {
       result.forEach(video => {
         video.setDataValue('isFeatured', (!!video['featured_video']))
       })
-      return;
+
       // calc Number of pages
       const videosCount = await new VideosService().findAll(null, null, null, null);
       const pages = Math.round((videosCount.length) / pageSize);
