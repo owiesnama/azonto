@@ -18835,7 +18835,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .featured-videos .video {
   height: 370px;
-  width: auto;
   position: relative;
   overflow: hidden;
   float: left;
