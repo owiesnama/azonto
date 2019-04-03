@@ -37,11 +37,16 @@
                                 <div class="video-slide">
                                     <a href="/videos/<%= trend.video_id %>">
                                             <span class="video-box">
+                                                <%if(trend.player == 0){%>
                                                     <img src="/thumbnails/<%= trend.thumbnail %>"
                                                          width="300"
                                                          height="200"
                                                          alt=""
                                                          style="width: 180px; height: 108px; margin-top: -3.5px; margin-left: 0px;">
+                                                <%} else{%>
+                                                <img  :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+                                                      alt="<%=video.description%>">
+                                                <%}%>
                                                     <span class="btn-play">play</span>
                                             </span>
                                         <strong class="title"><%= trend.title %></strong>
@@ -60,6 +65,7 @@
                             </h1>
                         </header>
                         <div class="featured-videos only-desktop">
+                            <%if(featured[0]){%>
                             <section class="video large">
                                 <a class="front-featured"
                                    href="/videos/<%= featured[0].video.video_id %>">
@@ -74,6 +80,8 @@
                                     </div>
                                 </a>
                             </section>
+                            <%}%>
+                            <%if(featured[1]){%>
                             <section class="video large exclusive">
                                 <a class="front-featured"
                                    href="/videos/<%= featured[1].video.video_id %>">
@@ -88,6 +96,7 @@
 
                                 </a>
                             </section>
+                            <%}%>
                             <div class="d-flex">
                                 <% if(featured[2]){ %>
                                 <section class="video mr-1-px exclusive">

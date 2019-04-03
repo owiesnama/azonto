@@ -22,15 +22,15 @@ class FeaturedVideosService extends BaseService {
         let result = await new FeaturedVideosDao().findAll(where, pageSize, pageNumber);
         
         // if the featured videos is not there
-        if (!result || result.length < 4) {
-          result = await new VideosService().trending();
-          for (let i = 0; i < 4; i++) {
-            if (result[i]) {
-              result[i].setDataValue('video', result[i])
-              console.log('\n=========\n' + i, JSON.stringify(result[i]));
-            }
-          }
-        };
+        // if (!result || result.length < 4) {
+        //   result = await new VideosService().trending();
+        //   // for (let i = 0; i < 4; i++) {
+        //   //   if (result[i]) {
+        //   //     result[i].setDataValue('video', result[i])
+        //   //     console.log('\n=========\n' + i, JSON.stringify(result[i]));
+        //   //   }
+        //   // }
+        // };
 
         resolve(result);
       } catch (error) {

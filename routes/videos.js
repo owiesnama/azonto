@@ -45,15 +45,6 @@ router.route('/trending')
       response.status(200).send(req.videos);
     })
 
-router.route('/recommended/:category_id')
-    .get(videosController.recommended,
-        (req, response) => {
-            response.status(200).send({
-                videos: req.videos,
-                pages: req.pages
-            });
-        })
-
 router.route('/search')
     .get(videosController.search,
         (req, response) => {
@@ -84,9 +75,11 @@ router.route('/:video_id')
     .get(videosController.findOneAndIncreaseViews,
         categoriesController.list,
         videosController.trending,
+        videosController.recommended,
         (req, response) => {
             response.render('show', {
                 video: req.video,
+                recommended: req.videos,
                 categories: req.categories,
                 trending: req.trending
             });
