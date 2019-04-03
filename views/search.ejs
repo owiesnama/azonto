@@ -17,16 +17,17 @@
 
                     <% videos.forEach(function (video) { %>
                     <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                        <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
-                            <img class="lazy"
-                                 data-original="/thumbnails/<%= video.thumbnail %>"
-                                 width="222" height="125"
-                                 alt="<%= video.description %>"
-                                 itemprop="thumbnailUrl"
-                                 src="/thumbnails/<%= video.thumbnail %>">
-                            <span class="btn-play">play</span>
-                            <span class="btn-play-hover">play</span>
+                        <a itemprop="url"
+                           href="/videos/<%= video.video_id %>"
+                           class="video-box">
 
+                            <% if(video.player == 0){ %>
+                            <img src="/thumbnails/<%= video.thumbnail %>"
+                                 alt="">
+                            <% } else { %>
+                            <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+                                 alt="">
+                            <% } %>
 
                         </a>
                         <strong class="title" itemprop="name">
