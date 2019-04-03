@@ -55,8 +55,14 @@
                                                     <div class="video-thumbnail"
                                                          @click="playVideo(video)"
                                                     >
+                                                        <template v-if="video.player == 0">
                                                         <img :src="'/thumbnails/'+video.thumbnail"
-                                                             alt="">
+                                                             :alt="video.description">
+                                                        </template>
+                                                        <template>
+                                                            <img  :src="'https://img.youtube.com/vi/'+getVideoId(video.url)+'/2.jpg'"
+                                                                  :alt="video.description">
+                                                        </template>
                                                         <span class="play-button"></span>
                                                     </div>
 

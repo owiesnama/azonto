@@ -1991,6 +1991,16 @@ __webpack_require__.r(__webpack_exports__);
       this.shouldPlayVideo = video;
       this.$modal.show("videoPlay");
     },
+    getVideoId: function getVideoId(url) {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      var match = url.match(regExp);
+
+      if (match && match[2].length == 11) {
+        return match[2];
+      } else {
+        return 'error';
+      }
+    },
     approve: function approve(video) {
       this.shouldPlayVideo = video;
       this.$modal.show("approveRequest");
@@ -2237,6 +2247,16 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    getVideoId: function getVideoId(url) {
+      var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+      var match = url.match(regExp);
+
+      if (match && match[2].length == 11) {
+        return match[2];
+      } else {
+        return 'error';
+      }
+    },
     toggleFeatured: function toggleFeatured(video) {
       var _this = this;
 
