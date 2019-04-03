@@ -38,25 +38,33 @@
                 axios.put(`/videos/${this.shouldPlayVideo.video_id}`, clone(this.shouldPlayVideo))
                     .then((data) => {
                         this.shouldPlayVideo[this.requestIndex] = clone(this.shouldPlayVideo);
-                        this.$modal.hide('editCategory')
+                        this.$modal.hide('editRequest')
                     }).catch(e => {
-                    this.$modal.hide('editCategory')
+                    this.$modal.hide('editRequest')
                     this.flashError('Opps, Something goes wrong');
                 })
             },
 
             put(video){
                 video.status_id = 1;
-                axios.put(`/videos/${video.video_id}`, clone(video)).then(() => this.getRequests)
+                axios.put(`/videos/${video.video_id}`, clone(video))
+                    .then(() => {
+                        this.getRequests()
+                        this.$modal.hide('approveRequest')
+                    })
+                    .catch(e => {
+                        this.$modal.hide('approveRequest')
+                        this.flashError('Opps, Something goes wrong');
+                    })
             },
 
             destroy(video) {
                 axios.delete(`/videos/${this.shouldPlayVideo.video_id}`)
                     .then(() => {
                         this.requests.splice(this.requests.indexOf(request))
-                        this.$modal.hide('confirmRequests')
+                        this.$modal.hide('confirmRequest')
                     }).catch(e => {
-                    this.$modal.hide('confirmRequests')
+                    this.$modal.hide('confirmRequest')
                     this.flashError('Opps, Something goes wrong');
                 })
             },
