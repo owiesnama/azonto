@@ -23,7 +23,7 @@
                     <div class="ad">
 
                     </div>
-                    <%if(trending.length){%>
+                    <% if(trending.length){ %>
                     <section class="carousel-section">
                         <header class="heading with--background">
                             <h1>TRENDING
@@ -37,17 +37,17 @@
                                 <div class="video-slide">
                                     <a href="/videos/<%= trend.video_id %>">
                                             <span class="video-box">
-                                                <%if(trend.player == 0){%>
-                                                    <img src="/thumbnails/<%= trend.thumbnail %>"
-                                                         width="300"
-                                                         height="200"
-                                                         alt=""
-                                                         style="width: 180px; height: 108px; margin-top: -3.5px; margin-left: 0px;">
-                                                <%} else{%>
-                                                <img  :src="'https://img.youtube.com/vi/'+getVideoId('<%= trend.url %>')+'/2.jpg'"
-                                                      alt="<%=trend.description%>">
-                                                <%}%>
-                                                    <span class="btn-play">play</span>
+                                                <% if(trend.player == 0){ %>
+                                                <img src="/thumbnails/<%= trend.thumbnail %>"
+                                                     width="300"
+                                                     height="200"
+                                                     alt=""
+                                                     style="width: 180px; height: 108px; margin-top: -3.5px; margin-left: 0px;">
+                                                <% } else{ %>
+                                                <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= trend.url %>')+'/2.jpg'"
+                                                     alt="<%= trend.description %>">
+                                                <% } %>
+                                                <span class="btn-play">play</span>
                                             </span>
                                         <strong class="title"><%= trend.title %></strong>
                                     </a>
@@ -56,8 +56,8 @@
                             </carousel>
                         </div>
                     </section>
-                    <%}%>
-                    <%if(featured.length){%>
+                    <% } %>
+                    <% if(featured.length){ %>
                     <section>
                         <header class="heading with--background">
                             <h1>FEATURED
@@ -65,12 +65,18 @@
                             </h1>
                         </header>
                         <div class="featured-videos only-desktop">
-                            <%if(featured[0]){%>
+                            <% if(featured[0]){ %>
                             <section class="video large">
                                 <a class="front-featured"
                                    href="/videos/<%= featured[0].video.video_id %>">
+                                    <% if(featured[0].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[0].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
+
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -80,13 +86,18 @@
                                     </div>
                                 </a>
                             </section>
-                            <%}%>
-                            <%if(featured[1]){%>
+                            <% } %>
+                            <% if(featured[1]){ %>
                             <section class="video large exclusive">
                                 <a class="front-featured"
                                    href="/videos/<%= featured[1].video.video_id %>">
+                                    <% if(featured[1].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[1].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
                                     <div class="caption">
                                         <h1><%= featured[1].video.title %></h1>
                                         <h2><%= featured[1].video.description %></h2>
@@ -96,14 +107,19 @@
 
                                 </a>
                             </section>
-                            <%}%>
+                            <% } %>
                             <div class="d-flex">
                                 <% if(featured[2]){ %>
                                 <section class="video mr-1-px exclusive">
                                     <a class="front-featured"
                                        href="/videos/<%= featured[2].video.video_id %>">
+                                        <% if(featured[2].video.player == 0){ %>
                                         <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                              alt="">
+                                        <% } else { %>
+                                        <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[2].video.url %>')+'/2.jpg'"
+                                             alt="">
+                                        <% } %>
                                         <div class="caption">
                                             <h1><%= featured[2].video.title %></h1>
                                             <h2><%= featured[2].video.description %></h2>
@@ -118,8 +134,13 @@
                                 <section class="video  secondary exclusive">
                                     <a class="front-featured"
                                        href="/videos/<%= featured[3].video.video_id %>">
+                                        <% if(featured[3].video.player == 0){ %>
                                         <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                              alt="">
+                                        <% } else { %>
+                                        <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[3].video.url %>')+'/2.jpg'"
+                                             alt="">
+                                        <% } %>
 
                                         <div class="caption">
                                             <h1><%= featured[3].video.title %></h1>
@@ -138,8 +159,14 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= featured[0].video.video_id %>"
                                    class="video-box">
+                                    <% if(featured[0].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[0].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
+
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -157,8 +184,15 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= featured[1].video.video_id %>"
                                    class="video-box">
+
+                                    <% if(featured[1].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[1].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
+
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -176,8 +210,15 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= featured[2].video.video_id %>"
                                    class="video-box">
+
+                                    <% if(featured[2].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[2].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
+
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -196,8 +237,13 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= featured[3].video.video_id %>"
                                    class="video-box">
+                                    <% if(featured[3].video.player == 0){ %>
                                     <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                          alt="">
+                                    <% } else { %>
+                                    <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= featured[3].video.url %>')+'/2.jpg'"
+                                         alt="">
+                                    <% } %>
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -214,7 +260,7 @@
 
                         </div>
                     </section>
-                    <%}%>
+                    <% } %>
                     <% for (let key in videos) { %>
                     <div class="ad">
 
