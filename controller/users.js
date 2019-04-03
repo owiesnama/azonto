@@ -25,14 +25,9 @@ exports.create = (req, response, next) => {
   const user = {
     name: req.body.name,
     email: req.body.email,
+    role_id: req.body.role_id,
     password: sha1(req.body.password)
   };
-
-  if (roleId) {
-    user.role_id = 1
-  } else {
-    user.role_id = 0
-  }
 
   new UsersService().create(user)
     .then((result) => {
@@ -41,6 +36,7 @@ exports.create = (req, response, next) => {
         user_id: result.user_id,
         name: result.name,
         email: result.email,
+        role_id: result.role_id
       }
 
       req.user = createdUser;
@@ -52,24 +48,11 @@ exports.create = (req, response, next) => {
 }
 
 exports.update = (req, response, next) => {
-  const roleId = req.body.role_id;
-
-  if (req.body.password != req.body.password_confirmation) {
-    response.status(400).send(i18n.__("passwords_do_not_match"))
-    return;
-  }
-
   const user = {
     name: req.body.name,
     email: req.body.email,
-    password: sha1(req.body.password)
+    role_id: req.body.role_id,
   };
-
-  if (roleId) {
-    user.role_id = 1
-  } else {
-    user.role_id = 0
-  }
 
   const where = {
     user_id: req.params.user_id
