@@ -235,6 +235,55 @@ exports.createYoutube = (req, response, next) => {
     });
 }
 
+exports.createUploadByAdmin = (req, response, next) => {
+    // gets the generated file name from Multer
+    const videoName = req.file.filename;
+
+    // get the thumbnail generated from screenshot lib
+    const thumbnail = req.thumbnail[0];
+    const video = {
+        title: req.body.title,
+        email: req.body.email,
+        description: req.body.description,
+        url: videoName,
+        player: constants.UPLOADED,
+        thumbnail: thumbnail,
+        status_id: constants.APPROVED,
+        category_id: req.body.category_id
+    };
+
+    new VideosService().create(video)
+        .then((result) => {
+            req.result = result;
+            next();
+        }).catch((error) => {
+        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+        console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
+exports.createYoutubeByAdmin = (req, response, next) => {
+    const video = {
+        title: req.body.title,
+        email: req.body.email,
+        description: req.body.description,
+        url: req.body.video_url,
+        player: constants.YOUTUBE,
+        thumbnail: null,
+        status_id: constants.APPROVED,
+        category_id: req.body.category_id
+    };
+
+    new VideosService().create(video)
+        .then((result) => {
+            req.result = result;
+            next();
+        }).catch((error) => {
+        response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
+        console.log('\n---------------- error ----------------\n'.red, error);
+    });
+}
+
 exports.update = (req, response, next) => {
     const videoId = parseInt(req.params.video_id);
     const video = {

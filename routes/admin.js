@@ -4,7 +4,9 @@ const router = express.Router();
 const messagesController = require('../controller/messages');
 const usersController = require('../controller/users');
 const authController = require('../controller/auth');
-
+const videosController = require('../controller/videos');
+const uploadController = require('../controller/upload');
+const screenshotLib = require('../libs/screenshot');
 
 router.route('/login')
   .get((req, response) => {
@@ -24,6 +26,39 @@ router.route('/requests')
     },
     (req, response) => {
       response.render('admin/requests');
+    });
+
+// uploading routes
+router.route('/upload')
+  .post(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).createAny('admin/requests');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    uploadController.upload,
+    screenshotLib.takeScreenshot,
+    videosController.createUploadByAdmin,
+    (req, response) => {
+      response.render('admin/videos');
+    });
+
+router.route('/YouTube')
+  .post(authController.isLoggedIn,
+    (req, response, next) => {
+      const permission = ac.can('' + req.session.user.role_id).createAny('admin/requests');
+      if (permission.granted) {
+        next();
+      } else {
+        response.status(403).send('unauthorized');
+      }
+    },
+    videosController.createYoutubeByAdmin,
+    (req, response) => {
+      response.render('admin/videos');
     });
 
 router.route('/videos')
@@ -81,26 +116,22 @@ router.route('/users')
     });
   });
 router.route('/videos')
-    .get((req, response) => {
-            response.render('admin/videos');
-        }
-    );
+  .get((req, response) => {
+    response.render('admin/videos');
+  });
 
 router.route('/categories')
-    .get((req, response) => {
-            response.render('admin/categories');
-        }
-    );
+  .get((req, response) => {
+    response.render('admin/categories');
+  });
 
 router.route('/featured')
-    .get((req, response) => {
-            response.render('admin/featured');
-        }
-    );
+  .get((req, response) => {
+    response.render('admin/featured');
+  });
 
 router.route('/login')
-    .get((req, response) => {
-            response.render('admin/login');
-        }
-    );
+  .get((req, response) => {
+    response.render('admin/login');
+  });
 module.exports = router;
