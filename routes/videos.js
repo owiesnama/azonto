@@ -81,7 +81,7 @@ router.route('/requests')
 
 // find one & update API
 router.route('/:video_id')
-    .get(videosController.findOne,
+    .get(videosController.findOneAndIncreaseViews,
         categoriesController.list,
         videosController.trending,
         (req, response) => {
