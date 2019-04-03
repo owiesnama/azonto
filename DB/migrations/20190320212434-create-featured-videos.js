@@ -12,6 +12,8 @@ module.exports = {
         allowNull: false,
         unique: true,
         type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
         references:{
           model: 'videos',
           key: 'video_id'
