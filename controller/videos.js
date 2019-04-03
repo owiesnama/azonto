@@ -101,7 +101,8 @@ exports.search = (req, response, next) => {
 
     const _sequelizeLikeOperator = Sequelize.Op.like;
     const title = req.query.title;
-    const description = req.query.description;
+    const description = req.body.description;
+    
     let where = {
         status_id: constants.APPROVED
     };
