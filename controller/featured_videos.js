@@ -7,6 +7,7 @@ exports.list = (req, response, next) => {
   new FeaturedVideosService().findAll(null, pageSize, pageNumber)
     .then((result) => {
       req.featuredVideos = result;
+      console.log(result)
       next();
     }).catch((error) => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);

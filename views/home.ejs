@@ -68,25 +68,24 @@
                         <div class="featured-videos only-desktop">
                             <section class="video large">
                                 <a class="front-featured" data-fancybox-type="iframe" href="/featured/134685">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/tWLfDHnC0BJq.jpg"
+                                    <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                     <div class="caption">
-                                        <h1>Exposing Me Remix</h1>
-                                        <h2>FBG Duck &amp; Rooga</h2>
+                                        <h1><%= featured[0].video.title %></h1>
+                                        <h2><%= featured[0].video.description %></h2>
                                     </div>
                                 </a>
                             </section>
                             <section class="video large exclusive">
                                 <a class="front-featured" data-fancybox-type="iframe" href="/featured/134600">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/O4q0tHlKFAwe.jpg"
+                                    <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
-                                    <strong class="tag">WSHH EXCLUSIVE</strong>
                                     <div class="caption">
-                                        <h1>Move Right</h1>
-                                        <h2>Lil Tjay</h2>
+                                        <h1><%= featured[1].video.title %></h1>
+                                        <h2><%= featured[1].video.description %></h2>
                                     </div>
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
@@ -94,34 +93,37 @@
                                 </a>
                             </section>
                             <div class="d-flex">
+                                <% if(featured[2]){ %>
                                 <section class="video mr-1-px exclusive">
                                     <a class="front-featured" data-fancybox-type="iframe" href="/featured/134630">
-                                        <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/gslDklZFkOxU.jpg"
+                                        <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                              alt="">
-                                        <strong class="tag">WSHH EXCLUSIVE</strong>
                                         <div class="caption">
-                                            <h1>Everlasting</h1>
-                                            <h2>Jay Critch </h2>
+                                            <h1><%= featured[2].video.title %></h1>
+                                            <h2><%= featured[2].video.description %></h2>
                                         </div>
                                         <span class="btn-play">play</span>
                                         <span class="btn-play-hover">play</span>
 
                                     </a>
                                 </section>
+                                <% } %>
+                                <% if(featured[3]){%>
                                 <section class="video  secondary exclusive">
                                     <a class="front-featured" data-fancybox-type="iframe" href="/featured/134689">
-                                        <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/2m3hDMlySdPz.jpg"
+                                        <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                              alt="">
-                                        <strong class="tag">WSHH EXCLUSIVE</strong>
+
                                         <div class="caption">
-                                            <h1>Freezing Cold</h1>
-                                            <h2>Nessly Feat. Yung Bans &amp; KILLY</h2>
+                                            <h1><%= featured[3].video.title %></h1>
+                                            <h2><%= featured[3].video.description %></h2>
                                         </div>
                                         <span class="btn-play">play</span>
                                         <span class="btn-play-hover">play</span>
 
                                     </a>
                                 </section>
+                                <% }%>
                             </div>
                         </div>
                         <div class="videos only-mobile">
@@ -219,12 +221,12 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
                                     <img class="lazy"
-                                        <% if(video.player == 0 ){ %>
+                                            <% if(video.player == 0 ){ %>
                                          src="/thumbnails/<%= video.thumbnail %>"
-                                        <% } else{ %>
+                                            <% } else{ %>
                                          :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
 
-                                        <% } %>
+                                            <% } %>
                                          width="222" height="125"
                                          alt="<%= video.description %>"
                                          itemprop="thumbnailUrl">

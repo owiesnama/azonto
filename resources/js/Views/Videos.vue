@@ -14,6 +14,24 @@
         },
 
         methods: {
+
+            toggleFeatured(video){
+                if (video.isFeatured) {
+                    axios.post("/featured_videos", video).then(data => {
+                        console.log(data)
+                        this.getVideos()
+
+                    })
+                } else {
+                    axios.delete(`/featured_videos/${video.featured_video.featured_video_id}`).then(data => {
+                        console.log(data)
+                        this.getVideos()
+
+                    })
+                }
+            },
+
+
             playVideo(video){
                 this.shouldPlayVideo = video;
 
@@ -52,23 +70,27 @@
             },
 
             getVideos(){
-                axios.get("/videos")
+                return axios.get("/videos")
                     .then(({data}) => {
                         console.log(data)
                         this.videosCollection = data.videos
                     }).catch(e => {
-                    this.flashError('Opps, Something goes wrong');
-                })
+                        this.flashError('Opps, Something goes wrong');
+                    })
 
             },
 
-        },
+        }
+        ,
 
 
-        created() {
-            this.getVideos();
+        created()
+        {
+            this.getVideos()
+
             axios.get("/categories")
                 .then(({data}) => this.categories = data)
+
         }
     }
 </script>

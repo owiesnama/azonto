@@ -2238,6 +2238,23 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    toggleFeatured: function toggleFeatured(video) {
+      var _this = this;
+
+      if (video.isFeatured) {
+        axios.post("/featured_videos", video).then(function (data) {
+          console.log(data);
+
+          _this.getVideos();
+        });
+      } else {
+        axios.delete("/featured_videos/".concat(video.featured_video.featured_video_id)).then(function (data) {
+          console.log(data);
+
+          _this.getVideos();
+        });
+      }
+    },
     playVideo: function playVideo(video) {
       this.shouldPlayVideo = video;
       this.$modal.show("videoPlay");
@@ -2251,50 +2268,50 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.show('confirmVideo');
     },
     update: function update() {
-      var _this = this;
-
-      axios.put("/videos/".concat(this.shouldPlayVideo.video_id), clone(this.shouldPlayVideo)).then(function (data) {
-        _this.shouldPlayVideo[_this.requestIndex] = clone(_this.shouldPlayVideo);
-
-        _this.$modal.hide('editVideo');
-      }).catch(function (e) {
-        _this.$modal.hide('editVideo');
-
-        _this.flashError('Opps, Something goes wrong');
-      });
-    },
-    destroy: function destroy(video) {
       var _this2 = this;
 
-      axios.delete("/videos/".concat(this.shouldPlayVideo.video_id)).then(function () {
-        _this2.$modal.hide('confirmVideo');
+      axios.put("/videos/".concat(this.shouldPlayVideo.video_id), clone(this.shouldPlayVideo)).then(function (data) {
+        _this2.shouldPlayVideo[_this2.requestIndex] = clone(_this2.shouldPlayVideo);
 
-        _this2.getVideos();
+        _this2.$modal.hide('editVideo');
       }).catch(function (e) {
-        _this2.$modal.hide('confirmVideo');
+        _this2.$modal.hide('editVideo');
 
         _this2.flashError('Opps, Something goes wrong');
       });
     },
-    getVideos: function getVideos() {
+    destroy: function destroy(video) {
       var _this3 = this;
 
-      axios.get("/videos").then(function (_ref) {
+      axios.delete("/videos/".concat(this.shouldPlayVideo.video_id)).then(function () {
+        _this3.$modal.hide('confirmVideo');
+
+        _this3.getVideos();
+      }).catch(function (e) {
+        _this3.$modal.hide('confirmVideo');
+
+        _this3.flashError('Opps, Something goes wrong');
+      });
+    },
+    getVideos: function getVideos() {
+      var _this4 = this;
+
+      return axios.get("/videos").then(function (_ref) {
         var data = _ref.data;
         console.log(data);
-        _this3.videosCollection = data.videos;
+        _this4.videosCollection = data.videos;
       }).catch(function (e) {
-        _this3.flashError('Opps, Something goes wrong');
+        _this4.flashError('Opps, Something goes wrong');
       });
     }
   },
   created: function created() {
-    var _this4 = this;
+    var _this5 = this;
 
     this.getVideos();
     axios.get("/categories").then(function (_ref2) {
       var data = _ref2.data;
-      return _this4.categories = data;
+      return _this5.categories = data;
     });
   }
 });
@@ -2391,33 +2408,45 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['featured'],
   components: {
     draggable: vuedraggable__WEBPACK_IMPORTED_MODULE_0___default.a
   },
-  props: ['initialFeatured'],
   data: function data() {
     return {
-      videos: [],
-      featured: [{
-        video: {
-          title: 'some title',
-          description: 'some description',
-          id: '1'
-        },
-        order: 1
-      }, {
-        video: {
-          title: 'title',
-          description: 'description',
-          id: '2'
-        },
-        order: 2
-      }]
+      featuredList: []
     };
   },
-  mounted: function mounted() {//            this.featured = this.initialFeatured;
+  methods: {
+    updateOrder: function updateOrder() {
+      var _this = this;
+
+      this.featuredList.forEach(function (video, index) {
+        video.order = index + 1;
+      });
+      axios.put('/featured_videos/update_order', this.featuredList).then(function () {}).catch(function (e) {
+        _this.flashError('Opps, Something goes wrong');
+      });
+    }
+  },
+  created: function created() {
+    var _this2 = this;
+
+    axios.get("/featured_videos").then(function (_ref) {
+      var data = _ref.data;
+      _this2.featuredList = data.featured;
+
+      _this2.featuredList.sort(function (pre, next) {
+        return pre.order - next.order;
+      });
+    });
   }
 });
 
@@ -77055,48 +77084,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "table-responsive" }, [
-    _c(
-      "table",
-      { staticClass: "table align-items-center table-flush files--table" },
-      [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "draggable",
-          {
-            attrs: { tag: "tbody", handle: ".handle" },
-            model: {
-              value: _vm.featured,
-              callback: function($$v) {
-                _vm.featured = $$v
-              },
-              expression: "featured"
-            }
-          },
-          _vm._l(_vm.featured, function(featuredVideo) {
-            return _c("tr", { key: featuredVideo.order }, [
-              _c("td", [_vm._v(_vm._s(featuredVideo.video.id))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(featuredVideo.video.title))]),
-              _vm._v(" "),
-              _c("td", [_vm._v(_vm._s(featuredVideo.video.description))]),
-              _vm._v(" "),
-              _c("td", [
-                _c("span", { staticClass: "handle" }, [
-                  _c("i", { staticClass: "material-icons" }, [
-                    _vm._v("drag_handel")
+  return _c(
+    "div",
+    { staticClass: "table-responsive" },
+    [
+      _c("flash-message"),
+      _vm._v(" "),
+      _c(
+        "table",
+        { staticClass: "table align-items-center table-flush files--table" },
+        [
+          _vm._m(0),
+          _vm._v(" "),
+          _c(
+            "draggable",
+            {
+              attrs: { tag: "tbody", handle: ".handle" },
+              on: { end: _vm.updateOrder },
+              model: {
+                value: _vm.featuredList,
+                callback: function($$v) {
+                  _vm.featuredList = $$v
+                },
+                expression: "featuredList"
+              }
+            },
+            _vm._l(_vm.featuredList, function(featuredVideo) {
+              return _c("tr", { key: featuredVideo.featured_video_id }, [
+                _c("td", [_vm._v(_vm._s(featuredVideo.video.video_id))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(featuredVideo.video.title))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(featuredVideo.video.description))]),
+                _vm._v(" "),
+                _c("td", [_vm._v(_vm._s(featuredVideo.order))]),
+                _vm._v(" "),
+                _c("td", [
+                  _c("span", { staticClass: "handle" }, [
+                    _c("i", { staticClass: "material-icons" }, [
+                      _vm._v("drag_handle")
+                    ])
                   ])
                 ])
               ])
-            ])
-          }),
-          0
-        )
-      ],
-      1
-    )
-  ])
+            }),
+            0
+          )
+        ],
+        1
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {
@@ -77110,6 +77149,8 @@ var staticRenderFns = [
         _c("th", [_vm._v("title")]),
         _vm._v(" "),
         _c("th", [_vm._v("description")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("order")]),
         _vm._v(" "),
         _c("th")
       ])

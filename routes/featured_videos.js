@@ -41,7 +41,7 @@ router.route('/update_order')
         },
         featuredVideosController.updateOrder,
         (req, response) => {
-            response.redirect('/featured_videos');
+            response.sendStatus(200);
         });
 
 // delete API

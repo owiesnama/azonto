@@ -20,7 +20,7 @@ module.exports = (sequelize, DataTypes) => {
   videos.associate = function(models) {
     // associations can be defined here
     videos.belongsTo(models.categories, {as: 'category', foreignKey: 'category_id'})
-    videos.hasMany(models.featured_videos, {as: 'featured_video', foreignKey: 'video_id'})
+    videos.hasOne(models.featured_videos, {as: 'featured_video', foreignKey: 'video_id'})
   };
   return videos;
 };

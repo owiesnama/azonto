@@ -1,26 +1,31 @@
 <template>
     <div class="table-responsive">
+        <flash-message></flash-message>
+
         <table class="table align-items-center table-flush files--table">
             <thead>
             <tr>
                 <th>id</th>
                 <th>title</th>
                 <th>description</th>
+                <th>order</th>
                 <th></th>
             </tr>
             </thead>
 
 
-            <draggable v-model="featured"
+            <draggable v-model="featuredList"
                        :tag="'tbody'"
+                       @end="updateOrder"
                        handle=".handle">
-                <tr v-for="featuredVideo in featured" :key="featuredVideo.order">
-                    <td>{{ featuredVideo.video.id}}</td>
+                <tr v-for="featuredVideo in featuredList" :key="featuredVideo.featured_video_id">
+                    <td>{{ featuredVideo.video.video_id}}</td>
                     <td>{{ featuredVideo.video.title }}</td>
                     <td>{{ featuredVideo.video.description}}</td>
+                    <td>{{ featuredVideo.order}}</td>
                     <td>
                         <span class="handle">
-                            <i class="material-icons">drag_handel</i>
+                            <i class="material-icons">drag_handle</i>
                         </span>
                     </td>
                 </tr>
@@ -34,35 +39,39 @@
     import draggable from "vuedraggable"
 
     export default {
-        components: {draggable},
+        props: ['featured'],
 
-        props: ['initialFeatured'],
+        components: {draggable},
 
         data() {
             return {
-                videos: [],
-                featured: [{
-                    video: {
-                        title: 'some title',
-                        description: 'some description',
-                        id: '1',
-                    },
-                    order: 1
-                },
-                    {
-                        video: {
-                            title: 'title',
-                            description: 'description',
-                            id: '2',
-                        },
-                        order: 2
-                    }]
+                featuredList: [],
             };
         },
 
+        methods: {
+            updateOrder(){
+                this.featuredList.forEach((video, index) => {
+                    video.order = index + 1
+                })
 
-        mounted(){
-//            this.featured = this.initialFeatured;
+                axios.put('/featured_videos/update_order', this.featuredList)
+                    .then(() => {
+
+                    }).catch(e => {
+                    this.flashError('Opps, Something goes wrong');
+                })
+            }
+        },
+
+        created(){
+            axios.get("/featured_videos")
+                .then(({data}) => {
+                    this.featuredList = data.featured;
+                    this.featuredList.sort(function (pre, next) {
+                        return pre.order - next.order
+                    });
+                })
         }
     };
 </script>

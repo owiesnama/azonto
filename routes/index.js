@@ -1,5 +1,6 @@
 const express = require('express');
 const videosController = require('../controller/videos');
+const featuredVideosController = require('../controller/featured_videos');
 
 const router = express.Router();
 
@@ -8,10 +9,12 @@ const router = express.Router();
 router.get('/',
     videosController.list,
     videosController.trending,
+    featuredVideosController.list,
     (req, response) => {
         response.render('home', {
             videos: req.videos,
             trending: req.trending,
+            featured: req.featuredVideos,
             pages: req.pages,
             pageNumber: req.pageNumber
         });

@@ -18814,6 +18814,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 
 .featured-videos .video {
   width: 100%;
+  height: 370px;
 }
 
 .featured-videos .video.large {
@@ -18821,7 +18822,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 .featured-videos .video {
-  height: auto;
+  height: 370px;
   width: auto;
   position: relative;
   overflow: hidden;
@@ -18841,6 +18842,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 }
 
 .featured-videos .video a {
+  height: 100%;
   display: block;
   position: relative;
 }
