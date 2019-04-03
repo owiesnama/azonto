@@ -241,7 +241,7 @@ exports.createUploadByAdmin = (req, response, next) => {
   const thumbnail = req.thumbnail[0];
   const video = {
     title: req.body.title,
-    email: req.body.email,
+    email: constants.BY_ADMIN,
     description: req.body.description,
     url: videoName,
     player: constants.UPLOADED,
@@ -263,7 +263,7 @@ exports.createUploadByAdmin = (req, response, next) => {
 exports.createYoutubeByAdmin = (req, response, next) => {
   const video = {
     title: req.body.title,
-    email: req.body.email,
+    email: constants.BY_ADMIN,
     description: req.body.description,
     url: req.body.video_url,
     player: constants.YOUTUBE,
