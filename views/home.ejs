@@ -17,7 +17,7 @@
 <div id="wrapper">
     <%- include('partials/header-section') %>
     <div id="app" class="min-container">
-        <home-view inline-template :page-number="<%=pageNumber%>">
+        <home-view inline-template :page-number="<%= pageNumber %>">
             <div class="">
                 <main id="main" role="main">
                     <div class="ad">
@@ -68,25 +68,24 @@
                         <div class="featured-videos only-desktop">
                             <section class="video large">
                                 <a class="front-featured" data-fancybox-type="iframe" href="/featured/134685">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/tWLfDHnC0BJq.jpg"
+                                    <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                     <div class="caption">
-                                        <h1>Exposing Me Remix</h1>
-                                        <h2>FBG Duck &amp; Rooga</h2>
+                                        <h1><%= featured[0].video.title %></h1>
+                                        <h2><%= featured[0].video.description %></h2>
                                     </div>
                                 </a>
                             </section>
                             <section class="video large exclusive">
                                 <a class="front-featured" data-fancybox-type="iframe" href="/featured/134600">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/O4q0tHlKFAwe.jpg"
+                                    <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
-                                    <strong class="tag">WSHH EXCLUSIVE</strong>
                                     <div class="caption">
-                                        <h1>Move Right</h1>
-                                        <h2>Lil Tjay</h2>
+                                        <h1><%= featured[1].video.title %></h1>
+                                        <h2><%= featured[1].video.description %></h2>
                                     </div>
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
@@ -94,34 +93,37 @@
                                 </a>
                             </section>
                             <div class="d-flex">
+                                <% if(featured[2]){ %>
                                 <section class="video mr-1-px exclusive">
                                     <a class="front-featured" data-fancybox-type="iframe" href="/featured/134630">
-                                        <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/gslDklZFkOxU.jpg"
+                                        <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                              alt="">
-                                        <strong class="tag">WSHH EXCLUSIVE</strong>
                                         <div class="caption">
-                                            <h1>Everlasting</h1>
-                                            <h2>Jay Critch </h2>
+                                            <h1><%= featured[2].video.title %></h1>
+                                            <h2><%= featured[2].video.description %></h2>
                                         </div>
                                         <span class="btn-play">play</span>
                                         <span class="btn-play-hover">play</span>
 
                                     </a>
                                 </section>
+                                <% } %>
+                                <% if(featured[3]){%>
                                 <section class="video  secondary exclusive">
                                     <a class="front-featured" data-fancybox-type="iframe" href="/featured/134689">
-                                        <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/2m3hDMlySdPz.jpg"
+                                        <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                              alt="">
-                                        <strong class="tag">WSHH EXCLUSIVE</strong>
+
                                         <div class="caption">
-                                            <h1>Freezing Cold</h1>
-                                            <h2>Nessly Feat. Yung Bans &amp; KILLY</h2>
+                                            <h1><%= featured[3].video.title %></h1>
+                                            <h2><%= featured[3].video.description %></h2>
                                         </div>
                                         <span class="btn-play">play</span>
                                         <span class="btn-play-hover">play</span>
 
                                     </a>
                                 </section>
+                                <% }%>
                             </div>
                         </div>
                         <div class="videos only-mobile">
@@ -134,8 +136,7 @@
 
                                 </a>
                                 <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Corporis dicta dolores error iure laboriosam </a>
+                                    <a href="/videos/">Lorem ipsum dolor sit . </a>
                                     <div>
                                         <span class="views">5 views</span>
                                         <!--<span class="comments">-->
@@ -154,8 +155,7 @@
 
                                 </a>
                                 <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Aspernatur aut corporis explicabo fugit impedit</a>
+                                    <a href="/videos/">Lorem ipsum dolor sit amet</a>
                                     <div>
                                         <span class="views">0 views</span>
                                         <!--<span class="comments">-->
@@ -174,16 +174,9 @@
 
                                 </a>
                                 <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                                        Aliquid,
-                                        aperiam at dolores eos error facilis incidunt ipsam minima perspiciatis
-                                        sunt. </a>
+                                    <a href="/videos/">Lorem ipsum dolor sit amet.</a>
                                     <div>
-                                        <span class="views"> 1 view</span>
-                                        <!--<span class="comments">-->
-                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"-->
-                                        <!--data-disqus-identifier="134737">53</a>-->
-                                        <!--</span>-->
+                                        <span>views:</span>
                                     </div>
                                 </strong>
                             </section>
@@ -196,8 +189,7 @@
 
                                 </a>
                                 <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi
-                                        aque eius illo itaque, laboriosam</a>
+                                    <a href="/videos/">Lorem ipsum dolor sit amet</a>
                                     <div>
                                         <span class="views">200,02 views</span>
                                         <!--<span class="comments">-->
@@ -229,11 +221,15 @@
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
                                 <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
                                     <img class="lazy"
-                                         data-original="/thumbnails/<%= video.thumbnail %>"
+                                            <% if(video.player == 0 ){ %>
+                                         src="/thumbnails/<%= video.thumbnail %>"
+                                            <% } else{ %>
+                                         :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+
+                                            <% } %>
                                          width="222" height="125"
                                          alt="<%= video.description %>"
-                                         itemprop="thumbnailUrl"
-                                         src="/thumbnails/<%= video.thumbnail %>">
+                                         itemprop="thumbnailUrl">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
@@ -258,11 +254,11 @@
                     </section>
                     <% } %>
 
-                    <section v-if="<%=pages%>">
+                    <section v-if="<%= pages %>">
                         <section>
                             <paginate
                                     ref="pagination"
-                                    :page-count="<%=pages%>"
+                                    :page-count="<%= pages %>"
                                     :click-handler="changePage"
                                     :prev-text="'Previous'"
                                     :next-text="'Next'"

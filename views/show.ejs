@@ -1,6 +1,6 @@
 <%- include('./partials/header') %>
 <div id="app" class="min-container">
-    <div class="">
+    <show-view inline-template>
         <main id="main" role="main">
             <div class="ad">
 
@@ -14,15 +14,23 @@
                             </div>
                             <div class="video-player" itemprop="video" itemscope=""
                                  itemtype="http://schema.org/VideoObject">
+                                <% if (video.player == 0) { %>
                                 <video poster="<%= video.thumbnail %>"
                                        preload="auto"
                                        controls
                                        src="<%= video.url %>">
                                 </video>
+                                <% } else { %>
+                                <iframe height="370"
+                                        width="100%"
+                                        :src="'https://youtube.com/embed/'+ getVideoId('<%=video.url%>')"
+                                        frameborder="0"
+                                        allowfullscreen></iframe>
+                                <% } %>
                             </div>
                             <div class="shareaholic-canvas border-bottom" data-app="share_buttons"
                                  data-app-id="28469290"></div>
-                            <div class="text-center">
+                            <div class="text-left">
                                 <p class="mb-1">Uploaded on <span><%= video.created_at %></span></p>
 
                                 <p class="text-muted"><%= video.description %></p>
@@ -103,7 +111,7 @@
                             </section>
                             <header class="heading with--background">
                                 <h1>
-                                    Trending
+                                    Sponsored
                                     <mark>videos</mark>
                                 </h1>
                             </header>
@@ -135,5 +143,5 @@
 
 
         </main>
-    </div>
+    </show-view>
 <%- include('./partials/footer-section') %>

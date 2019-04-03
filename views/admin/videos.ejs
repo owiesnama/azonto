@@ -5,6 +5,8 @@
         <%- include("./partials/navbar") %>
         <!-- End Navbar -->
         <div class="content">
+            <flash-message></flash-message>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -31,8 +33,12 @@
                                             <th>
                                                 Date
                                             </th>
+                                            <th>Featured</th>
                                             <th>
-                                                actions
+                                                <button class="btn btn-primary"
+                                                        @click="$modal.show('addVideo')"
+                                                >Upload Video
+                                                </button>
                                             </th>
                                         </tr>
                                         </thead>
@@ -58,16 +64,21 @@
                                                 <td v-text="video.title"></td>
                                                 <td v-text="video.description"></td>
                                                 <td>{{video.created_at | ago}}</td>
+                                                <td class="text-left">
+                                                    <div class="togglebutton">
+                                                        <label>
+                                                            <input type="checkbox"
+                                                                   v-model="video.isFeatured"
+                                                                   @change="toggleFeatured(video)">
+                                                            <span class="toggle"></span>
+                                                        </label>
+                                                    </div>
+                                                </td>
                                                 <td class="td-actions">
                                                     <button type="button" rel="tooltip" title="Edit Task"
                                                             @click="edit(video)"
                                                             class="btn btn-primary btn-link btn-sm">
                                                         <i class="material-icons">edit</i>
-                                                    </button>
-                                                    <button type="button" rel="tooltip" title="Edit Task"
-                                                            @click="approve(video)"
-                                                            class="btn btn-success btn-link btn-sm">
-                                                        <i class="material-icons">check</i>
                                                     </button>
                                                     <button type="button"
                                                             rel="tooltip"
@@ -82,7 +93,7 @@
                                         </template>
                                         <tr v-else>
                                             <td class="text-center"
-                                            colspan="100%">
+                                                colspan="100%">
                                                 There is no videos for now
                                             </td>
                                         </tr>
@@ -96,7 +107,7 @@
             </div>
         </div>
         <%- include("./modals/videoPlay") %>
-        <%- include("./modals/requests/all") %>
+        <%- include("./modals/videos/all") %>
     </div>
 </videos-view>
 <%- include("./partials/footer") %>

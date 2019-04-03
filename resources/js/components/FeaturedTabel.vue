@@ -1,29 +1,32 @@
 <template>
     <div class="table-responsive">
+        <flash-message></flash-message>
+
         <table class="table align-items-center table-flush files--table">
             <thead>
             <tr>
-                <th>order</th>
-                <th>name</th>
+                <th>id</th>
+                <th>title</th>
                 <th>description</th>
-                <th>initiator</th>
-                <th>type</th>
+                <th>order</th>
                 <th></th>
             </tr>
             </thead>
 
 
-            <draggable v-model="steps"
+            <draggable v-model="featuredList"
                        :tag="'tbody'"
+                       @end="updateOrder"
                        handle=".handle">
-                <tr v-for="step in steps" :key="step.order">
-                    <td>{{ step.order}}</td>
-                    <td>{{ step.name }}</td>
-                    <td>{{ step.description}}</td>
-                    <td>{{ step.initiator}}</td>
-                    <td>{{ step.type}}</td>
+                <tr v-for="featuredVideo in featuredList" :key="featuredVideo.featured_video_id">
+                    <td>{{ featuredVideo.video.video_id}}</td>
+                    <td>{{ featuredVideo.video.title }}</td>
+                    <td>{{ featuredVideo.video.description}}</td>
+                    <td>{{ featuredVideo.order}}</td>
                     <td>
-                        <i class="material-icons">drag_handel</i>
+                        <span class="handle">
+                            <i class="material-icons">drag_handle</i>
+                        </span>
                     </td>
                 </tr>
             </draggable>
@@ -36,50 +39,39 @@
     import draggable from "vuedraggable"
 
     export default {
-        components: {draggable},
+        props: ['featured'],
 
-        props: [],
+        components: {draggable},
 
         data() {
             return {
-                list: [
-                    {id: 1, name: "Abby", sport: "basket"},
-                    {id: 2, name: "Brooke", sport: "foot"},
-                    {id: 3, name: "Courtenay", sport: "volley"},
-                    {id: 4, name: "David", sport: "rugby"}
-                ],
-                steps: [
-                    {
-                        name: 'prepare',
-                        order: 1,
-                        description: 'some description',
-                        initiator: 'Owiesnama',
-                        type: 'condition'
-                    },
-                    {
-                        name: 'review',
-                        order: 2,
-                        description: 'some fine description',
-                        initiator: 'Musab Khiniger',
-                        type: 'condition'
-                    },
-                    {
-                        name: 'verify',
-                        order: 3,
-                        description: 'some awesome description',
-                        initiator: 'Faraoq',
-                        type: 'condition'
-                    },
-                    {
-                        name: 'order',
-                        order: 4,
-                        description: 'some great description',
-                        initiator: 'Musa',
-                        type: 'condition'
-                    },
-                ],
-                dragging: false
+                featuredList: [],
             };
         },
+
+        methods: {
+            updateOrder(){
+                this.featuredList.forEach((video, index) => {
+                    video.order = index + 1
+                })
+
+                axios.put('/featured_videos/update_order', this.featuredList)
+                    .then(() => {
+
+                    }).catch(e => {
+                    this.flashError('Opps, Something goes wrong');
+                })
+            }
+        },
+
+        created(){
+            axios.get("/featured_videos")
+                .then(({data}) => {
+                    this.featuredList = data.featured;
+                    this.featuredList.sort(function (pre, next) {
+                        return pre.order - next.order
+                    });
+                })
+        }
     };
 </script>

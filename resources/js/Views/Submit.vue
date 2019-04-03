@@ -9,7 +9,9 @@
 
         created(){
             axios.get("/categories")
-                .then(({data}) => this.categories = data)
+                .then(({data}) => this.categories = data).catch(e => {
+                this.flashError('Opps, Something goes wrong');
+            })
         }
     }
 </script>

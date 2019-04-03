@@ -78,7 +78,7 @@ router.route('/:user_id')
     }, usersController.delete,
     (req, response) => {
       // FIXME: it return 403 even if the user is auth to delete 
-      response.redirect('/users');
+      response.sendStatus(200);
     })
 
 router.route('/logout')
