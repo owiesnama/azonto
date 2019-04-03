@@ -8,6 +8,20 @@
   visibility: hidden;
 }
 
+.submit-alterntive{
+  display: none;
+  visibility: none;
+}
+
+@media (min-width: 200px) and (max-width: 920px){
+  #submit{
+    display: none;
+  }
+  .submit-alterntive{
+    display: block;
+  }
+}
+
 @media (min-width: 300px) and (max-width: 720px) {
   .only-desktop {
     display: none;

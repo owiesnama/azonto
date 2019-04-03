@@ -72,12 +72,11 @@ exports.trending = (req, response, next) => {
 exports.recommended = (req, response, next) => {
     const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
     const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
-    const categoryId = parseInt(req.params.category_id);
-
+    console.log('================',req.video.status_id)
     // get APPROVED videos
     new VideosService().findAll({
         status_id: constants.APPROVED,
-        category_id: categoryId
+        category_id: req.video.category_id
     }, pageSize, pageNumber, [
         ['views', 'DESC']
     ])
@@ -88,6 +87,8 @@ exports.recommended = (req, response, next) => {
             req.pages = pages
 
             req.videos = result;
+
+            console.log('==========',result)
             next();
         }).catch((error) => {
         response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
