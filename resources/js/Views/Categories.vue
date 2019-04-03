@@ -29,8 +29,12 @@
                         console.log(data)
                         this.categories.push(this.category)
                         this.category.name = ""
+
+                        this.getCategories()
+
                     }).catch(e => {
                     this.$modal.hide('addCategory');
+                    this.getCategories()
                     this.flashError('Opps, Something goes wrong');
                 })
             },
@@ -46,22 +50,15 @@
                 })
             },
 
-            destroy(category = this.category) {
-                axios.delete(`/categories/${this.category.category_id}`)
-                    .then(() => {
-                        this.categories.splice(this.categories.indexOf(category))
-                        this.$modal.hide('confirmCategory')
-                    }).catch(e => {
-                    this.$modal.hide('confirmCategory')
+            getCategories(){
+                axios.get("/categories")
+                    .then(({data}) => this.categories = data)
 
-                    this.flashError('Opps, Something goes wrong');
-                })
             }
         },
 
         created() {
-            axios.get("/categories")
-                .then(({data}) => this.categories = data)
+            this.getCategories()
         }
     }
 </script>

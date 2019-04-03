@@ -19142,7 +19142,15 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   visibility: none;
 }
 
+.navbar {
+  margin-left: 4.5rem;
+}
+
 @media (min-width: 200px) and (max-width: 920px) {
+  .navbar {
+    margin-left: 0;
+  }
+
   #submit {
     display: none;
   }

@@ -1796,8 +1796,12 @@ __webpack_require__.r(__webpack_exports__);
         _this.categories.push(_this.category);
 
         _this.category.name = "";
+
+        _this.getCategories();
       }).catch(function (e) {
         _this.$modal.hide('addCategory');
+
+        _this.getCategories();
 
         _this.flashError('Opps, Something goes wrong');
       });
@@ -1813,28 +1817,17 @@ __webpack_require__.r(__webpack_exports__);
         _this2.flashError('Opps, Something goes wrong');
       });
     },
-    destroy: function destroy() {
+    getCategories: function getCategories() {
       var _this3 = this;
 
-      var category = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : this.category;
-      axios.delete("/categories/".concat(this.category.category_id)).then(function () {
-        _this3.categories.splice(_this3.categories.indexOf(category));
-
-        _this3.$modal.hide('confirmCategory');
-      }).catch(function (e) {
-        _this3.$modal.hide('confirmCategory');
-
-        _this3.flashError('Opps, Something goes wrong');
+      axios.get("/categories").then(function (_ref) {
+        var data = _ref.data;
+        return _this3.categories = data;
       });
     }
   },
   created: function created() {
-    var _this4 = this;
-
-    axios.get("/categories").then(function (_ref) {
-      var data = _ref.data;
-      return _this4.categories = data;
-    });
+    this.getCategories();
   }
 });
 
@@ -2016,9 +2009,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.put("/videos/".concat(this.shouldPlayVideo.video_id), clone(this.shouldPlayVideo)).then(function (data) {
         _this.shouldPlayVideo[_this.requestIndex] = clone(_this.shouldPlayVideo);
 
-        _this.$modal.hide('editCategory');
+        _this.$modal.hide('editRequest');
       }).catch(function (e) {
-        _this.$modal.hide('editCategory');
+        _this.$modal.hide('editRequest');
 
         _this.flashError('Opps, Something goes wrong');
       });
@@ -2028,7 +2021,13 @@ __webpack_require__.r(__webpack_exports__);
 
       video.status_id = 1;
       axios.put("/videos/".concat(video.video_id), clone(video)).then(function () {
-        return _this2.getRequests;
+        _this2.getRequests();
+
+        _this2.$modal.hide('approveRequest');
+      }).catch(function (e) {
+        _this2.$modal.hide('approveRequest');
+
+        _this2.flashError('Opps, Something goes wrong');
       });
     },
     destroy: function destroy(video) {
@@ -2037,9 +2036,9 @@ __webpack_require__.r(__webpack_exports__);
       axios.delete("/videos/".concat(this.shouldPlayVideo.video_id)).then(function () {
         _this3.requests.splice(_this3.requests.indexOf(request));
 
-        _this3.$modal.hide('confirmRequests');
+        _this3.$modal.hide('confirmRequest');
       }).catch(function (e) {
-        _this3.$modal.hide('confirmRequests');
+        _this3.$modal.hide('confirmRequest');
 
         _this3.flashError('Opps, Something goes wrong');
       });

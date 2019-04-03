@@ -10,7 +10,7 @@
                 <main id="main" role="main">
                     <section>
                         <section class="section">
-                            <form :action="isLocalVideo ? '/videos/admin/upload':'/videos/admin/YouTube'" method="POST"
+                            <form :action="isLocalVideo ? '/admin/upload':'/admin/YouTube'" method="POST"
                                   :enctype="isLocalVideo ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
                                   class="contact-form">
                                 <fieldset>
