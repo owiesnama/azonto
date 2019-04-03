@@ -3,10 +3,16 @@ const models = require('../DB/models/index')
 const videosModel = models.videos;
 
 const include = [{
-  model: models.categories,
-  as: 'category',
-  attributes: ['category_id', 'name']
-}]
+    model: models.categories,
+    as: 'category',
+    attributes: ['category_id', 'name']
+  },
+  {
+    model: models.featured_videos,
+    as: 'featured_video',
+    // attributes: ['category_id', 'name']
+  }
+]
 class VideosDao extends BaseDao {
   constructor() {
     super(videosModel)

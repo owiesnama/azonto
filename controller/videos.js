@@ -18,6 +18,15 @@ exports.list = (req, response, next) => {
       // status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then(async (result) => {
+      //TODO: check if featured or not
+      // result.map(video => {
+      //   if (video.featured_video.length > 0) {
+      //     video.isFeatured = true;
+      //   } else {
+      //     video.isFeatured = false;
+      //   }
+      // })
+
       // calc Number of pages
       const videosCount = await new VideosService().findAll(null, null, null, null);
       const pages = Math.round((videosCount.length) / pageSize);
@@ -54,18 +63,9 @@ exports.pending = (req, response, next) => {
 }
 
 exports.trending = (req, response, next) => {
-  const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
-  // get APPROVED videos
-  new VideosService().findAll({
-      status_id: constants.APPROVED
-    }, pageSize, null, [
-      ['views', 'DESC']
-    ])
-    .then(async (result) => {
-      // calc Number of pages
-      const videosCount = await new VideosService().findAll(null, null, null, null);
-      const pages = Math.ceil((videosCount.length) / _pageLimit)
-      req.trending = result;
+  new VideosService().trending()
+    .then((result) => {
+      req.videos = result;
       next();
     }).catch(error => {
       response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
