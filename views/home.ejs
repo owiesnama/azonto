@@ -23,23 +23,15 @@
                     <div class="ad">
 
                     </div>
+                    <%if(trending.length){%>
                     <section class="carousel-section">
                         <header class="heading with--background">
                             <h1>TRENDING
                                 <mark>NOW</mark>
                             </h1>
-                            <form action="#" class="filter">
-                                <div class="form-group">
-                                    <select class="form-control" id="exampleFormControlSelect1">
-                                        <option rel="trending-newer.php?v=now" class="active-option">Now</option>
-                                        <option rel="trending-newer.php?v=week">This Week</option>
-                                        <option rel="trending-newer.php?v=month">This Month</option>
-                                        <option rel="trending-newer.php?v=year">This Year</option>
-                                    </select>
-                                </div>
-                            </form>
                         </header>
                         <div class="loading-content">
+
                             <carousel>
                                 <% trending.forEach(trend =>{ %>
                                 <div class="video-slide">
@@ -59,6 +51,8 @@
                             </carousel>
                         </div>
                     </section>
+                    <%}%>
+                    <%if(featured.length){%>
                     <section>
                         <header class="heading with--background">
                             <h1>FEATURED
@@ -67,7 +61,8 @@
                         </header>
                         <div class="featured-videos only-desktop">
                             <section class="video large">
-                                <a class="front-featured" data-fancybox-type="iframe" href="/featured/134685">
+                                <a class="front-featured"
+                                   href="/videos/<%= featured[0].video.video_id %>">
                                     <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
@@ -80,7 +75,8 @@
                                 </a>
                             </section>
                             <section class="video large exclusive">
-                                <a class="front-featured" data-fancybox-type="iframe" href="/featured/134600">
+                                <a class="front-featured"
+                                   href="/videos/<%= featured[1].video.video_id %>">
                                     <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
                                     <div class="caption">
@@ -95,7 +91,8 @@
                             <div class="d-flex">
                                 <% if(featured[2]){ %>
                                 <section class="video mr-1-px exclusive">
-                                    <a class="front-featured" data-fancybox-type="iframe" href="/featured/134630">
+                                    <a class="front-featured"
+                                       href="/videos/<%= featured[2].video.video_id %>">
                                         <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                              alt="">
                                         <div class="caption">
@@ -108,9 +105,10 @@
                                     </a>
                                 </section>
                                 <% } %>
-                                <% if(featured[3]){%>
+                                <% if(featured[3]){ %>
                                 <section class="video  secondary exclusive">
-                                    <a class="front-featured" data-fancybox-type="iframe" href="/featured/134689">
+                                    <a class="front-featured"
+                                       href="/videos/<%= featured[3].video.video_id %>">
                                         <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                              alt="">
 
@@ -123,84 +121,91 @@
 
                                     </a>
                                 </section>
-                                <% }%>
+                                <% } %>
                             </div>
                         </div>
                         <div class="videos only-mobile">
+                            <% if(featured[0]){ %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/" class="video-box">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/tWLfDHnC0BJq.jpg"
+                                <a itemprop="url" href="/videos/<%= featured[0].video.video_id %>"
+                                   class="video-box">
+                                    <img src="/thumbnails/<%= featured[0].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                 </a>
-                                <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit . </a>
+                                <strong class="title text-left"
+                                        itemprop="name">
+                                    <a href="/videos/<%= featured[0].video.video_id %>"><%= featured[0].video.title %></a>
                                     <div>
-                                        <span class="views">5 views</span>
-                                        <!--<span class="comments">-->
-                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"-->
-                                        <!--data-disqus-identifier="134737">53</a>-->
-                                        <!--</span>-->
+                                        <span class="views"><%= featured[0].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
+                            <% } %>
+                            <% if(featured[1]){ %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/" class="video-box">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/gslDklZFkOxU.jpg"
+                                <a itemprop="url" href="/videos/<%= featured[1].video.video_id %>"
+                                   class="video-box">
+                                    <img src="/thumbnails/<%= featured[1].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                 </a>
-                                <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet</a>
+                                <strong class="title text-left"
+                                        itemprop="name">
+                                    <a href="/videos/<%= featured[1].video.video_id %>"><%= featured[1].video.title %></a>
                                     <div>
-                                        <span class="views">0 views</span>
-                                        <!--<span class="comments">-->
-                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"-->
-                                        <!--data-disqus-identifier="134737">53</a>-->
-                                        <!--</span>-->
+                                        <span class="views"><%= featured[1].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
+                            <% } %>
+                            <% if(featured[2]){ %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/" class="video-box">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/tWLfDHnC0BJq.jpg"
+                                <a itemprop="url" href="/videos/<%= featured[2].video.video_id %>"
+                                   class="video-box">
+                                    <img src="/thumbnails/<%= featured[2].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                 </a>
-                                <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet.</a>
+                                <strong class="title text-left"
+                                        itemprop="name">
+                                    <a href="/videos/<%= featured[2].video.video_id %>"><%= featured[2].video.title %></a>
                                     <div>
-                                        <span>views:</span>
+                                        <span class="views"><%= featured[2].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
+                            <% } %>
+
+                            <% if(featured[3]){ %>
                             <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                                <a itemprop="url" href="/videos/" class="video-box">
-                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/tWLfDHnC0BJq.jpg"
+                                <a itemprop="url" href="/videos/<%= featured[3].video.video_id %>"
+                                   class="video-box">
+                                    <img src="/thumbnails/<%= featured[3].video.thumbnail %>"
                                          alt="">
                                     <span class="btn-play">play</span>
                                     <span class="btn-play-hover">play</span>
 
                                 </a>
-                                <strong class="title text-left" itemprop="name">
-                                    <a href="/videos/">Lorem ipsum dolor sit amet</a>
+                                <strong class="title text-left"
+                                        itemprop="name">
+                                    <a href="/videos/<%= featured[3].video.video_id %>"><%= featured[3].video.title %></a>
                                     <div>
-                                        <span class="views">200,02 views</span>
-                                        <!--<span class="comments">-->
-                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"-->
-                                        <!--data-disqus-identifier="134737">53</a>-->
-                                        <!--</span>-->
+                                        <span class="views"><%= featured[3].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
+                            <% } %>
+
                         </div>
                     </section>
+                    <%}%>
                     <% for (let key in videos) { %>
                     <div class="ad">
 
