@@ -20,19 +20,7 @@ class FeaturedVideosService extends BaseService {
     return new Promise(async (resolve, reject) => {
       try {
         let result = await new FeaturedVideosDao().findAll(where, pageSize, pageNumber);
-        
-        // if the featured videos is not there
-        if (!result || result.length < 4) {
-          result = await new VideosService().trending();
-          for (let i = 0; i < 4; i++) {
-            if (result[i]) {
-              result[i].setDataValue('video', result[i])
-              console.log('\n=========\n' + i, JSON.stringify(result[i]));
-            }
-          }
-        };
-
-        resolve(result);
+        resolve(result ? result : []);
       } catch (error) {
         reject(error);
       }
