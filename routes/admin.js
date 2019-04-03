@@ -1,4 +1,6 @@
 const express = require('express');
+const countController = require('../controller/count');
+
 const router = express.Router();
 
 const messagesController = require('../controller/messages');
@@ -105,9 +107,12 @@ router.use(authController.isLoggedIn,
   });
 
 router.route('/')
-  .get((req, response) => {
-    response.render('admin/index');
-  });
+  .get(countController.count,
+    (req, response) => {
+      response.render('admin/index', {
+        counts: req.counts
+      });
+    });
 
 router.route('/users')
   .get(usersController.list, (req, response) => {
