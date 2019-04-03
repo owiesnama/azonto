@@ -36,7 +36,9 @@
                                 <p class="text-muted"><%= video.description %></p>
                             </div>
                             <div class="comments-holder">
-                                <vue-disqus shortname="azonto-tv" identifier="<%= video.video_id %>"></vue-disqus>
+                                <vue-disqus shortname="azonto-tv-1"
+                                            identifier="'videos'+<%= video.video_id %>">
+                                </vue-disqus>
                             </div>
                         </article>
                     </div>
