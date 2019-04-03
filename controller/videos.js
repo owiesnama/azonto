@@ -14,16 +14,14 @@ exports.list = (req, response, next) => {
 
   // get  approved videos
   new VideosService().findAll({
-      // TODO: does it need to set the status
-      // status_id: constants.APPROVED
+      status_id: constants.APPROVED
     }, pageSize, pageNumber)
     .then(async (result) => {
 
       result.forEach(video => {
         video.setDataValue('isFeatured', (!!video['featured_video']))
       })
-
-      console.log(result)
+      return;
       // calc Number of pages
       const videosCount = await new VideosService().findAll(null, null, null, null);
       const pages = Math.round((videosCount.length) / pageSize);
