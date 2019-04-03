@@ -46,7 +46,7 @@ router.route('/trending')
     })
 
 router.route('/search')
-  .post(videosController.search,
+  .get(videosController.search,
     (req, response) => {
       response.render('search', {
         videos: req.videos,
