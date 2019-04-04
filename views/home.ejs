@@ -175,7 +175,7 @@
                                         itemprop="name">
                                     <a href="/videos/<%= featured[0].video.video_id %>"><%= featured[0].video.title %></a>
                                     <div>
-                                        <span class="views"><%= featured[0].video.views %></span>
+                                        <span class="only-mobile">views:<%= featured[0].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
@@ -201,7 +201,7 @@
                                         itemprop="name">
                                     <a href="/videos/<%= featured[1].video.video_id %>"><%= featured[1].video.title %></a>
                                     <div>
-                                        <span class="views"><%= featured[1].video.views %></span>
+                                        <span class="only-mobile">views:<%= featured[1].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
@@ -227,7 +227,7 @@
                                         itemprop="name">
                                     <a href="/videos/<%= featured[2].video.video_id %>"><%= featured[2].video.title %></a>
                                     <div>
-                                        <span class="views"><%= featured[2].video.views %></span>
+                                        <span class="only-mobile">views:<%= featured[2].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
@@ -252,7 +252,7 @@
                                         itemprop="name">
                                     <a href="/videos/<%= featured[3].video.video_id %>"><%= featured[3].video.title %></a>
                                     <div>
-                                        <span class="views"><%= featured[3].video.views %></span>
+                                        <span class="only-mobile">views:<%= featured[3].video.views %></span>
                                     </div>
                                 </strong>
                             </section>
@@ -298,11 +298,11 @@
                                 <strong class="title" itemprop="name">
                                     <a href="/videos/<%= video.video_id %>"><%= video.title %></a>
                                     <div>
-                                        <span class="views"><%= video.views %></span>
-                                        <!--<span class="comments">-->
-                                        <!--<a href="http://www.worldstarhiphop.com/videos/video.php?v=wshhYYJQ02rH789dy71g#disqus_thread"-->
-                                        <!--data-disqus-identifier="134737">53</a>-->
-                                        <!--</span>-->
+                                        <span class="views only-desktop"><%= video.views %></span>
+                                        <span class="only-mobile">views:<%= video.views %></span>
+                                        <span class="comments">
+                                        <a href="/videos/<%=video.video_id%>#disqus_thread">53</a>
+                                        </span>
                                     </div>
                                 </strong>
 
@@ -336,4 +336,6 @@
 
 </body>
 <script src="/js/app.js"></script>
+<script id="dsq-count-scr" src="//azonto-tv-1.disqus.com/count.js" async></script>
+
 </html>

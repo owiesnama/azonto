@@ -89844,7 +89844,7 @@ __webpack_require__(/*! chart.js */ "./node_modules/chart.js/dist/Chart.js");
 
 moment.updateLocale('en', {
   calendar: {
-    lastDay: '[Yesterday\'s]',
+    lastDay: 'D MMMM',
     sameDay: '[Today\'s]',
     nextDay: '[Tomorrow]',
     lastWeek: 'D MMMM',

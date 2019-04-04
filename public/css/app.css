@@ -19035,8 +19035,16 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     display: flex;
     flex-grow: 1;
     border-radius: 0;
+    padding: 0;
+    padding-bottom: 5px;
     flex-basis: 100%;
     align-items: flex-start !important;
+  }
+
+  .videos .box span.only-mobile {
+    color: gray;
+    font-size: small;
+    text-align: left;
   }
 
   .videos .box.is-horizontal {
@@ -19114,6 +19122,7 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     position: static !important;
     -webkit-transform: translate(0, 0) !important;
             transform: translate(0, 0) !important;
+    width: auto !important;
   }
 
   .heading .num {
