@@ -2243,10 +2243,19 @@ __webpack_require__.r(__webpack_exports__);
       },
       categories: [],
       shouldPlayVideo: false,
-      requestIndex: false
+      requestIndex: false,
+      pagesCount: 0
     };
   },
   methods: {
+    changePage: function changePage(pagenumber) {
+      var _this = this;
+
+      axios.get("/videos?page_number=".concat(pagenumber - 1)).then(function (_ref) {
+        var data = _ref.data;
+        _this.videosCollection = data.videos;
+      });
+    },
     getVideoId: function getVideoId(url) {
       var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
       var match = url.match(regExp);
@@ -2258,19 +2267,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     toggleFeatured: function toggleFeatured(video) {
-      var _this = this;
+      var _this2 = this;
 
       if (video.isFeatured) {
         axios.post("/featured_videos", video).then(function (data) {
           console.log(data);
 
-          _this.getVideos();
+          _this2.getVideos();
         });
       } else {
         axios.delete("/featured_videos/".concat(video.featured_video.featured_video_id)).then(function (data) {
           console.log(data);
 
-          _this.getVideos();
+          _this2.getVideos();
         });
       }
     },
@@ -2287,50 +2296,51 @@ __webpack_require__.r(__webpack_exports__);
       this.$modal.show('confirmVideo');
     },
     update: function update() {
-      var _this2 = this;
-
-      axios.put("/videos/".concat(this.shouldPlayVideo.video_id), clone(this.shouldPlayVideo)).then(function (data) {
-        _this2.shouldPlayVideo[_this2.requestIndex] = clone(_this2.shouldPlayVideo);
-
-        _this2.$modal.hide('editVideo');
-      }).catch(function (e) {
-        _this2.$modal.hide('editVideo');
-
-        _this2.flashError('Opps, Something goes wrong');
-      });
-    },
-    destroy: function destroy(video) {
       var _this3 = this;
 
-      axios.delete("/videos/".concat(this.shouldPlayVideo.video_id)).then(function () {
-        _this3.$modal.hide('confirmVideo');
+      axios.put("/videos/".concat(this.shouldPlayVideo.video_id), clone(this.shouldPlayVideo)).then(function (data) {
+        _this3.shouldPlayVideo[_this3.requestIndex] = clone(_this3.shouldPlayVideo);
 
-        _this3.getVideos();
+        _this3.$modal.hide('editVideo');
       }).catch(function (e) {
-        _this3.$modal.hide('confirmVideo');
+        _this3.$modal.hide('editVideo');
 
         _this3.flashError('Opps, Something goes wrong');
       });
     },
-    getVideos: function getVideos() {
+    destroy: function destroy(video) {
       var _this4 = this;
 
-      return axios.get("/videos").then(function (_ref) {
-        var data = _ref.data;
-        console.log(data);
-        _this4.videosCollection = data.videos;
+      axios.delete("/videos/".concat(this.shouldPlayVideo.video_id)).then(function () {
+        _this4.$modal.hide('confirmVideo');
+
+        _this4.getVideos();
       }).catch(function (e) {
+        _this4.$modal.hide('confirmVideo');
+
         _this4.flashError('Opps, Something goes wrong');
+      });
+    },
+    getVideos: function getVideos() {
+      var _this5 = this;
+
+      return axios.get("/videos").then(function (_ref2) {
+        var data = _ref2.data;
+        console.log(data);
+        _this5.videosCollection = data.videos;
+        _this5.pagesCount = data.pages;
+      }).catch(function (e) {
+        _this5.flashError('Opps, Something goes wrong');
       });
     }
   },
   created: function created() {
-    var _this5 = this;
+    var _this6 = this;
 
     this.getVideos();
-    axios.get("/categories").then(function (_ref2) {
-      var data = _ref2.data;
-      return _this5.categories = data;
+    axios.get("/categories").then(function (_ref3) {
+      var data = _ref3.data;
+      return _this6.categories = data;
     });
   }
 });
@@ -89853,7 +89863,7 @@ moment.updateLocale('en', {
   }
 });
 Vue.filter('ago', function (time) {
-  return window.moment(time).fromNow();
+  return window.moment(new Date(time).toDateString()).fromNow();
 });
 Vue.filter('calendar', function (time) {
   console.log(time);

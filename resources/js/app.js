@@ -20,7 +20,7 @@ moment.updateLocale('en', {
 });
 
 Vue.filter('ago', function (time) {
-    return window.moment(time).fromNow();
+    return window.moment(new Date(time).toDateString()).fromNow();
 });
 
 Vue.filter('calendar', function (time) {
