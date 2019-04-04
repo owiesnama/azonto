@@ -56,6 +56,18 @@ const grantsObject = {
       'read:any': ['*'],
       'update:any': ['*'],
       'delete:any': ['*']
+    },
+    'admin/upload': {
+      'create:any': ['*'],
+      'read:any': ['*'],
+      'update:any': ['*'],
+      'delete:any': ['*']
+    },
+    'admin/YouTube': {
+      'create:any': ['*'],
+      'read:any': ['*'],
+      'update:any': ['*'],
+      'delete:any': ['*']
     }
   },
   [constants.REVIEWER]: {
@@ -78,6 +90,14 @@ const grantsObject = {
     'admin/messages': {
       'read:any': ['*'],
       'update:any': ['*']
+    },
+    'admin/upload': {
+      'read:any': ['*'],
+      'create:any': ['*'],
+    },
+    'admin/YouTube': {
+      'read:any': ['*'],
+      'create:any': ['*'],
     }
   }
 };

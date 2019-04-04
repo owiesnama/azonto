@@ -34,7 +34,7 @@ router.route('/requests')
 router.route('/upload')
   .post(authController.isLoggedIn,
     (req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).createAny('admin/requests');
+      const permission = ac.can('' + req.session.user.role_id).createAny('admin/upload');
       if (permission.granted) {
         next();
       } else {
@@ -51,7 +51,7 @@ router.route('/upload')
 router.route('/YouTube')
   .post(authController.isLoggedIn,
     (req, response, next) => {
-      const permission = ac.can('' + req.session.user.role_id).createAny('admin/requests');
+      const permission = ac.can('' + req.session.user.role_id).createAny('admin/YouTube');
       if (permission.granted) {
         next();
       } else {
