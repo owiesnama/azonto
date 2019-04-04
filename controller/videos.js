@@ -91,12 +91,14 @@ exports.recommended = (req, response, next) => {
 }
 
 exports.search = (req, response, next) => {
+  console.log('===================== Searching ====================='.blue);
+
   const pageSize = req.query.page_size ? parseInt(req.query.page_size) : 60;
   const pageNumber = req.query.page_number ? parseInt(req.query.page_number) : 0;
 
   const _sequelizeLikeOperator = Sequelize.Op.like;
   const title = req.query.title;
-  const description = req.body.description;
+  const description = req.query.description;
 
   let where = {
     status_id: constants.APPROVED

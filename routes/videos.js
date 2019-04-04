@@ -48,6 +48,8 @@ router.route('/trending')
 router.route('/search')
   .get(videosController.search,
     (req, response) => {
+      response.send(req.videos)
+      return;
       response.render('search', {
         videos: req.videos,
         pages: req.pages
