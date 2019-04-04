@@ -10,7 +10,7 @@ require('chart.js');
 
 moment.updateLocale('en', {
     calendar: {
-        lastDay: '[Yesterday\'s]',
+        lastDay: 'D MMMM',
         sameDay: '[Today\'s]',
         nextDay: '[Tomorrow]',
         lastWeek: 'D MMMM',

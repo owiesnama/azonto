@@ -1,5 +1,6 @@
 <div class="sidebar-wrapper">
     <ul class="nav">
+        <%if(locals.user.role_id != 2){%>
         <li class="nav-item">
             <a class="nav-link" href="/admin">
                 <i class="material-icons">dashboard</i>
@@ -12,6 +13,7 @@
                 <p>Users</p>
             </a>
         </li>
+        <%}%>
         <li class="nav-item ">
             <a class="nav-link" href="/admin/requests">
                 <i class="material-icons">content_paste</i>
@@ -37,11 +39,13 @@
                 <p>Categories</p>
             </a>
         </li>
+        <%if(locals.user.role_id !=2){%>
         <li class="nav-item ">
             <a class="nav-link" href="/admin/featured">
                 <i class="material-icons">featured_video</i>
                 <p>Featured</p>
             </a>
         </li>
+        <%}%>
     </ul>
 </div>
