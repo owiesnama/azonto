@@ -56,12 +56,12 @@
                                                          @click="playVideo(video)"
                                                     >
                                                         <template v-if="video.player == 0">
-                                                        <img :src="'/thumbnails/'+video.thumbnail"
-                                                             :alt="video.descript">
+                                                            <img :src="'/thumbnails/'+video.thumbnail"
+                                                                 :alt="video.descript">
                                                         </template>
-                                                        <template>
-                                                            <img  :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
-                                                                  :alt="video.description">
+                                                        <template v-else>
+                                                            <img :src="'https://img.youtube.com/vi/'+getVideoId(video.url)+'/2.jpg'"
+                                                                 :alt="video.description">
                                                         </template>
                                                         <span class="play-button"></span>
                                                     </div>
@@ -106,6 +106,18 @@
                                         </tbody>
                                     </table>
                                 </div>
+                                <section v-if="pagesCount" class="dataTables_paginate paging_full_numbers">
+                                    <paginate
+                                            ref="pagination"
+                                            :page-count="pagesCount"
+                                            :click-handler="changePage"
+                                            :prev-text="'Previous'"
+                                            :next-text="'Next'"
+                                            :page-class="'paginate_button page-item mx-1'"
+                                            :container-class="'pagination'">
+                                    </paginate>
+                                </section>
+
                             </div>
                         </div>
                     </div>

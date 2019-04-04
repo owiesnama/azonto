@@ -9,11 +9,20 @@
                 },
                 categories: [],
                 shouldPlayVideo: false,
-                requestIndex: false
+                requestIndex: false,
+                pagesCount: 0,
             }
         },
 
         methods: {
+
+            changePage(pagenumber){
+                axios.get(`/videos?page_number=${pagenumber-1}`)
+                    .then(({data}) => {
+                        this.videosCollection = data.videos
+                    })
+            },
+
 
             getVideoId(url) {
                 var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
@@ -86,6 +95,7 @@
                     .then(({data}) => {
                         console.log(data)
                         this.videosCollection = data.videos
+                        this.pagesCount = data.pages;
                     }).catch(e => {
                         this.flashError('Opps, Something goes wrong');
                     })

@@ -17109,7 +17109,6 @@ textarea[resize=horizontal] {
 }
 
 .footer .logo {
-  margin-left: 50px;
   padding: 5px;
 }
 
@@ -19099,10 +19098,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
   }
 }
 
-.footer .logo {
-  margin: 0 h;
-}
-
 @media (min-width: 300px) and (max-width: 720px) {
   .heading {
     display: flex;
@@ -19148,10 +19143,6 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
 .submit-alterntive {
   display: none;
   visibility: none;
-}
-
-.navbar {
-  margin-left: 4.5rem;
 }
 
 @media (min-width: 200px) and (max-width: 920px) {

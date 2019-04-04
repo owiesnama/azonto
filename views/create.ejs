@@ -20,9 +20,7 @@
                                 submissions will get proper credit if accepted.</p>
                             <p>By submitting your video, you are representing to Azonto that you have all
                                 necessary rights in the video to authorize our use and reuse of the audio and visual
-                                material it contains, that your submission of the video is governed by our <a
-                                        href="agree.php">On Line Video Submission Agreement</a>, and that you have read,
-                                understood and agreed to the terms and conditions of that Agreement.</p>
+                                material it contains.</p>
                         </div>
                         <form :action="isLocalVideo ? '/videos/upload':'/videos/YouTube'" method="POST"
                               :enctype="isLocalVideo ? 'multipart/form-data' : 'application/x-www-form-urlencoded'"
