@@ -74,7 +74,8 @@ const grantsObject = {
     users: {},
     videos: {
       'read:any': ['*'],
-      'update:any': ['*']
+      'update:any': ['*'],
+      'delete:any': ['*']
     },
     messages: {},
     featured_videos: {},
