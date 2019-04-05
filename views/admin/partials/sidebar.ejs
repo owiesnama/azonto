@@ -47,5 +47,13 @@
             </a>
         </li>
         <%}%>
+        <%if(locals.user.role_id !=2){%>
+        <li class="nav-item ">
+            <a class="nav-link" href="/admin/sponsored">
+                <i class="material-icons">featured_video</i>
+                <p>Sponsored</p>
+            </a>
+        </li>
+        <%}%>
     </ul>
 </div>
