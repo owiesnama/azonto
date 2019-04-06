@@ -1,6 +1,8 @@
 const sha1 = require('sha1')
 const colors = require('colors')
 const i18n = require('i18n')
+const express = require('express')
+const app = express();
 const UsersService = require('../services/UsersService')
 
 exports.list = (req, response, next) => {
@@ -103,6 +105,7 @@ exports.login = (req, response, next) => {
 
         req.session.user = user;
         response.locals.user = user;
+
         next();
       }
     }).catch((error) => {
