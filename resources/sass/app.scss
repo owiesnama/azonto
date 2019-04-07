@@ -198,13 +198,14 @@
 .box {
   display: inline-block;
   vertical-align: top;
-  margin: 0 -5px 5px 0;
+  margin: 0 10px 5px 0;
   font-size: 0.923em;
   line-height: 1.333em;
   text-align: center;
   padding: 5px 5px 2px;
   border-radius: 4px;
   position: relative;
+  width: 190px;
 
   z-index: 1;
   .title {
