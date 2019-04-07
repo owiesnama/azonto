@@ -1,5 +1,23 @@
 //
 // Footer
 //
-
 @import "../core/footers/footer";
+
+.footer {
+
+  .navbar {
+    padding: 5px 15px;
+
+    .navbar-nav {
+      min-width: 20px;
+      flex-direction: row;
+      text-align: left;
+      justify-content: flex-start;
+
+    }
+
+    .nav-item .nav-link{
+      padding: 0 1rem 0 0;
+    }
+  }
+}

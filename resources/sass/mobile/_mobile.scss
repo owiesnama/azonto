@@ -33,6 +33,17 @@
     visibility: hidden;
   }
 
+
+  box.is-horizontal strong {
+    color: black;
+  }
+
+  .comments{
+    display: block;
+    margin:0 2px;
+  }
+
+
   .carousel-section {
     display: none;
     visibility: hidden;
