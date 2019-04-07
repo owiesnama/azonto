@@ -1,0 +1,42 @@
+<modal name="addSponsored"
+       width="50%"
+       height="auto"
+       :pivot-x=".5"
+       :pivot-y=".5"
+       classes="">
+    <div class="card">
+        <div class="card-header card-header-primary">
+            <h4 class="card-title">Add Sponsored</h4>
+        </div>
+        <div class="card-body">
+            <form action="/sponsored">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group bmd-form-group">
+                            <label class="label">Url</label>
+                            <input type="text"
+                                   name="url"
+                                   placeholder="http://google.com"
+                                   required
+                                   class="form-control">
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <label class="label">Image</label>
+                        <input type="file"
+                               name="image"
+                               required
+                               class="form-control">
+
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <button type="submit"
+                            class="btn btn-primary">Submit
+                    </button>
+                    <button @click="$modal.hide('addSponsored')" type="button" class="btn btn-default">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</modal>

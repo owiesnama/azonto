@@ -25,9 +25,9 @@
                     </div>
                     <% if(trending.length){ %>
                     <section class="carousel-section">
-                        <header class="heading with--background">
-                            <h1>TRENDING
-                                <mark>NOW</mark>
+                        <header class="heading main-heading">
+                            <h1>Top
+                                <mark>10</mark>
                             </h1>
                         </header>
                         <div class="loading-content">
@@ -59,7 +59,7 @@
                     <% } %>
                     <% if(featured.length){ %>
                     <section>
-                        <header class="heading with--background">
+                        <header class="heading main-heading">
                             <h1>FEATURED
                                 <mark>VIDEOS</mark>
                             </h1>
@@ -266,7 +266,7 @@
 
                     </div>
                     <section>
-                        <header class="heading with--background">
+                        <header class="heading">
                             <h1>
                                 <time>{{'<%= new Date(key).toDateString() %>'|calendar}}
                                     <mark>VIDEOS</mark>
@@ -301,7 +301,7 @@
                                         <span class="views only-desktop"><%= video.views %></span>
                                         <span class="only-mobile">views:<%= video.views %></span>
                                         <span class="comments">
-                                        <a href="/videos/<%=video.video_id%>#disqus_thread">53</a>
+                                        <a href="/videos/<%= video.video_id %>#disqus_thread">53</a>
                                         </span>
                                     </div>
                                 </strong>
@@ -336,6 +336,6 @@
 
 </body>
 <script src="/js/app.js"></script>
-<script id="dsq-count-scr" src="//azonto-tv-1.disqus.com/count.js" async></script>
+<script id="dsq-count-scr" src="//azonto-tv-1.disqus.com/count.js"></script>
 
 </html>

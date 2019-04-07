@@ -1,19 +1,19 @@
 <div class="sidebar-wrapper">
-  <ul class="nav">
-    <%if(user.role_id != 2){%>
-    <li class="nav-item">
-      <a class="nav-link" href="/admin">
-        <i class="material-icons">dashboard</i>
-        <p>Dashboard</p>
-      </a>
-    </li>
-    <li class="nav-item ">
-      <a class="nav-link" href="/admin/users">
-        <i class="material-icons">person</i>
-        <p>Users</p>
-      </a>
-    </li>
-    <%}%>
+    <ul class="nav">
+        <% if(user.role_id != 2){ %>
+        <li class="nav-item">
+            <a class="nav-link" href="/admin">
+                <i class="material-icons">dashboard</i>
+                <p>Dashboard</p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="/admin/users">
+                <i class="material-icons">person</i>
+                <p>Users</p>
+            </a>
+        </li>
+        <% } %>
         <li class="nav-item ">
             <a class="nav-link" href="/admin/requests">
                 <i class="material-icons">content_paste</i>
@@ -33,19 +33,25 @@
                 <p>Messages</p>
             </a>
         </li>
-    <%if(user.role_id !=2){%>
-      <li class="nav-item ">
-        <a class="nav-link" href="/admin/categories">
-          <i class="material-icons">category</i>
-          <p>Categories</p>
-        </a>
-      </li>
-      <li class="nav-item ">
-        <a class="nav-link" href="/admin/featured">
-          <i class="material-icons">featured_video</i>
-          <p>Featured</p>
-        </a>
-      </li>
-    <%}%>
+        <% if(user.role_id != 2){ %>
+        <li class="nav-item ">
+            <a class="nav-link" href="/admin/categories">
+                <i class="material-icons">category</i>
+                <p>Categories</p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="/admin/featured">
+                <i class="material-icons">featured_video</i>
+                <p>Featured</p>
+            </a>
+        </li>
+        <li class="nav-item ">
+            <a class="nav-link" href="/admin/sponsored">
+                <i class="material-icons">featured_video</i>
+                <p>Sponsored</p>
+            </a>
+        </li>
+        <% } %>
     </ul>
 </div>

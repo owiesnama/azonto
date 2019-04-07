@@ -41,6 +41,12 @@ router.get('/terms',
 
 router.get('/thanks',
     (req, response) => {
+        response.render('thanks');
+    });
+
+
+router.get('/contact-thanks',
+    (req, response) => {
         response.render('contact-thanks');
     });
 

@@ -28,8 +28,7 @@
                                         allowfullscreen></iframe>
                                 <% } %>
                             </div>
-                            <div class="shareaholic-canvas border-bottom" data-app="share_buttons"
-                                 data-app-id="28469290"></div>
+                            <div class="shareaholic-canvas" data-app="share_buttons" data-app-id="28475186"></div>
                             <div class="text-left">
                                 <p class="mb-1">Uploaded on <span><%= video.created_at %></span></p>
 
@@ -47,7 +46,7 @@
                     >
                         <div class="">
                             <% if(recommended.length){ %>
-                            <header class="heading with--background">
+                            <header class="heading main-heading">
                                 <h1>
                                     recommended
                                     <mark>videos</mark>
@@ -56,37 +55,28 @@
                             <section class="videos">
                                 <% recommended.forEach(video => { %>
                                 <section class="box is-horizontal">
-                                    <a itemprop="url" href="/videos/<%=video.video_id%>" class="video-box">
+                                    <a itemprop="url" href="/videos/<%= video.video_id %>" class="video-box">
                                         <% if(video.player == 0){ %>
                                         <img src="/thumbnails/<%= video.thumbnail %>"
-                                             alt="<%=video.description%>">
+                                             alt="<%= video.description %>">
                                         <% } else { %>
                                         <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
-                                             alt="<%=video.description%>">
+                                             alt="<%= video.description %>">
                                         <% } %>
 
                                     </a>
                                     <div class="p-1 d-flex flex-column ">
                                         <strong class="title" itemprop="name">
-                                            <a href="/videos/<%=video.video_id%>">
-                                                <%=video.title%>
+                                            <a href="/videos/<%= video.video_id %>">
+                                                <%= video.title %>
                                             </a>
                                         </strong>
-                                        <span><%=video.views%> views</span>
+                                        <span><%= video.views %> views</span>
                                     </div>
                                 </section>
                                 <% }) %>
                             </section>
                             <% } %>
-                            <header class="heading with--background">
-                                <h1>
-                                    Sponsored
-                                    <mark>videos</mark>
-                                </h1>
-                            </header>
-                            <section class="videos">
-
-                            </section>
                         </div>
                     </div>
                 </div>

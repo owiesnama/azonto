@@ -1,0 +1,58 @@
+<%- include("./partials/header") %>
+<sponsored-view inline-template>
+    <div class="">
+        <div class="main-panel">
+            <!-- Navbar -->
+            <%- include("./partials/navbar") %>
+
+            <!-- End Navbar -->
+            <div class="content">
+                <flash-message></flash-message>
+
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">
+                                        Users
+                                    </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <tr>
+                                                <th>
+                                                    ID
+                                                </th>
+                                                <th>
+                                                    url
+                                                </th>
+                                                <th>
+                                                    Created At
+                                                </th>
+                                                <th class="text-right">
+                                                    <button type="button"
+                                                            @click="create()"
+                                                            class="btn btn-primary">
+                                                        Add Sponsored
+                                                    </button>
+                                                </th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%- include("./modals/sponsored/all") %>
+    </div>
+</sponsored-view>
+<%- include("./partials/footer") %>

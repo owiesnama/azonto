@@ -72,6 +72,15 @@ import ShowView from './Views/Show.vue'
 
 Vue.component('ShowView', ShowView);
 
+import SponsoredView from './Views/Sponsored.vue'
+
+Vue.component('SponsoredView', SponsoredView);
+
+
+import Login from './components/Login'
+
+Vue.component('Login', Login);
+
 
 import VueDisqus from 'vue-disqus'
 
@@ -97,11 +106,10 @@ const app = new Vue({
 
     methods: {
         getVideoId(url) {
-            var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
             var match = url.match(regExp);
-
-            if (match && match[2].length == 11) {
-                return match[2];
+            if (match && match[7].length == 11) {
+                return match[7];
             } else {
                 return 'error';
             }

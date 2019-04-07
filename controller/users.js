@@ -93,8 +93,7 @@ exports.login = (req, response, next) => {
   new UsersService().findOne(where)
     .then(async (result) => {
       if (!result) {
-        response.status(400).send(i18n.__('invalid_login'));
-        return;
+        response.status(400).send({error:i18n.__('invalid_login')});
       } else {
         //set only the needed user attributes
         const user = {

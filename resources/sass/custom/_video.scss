@@ -77,6 +77,15 @@
     background: url(../../../public/images/bg-video-box.png);
     opacity: 0;
   }
+
+  strong.title{
+    text-align: left;
+    a{
+      text-align: left;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+  }
 }
 
 .video-box {

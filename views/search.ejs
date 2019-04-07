@@ -1,60 +1,76 @@
 <%- include('./partials/header') %>
 <div id="app" class="min-container">
-    <div class="">
-        <main id="main" role="main">
-            <div class="ad"></div>
+    <home-view inline-template :page-number="<%= pageNumber %>">
+        <div class="">
+            <main id="main" role="main">
+                <div class="ad">
 
-            <header class="heading with--background">
-                <h1>
-                    <mark>Search results</mark>
-                </h1>
+                </div>
+                <header class="heading with--background">
+                    <h1>
+                        <mark>Search results</mark>
+                    </h1>
 
-            </header>
+                </header>
 
-            <section>
-                <!-- display videos -->
-                <div class="videos">
+                <section>
+                    <!-- display videos -->
+                    <div class="videos">
 
-                    <% videos.forEach(function (video) { %>
-                    <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
-                        <a itemprop="url"
-                           href="/videos/<%= video.video_id %>"
-                           class="video-box">
+                        <% videos.forEach(function (video) { %>
+                        <section class="box" itemscope="" itemtype="http://schema.org/ImageObject">
+                            <a itemprop="url"
+                               href="/videos/<%= video.video_id %>"
+                               class="video-box">
 
-                            <% if(video.player == 0){ %>
-                            <img src="/thumbnails/<%= video.thumbnail %>"
-                                 alt="">
-                            <% } else { %>
-                            <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
-                                 alt="">
-                            <% } %>
+                                <% if(video.player == 0){ %>
+                                <img src="/thumbnails/<%= video.thumbnail %>"
+                                     alt="">
+                                <% } else { %>
+                                <img :src="'https://img.youtube.com/vi/'+getVideoId('<%= video.url %>')+'/2.jpg'"
+                                     alt="">
+                                <% } %>
 
-                        </a>
-                        <strong class="title" itemprop="name">
-                            <a href="/videos/<%= video.video_id %>"><%= video.title %></a>
-                            <div>
-                                <span class="views"><%= video.views %></span>
-                                <span class="comments">
-                                <a href="/videos/<%=video.video_id%>#disqus_thread">53</a>
+                            </a>
+                            <strong class="title" itemprop="name">
+                                <a href="/videos/<%= video.video_id %>"><%= video.title %></a>
+                                <div>
+                                    <span class="views"><%= video.views %></span>
+                                    <span class="comments only-desktop">
+                                <a href="/videos/<%=video.video_id%>#disqus_thread">0</a>
                                 </span>
-                            </div>
-                        </strong>
+                                </div>
+                            </strong>
 
 
-                    </section>
-                    <% }) %>
+                        </section>
+                        <% }) %>
 
-                    <% if(!videos.length){ %>
+                        <% if(!videos.length){ %>
                         <p class="text-muted text-center">
                             We are sorry but we didn't find what are you looking for .
                         </p>
-                    <% } %>
+                        <% } %>
 
-                </div>
-                <!-- display videos -->
-            </section>
+                    </div>
+                    <!-- display videos -->
+                </section>
 
-        </main>
-    </div>
+                <section v-if="<%= pages %>">
+                    <section>
+                        <paginate
+                                ref="pagination"
+                                :page-count="<%= pages %>"
+                                :click-handler="changePage"
+                                :prev-text="'Previous'"
+                                :next-text="'Next'"
+                                :container-class="'paging'">
+                        </paginate>
+                    </section>
+                </section>
+            </main>
+            <%- include('./partials/footer') %>
+        </div>
+    </home-view>
 
 <%- include('./partials/footer-section') %>

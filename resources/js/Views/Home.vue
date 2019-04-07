@@ -1,7 +1,7 @@
 <script>
     import Carousel from '../components/Carousel'
     export default {
-        props:['pageNumber'],
+        props: ['pageNumber'],
 
         components: {Carousel},
 
@@ -12,21 +12,20 @@
             },
 
             getVideoId(url) {
-                var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
                 var match = url.match(regExp);
-
-                if (match && match[2].length == 11) {
-                    return match[2];
+                if (match && match[7].length == 11) {
+                    return match[7];
                 } else {
                     return 'error';
                 }
             },
 
             markActiveLink(){
-                document.querySelectorAll('.paging li').forEach(element =>{
-                    if((this.pageNumber + 1) == element.innerText){
+                document.querySelectorAll('.paging li').forEach(element => {
+                    if ((this.pageNumber + 1) == element.innerText) {
                         element.classList.add('active')
-                    }else{
+                    } else {
                         element.classList.remove('active')
                     }
 
