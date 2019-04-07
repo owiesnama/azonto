@@ -413,3 +413,7 @@ input[type="checkbox"] {
 .uppercase {
   text-transform: uppercase;
 }
+
+*[v-clock] {
+  display: none;
+}
