@@ -5,7 +5,7 @@
         <%- include("./partials/navbar") %>
         <!-- End Navbar -->
         <div class="content">
-            <flash-message ></flash-message>
+            <flash-message></flash-message>
 
             <div class="container-fluid">
                 <div class="row">
@@ -31,6 +31,9 @@
                                                 description
                                             </th>
                                             <th>
+                                                url
+                                            </th>
+                                            <th>
                                                 Date
                                             </th>
                                             <th>
@@ -54,6 +57,7 @@
                                             </td>
                                             <td v-text="request.title"></td>
                                             <td v-text="request.description"></td>
+                                            <td class="text-center">{{request.player ==1 ?request.url:'-'}}</td>
                                             <td>{{request.created_at | ago}}</td>
                                             <td class="td-actions">
                                                 <button type="button" rel="tooltip" title="Edit Task"
