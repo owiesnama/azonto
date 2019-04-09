@@ -12,6 +12,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },      
+      email: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },      
       description: {
         allowNull: false,
         type: Sequelize.STRING
@@ -22,7 +26,7 @@ module.exports = {
       },
       player: {
         allowNull: false,
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER
       },
       views: {
         allowNull: false,
@@ -30,13 +34,22 @@ module.exports = {
         defaultValue: 0
       },      
       thumbnail: {
-        allowNull: false,
-        type: Sequelize.STRING,
+        type: Sequelize.STRING
       },      
       status_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         defaultValue: 0
+      },      
+      category_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
+        onDelete: 'CASCADE',
+        references: {
+          model: 'categories',
+          key: 'category_id'
+        }
       },      
       created_at: {
         allowNull: false,

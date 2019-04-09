@@ -59,12 +59,6 @@
     color: #991a1a;
     display: block;
     position: relative;
-    .btn-play {
-      opacity: 0;
-    }
-    .btn-play-hover {
-      opacity: 1;
-    }
     h2 {
       color: #991a1a;
     }
@@ -83,12 +77,30 @@
     background: url(../../../public/images/bg-video-box.png);
     opacity: 0;
   }
+
+  strong.title{
+    text-align: left;
+    a{
+      text-align: left;
+      font-size: 16px;
+      font-weight: bolder;
+    }
+  }
 }
 
 .video-box {
+
+
+  .title span {
+    color: gray;
+    font-size: small;
+    font-weight: lighter;
+  }
+
   .btn-play {
     margin: 0 0 0 -29px;
     position: absolute;
+    display: none;
     top: 50%;
     transform: translate(0%, -50%);
     left: 50%;

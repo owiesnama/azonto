@@ -8,15 +8,15 @@ var bodyParser = require('body-parser');
 const session = require('express-session')
 const colors = require('colors');
 const i18n = require('i18n');
+const fs = require('fs');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
 const videos = require('./routes/videos');
 const messages = require('./routes/messages');
 const admin = require('./routes/admin');
-// TODO:
-// const admin = require('./routes/admin');
 const featuredVideos = require('./routes/featured_videos');
+const categories = require('./routes/categories');
 
 const app = express();
 
@@ -81,8 +81,7 @@ app.use('/videos', videos);
 app.use('/messages', messages);
 app.use('/featured_videos', featuredVideos);
 app.use('/admin', admin);
-// TODO:
-// app.use('/admin', admin);
+app.use('/categories', categories);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -101,5 +100,22 @@ app.use(function (err, req, res, next) {
     res.status(err.status || 500);
     res.render('error');
 });
+
+// check that upload and it's sub folder are exists 
+const uploadsPath = './uploads/';
+const screenshotPath = './uploads/thumbnails/';
+const videoPath = './uploads/videos/';
+
+if (!fs.existsSync(uploadsPath)) {
+  fs.mkdirSync(uploadsPath);
+}
+
+if (!fs.existsSync(screenshotPath)) {
+  fs.mkdirSync(screenshotPath);
+}
+
+if (!fs.existsSync(videoPath)) {
+  fs.mkdirSync(videoPath);
+}
 
 module.exports = app;

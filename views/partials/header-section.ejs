@@ -1,50 +1,25 @@
 <header class="header-section">
-    <div class="ads top-banner">
+    <div class="ad">
 
     </div>
     <div class="min-container">
-        <nav class="navbar  navbar-expand-lg">
+        <nav class="navbar navbar-dark px-2">
             <strong class="logo">
                 <a class="navbar-brand text-white" href="/">
                     <img src="/images/azonto.jpeg" alt="">
                 </a>
             </strong>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link " href="/contact" tabindex="-1" aria-disabled="true">CONTACT</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/upload">submit video</a>
-                    </li>
+            <form class="form-inline my-2 my-lg-0"
+                  method="GET"
+                  action="/videos/search">
+                <input class="form-control search-control"
+                       name="title"
+                       type="search"
+                       placeholder="Search"
+                       aria-label="Search">
+            </form>
 
-                </ul>
-                <div class="ml-auto d-flex right-nav">
-
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control search-control mr-sm-2" type="search" placeholder="Search"
-                               aria-label="Search">
-                    </form>
-                    <ul class="social-networks">
-                        <li class="facebook">
-                            <a href="http://www.facebook.com/AZONTO.TV" target="_blank">facebook</a>
-                        </li>
-                        <li class="twitter">
-                            <a href="http://www.twitter.com/AZONTO.TV" target="_blank">twitter</a>
-                        </li>
-                        <li class="instagram">
-                            <a href="http://instagram.com/AZONTO.TV" target="_blank">Instagram</a>
-                        </li>
-                    </ul>
-
-                </div>
-            </div>
         </nav>
     </div>
-
 </header>

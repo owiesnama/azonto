@@ -8,6 +8,7 @@
                     name: '',
                     email: '',
                     password: '',
+                    role_id: '',
                     password_confirmation: ''
                 },
                 userIndex: false
@@ -15,8 +16,13 @@
         },
 
         methods: {
+
+            create(){
+                this.$modal.show('addUser');
+            },
+
             edit(user = this.user) {
-                user.password = "";
+                user.password_confirmation = user.password
                 this.userIndex = this.users.indexOf(this.user)
                 this.user = user;
                 this.$modal.show("editUser")
@@ -28,10 +34,15 @@
             },
             store() {
                 axios.post(`/users`, clone(this.user))
-                    .then((data) => {
+                    .then(({data}) => {
+                        console.log(data)
                         this.$modal.hide('addUser');
-                        this.users.push(this.user)
-                    })
+                        this.users.push(data.user)
+                    }).catch(e => {
+                    this.$modal.hide('addUser');
+
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             update() {
@@ -39,15 +50,21 @@
                     .then((data) => {
                         this.user[this.userIndex] = clone(this.user);
                         this.$modal.hide('editUser')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('editUser')
+                    this.flashError('Opps, Something goes wrong');
+                })
             },
 
             destroy(user = this.user) {
                 axios.delete(`/users/${this.user.user_id}`)
                     .then(() => {
                         this.users.splice(this.users.indexOf(user))
-                        this.$modal.hide('confirmMessage')
-                    })
+                        this.$modal.hide('confirmDelete')
+                    }).catch(e => {
+                    this.$modal.hide('confirmDelete')
+                    this.flashError('Opps, Something goes wrong');
+                })
             }
         },
 

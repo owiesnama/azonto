@@ -8,7 +8,7 @@ window.Form = Form;
 
 try {
     window.$ = window.jQuery = require('jquery');
-    require('bootstrap')
+    require('bootstrap');
 } catch (e) {
 }
 
@@ -52,9 +52,4 @@ Vue.use(VModal);
 
 import './utilites/helpers'
 
-
-
-
-// import './bootstrap-material-design.min'
-// import './popper.min'
-// import './admin'
+import 'popper.js'

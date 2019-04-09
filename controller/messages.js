@@ -33,28 +33,13 @@ exports.findOne = (req, response, next) => {
 
 exports.create = (req, response, next) => {
   const message = {
+    name: req.body.name,
     sender: req.body.sender,
+    attention: req.body.attention,
     message: req.body.message
   };
 
   new MessagesService().create(message)
-    .then((result) => {
-      req.result = result;
-      next();
-    }).catch((error) => {
-      response.status(error.code ? error.code : 500).send(error.message ? error.message : error);
-      console.log('\n---------------- error ----------------\n'.red, error);
-    });
-}
-
-exports.update = (req, response, next) => {
-  const messageId = parseInt(req.params.message_id);
-  const message = {
-    sender: req.body.sender,
-    message: req.body.message
-  };
-
-  new MessagesService().update(message, messageId)
     .then((result) => {
       req.result = result;
       next();

@@ -40,8 +40,8 @@ class UsersService extends BaseService {
           return;
         }
 
-        await super.create(user);
-        resolve();
+        const result = await super.create(user);
+        resolve(result);
       } catch (error) {
         reject(error);
       }

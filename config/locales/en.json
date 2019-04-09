@@ -1,6 +1,6 @@
 {
 	"passwords_do_not_match": "passwords does not matched",
-	"invalid_login": "invalide user information",
+	"invalid_login": "Invalid credentials",
 	"select_files": "please select some files",
 	"add": "add",
 	"add workflow": "add workflow",

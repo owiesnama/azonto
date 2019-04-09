@@ -1,0 +1,28 @@
+<%- include("./partials/header") %>
+<Featured-View inline-template>
+    <div class="main-panel">
+        <!-- Navbar -->
+        <%- include("./partials/navbar") %>
+        <!-- End Navbar -->
+        <div class="content">
+            <flash-message></flash-message>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-primary">
+                                <h4 class="card-title ">
+                                    Featured
+                                </h4>
+                            </div>
+                            <div class="card-body">
+                                <Featured-tabel :featured="featured"></Featured-tabel>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</Featured-View>
+<%- include("./partials/footer") %>

@@ -1,3 +1,23 @@
-<h1><%= message %></h1>
-<h2><%= error.status %></h2>
-<pre><%= error.stack %></pre>
+<%- include('./partials/header') %>
+<div id="app" class="min-container">
+    <div class="">
+        <main id="main" role="main">
+            <div class="promo-image"></div>
+            <br>
+            <section>
+                <header class="heading">
+                    <h1>Not Found
+                    </h1>
+                </header>
+                <section class="section">
+                    <div class="text-holder">
+                        <p>We are sorry but we didn't find what are you looking for,<a href="/">click here and see our last videos
+                            </a></p>
+                    </div>
+                    <p><%=error%></p>
+                </section>
+            </section>
+        </main>
+    </div>
+
+<%- include('./partials/footer-section') %>

@@ -1,0 +1,60 @@
+@import "featured-videos";
+@import "video";
+@import "heading";
+@import "header";
+@import "footer";
+
+
+.only-mobile{
+  display: none;
+  visibility: hidden;
+}
+
+.submit-alterntive{
+  display: none;
+  visibility: none;
+}
+
+@media (min-width: 200px) and (max-width: 920px){
+  .navbar{
+    margin-left:0;
+  }
+  #submit{
+    display: none;
+  }
+  .submit-alterntive{
+    display: block;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 720px) {
+  .only-desktop {
+    display: none;
+    visibility: hidden;
+  }
+
+
+  box.is-horizontal strong {
+    color: black;
+  }
+
+  .comments{
+    display: block;
+    margin:0 2px;
+  }
+
+
+  .carousel-section {
+    display: none;
+    visibility: hidden;
+  }
+
+  .only-mobile{
+   display: flex;
+    visibility: inherit;
+  }
+
+  .min-container{
+    max-width: 100% !important;
+  }
+}

@@ -9,22 +9,23 @@ require('chart.js');
 
 
 moment.updateLocale('en', {
-    calendar : {
-        lastDay : '[Yesterday]',
-        sameDay : '[Today]',
-        nextDay : '[Tomorrow]',
-        lastWeek : '[Last] dddd',
-        nextWeek : '[Next] dddd',
-        sameElse : 'L'
+    calendar: {
+        lastDay: 'D MMMM',
+        sameDay: '[Today\'s]',
+        nextDay: '[Tomorrow]',
+        lastWeek: 'D MMMM',
+        nextWeek: 'D MMMM',
+        sameElse: 'L'
     }
 });
 
 Vue.filter('ago', function (time) {
-    return window.moment(time).fromNow();
+    return window.moment(new Date(time).toDateString()).fromNow();
 });
 
 Vue.filter('calendar', function (time) {
-    return window.moment(time).calendar();
+    console.log(time)
+    return window.moment(new Date(time).toDateString()).calendar();
 });
 
 
@@ -54,7 +55,64 @@ import UsersView from './Views/Users'
 
 Vue.component('UsersView', UsersView);
 
+import CategoriesView from './Views/Categories'
+
+Vue.component('CategoriesView', CategoriesView);
+
+import FeaturedView from './Views/Featured'
+
+Vue.component('FeaturedView', FeaturedView);
+
+import VideosView from './Views/Videos'
+
+Vue.component('VideosView', VideosView);
+
+
+import ShowView from './Views/Show.vue'
+
+Vue.component('ShowView', ShowView);
+
+import SponsoredView from './Views/Sponsored.vue'
+
+Vue.component('SponsoredView', SponsoredView);
+
+
+import Login from './components/Login'
+
+Vue.component('Login', Login);
+
+
+import VueDisqus from 'vue-disqus'
+
+Vue.use(VueDisqus)
+
+import Paginate from 'vuejs-paginate'
+Vue.component('paginate', Paginate)
+
+import VueFlashMessage from 'vue-flash-message';
+Vue.use(VueFlashMessage, {
+    messageOptions: {
+        timeout: 1000,
+        important: true,
+        autoEmit: false,
+        pauseOnInteract: true
+    }
+});
+
+require('vue-flash-message/dist/vue-flash-message.min.css');
 
 const app = new Vue({
-    el: '#app'
+    el: '#app',
+
+    methods: {
+        getVideoId(url) {
+            var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+            var match = url.match(regExp);
+            if (match && match[7].length == 11) {
+                return match[7];
+            } else {
+                return 'error';
+            }
+        }
+    }
 });

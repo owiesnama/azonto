@@ -23,7 +23,11 @@
                     .then(() => {
                         this.messages.splice(this.messages.indexOf(message))
                         this.$modal.hide('confirmMessage')
-                    })
+                    }).catch(e => {
+                    this.$modal.hide('confirmMessage')
+
+                    this.flashError('Opps, Something goes wrong');
+                })
             }
         },
 

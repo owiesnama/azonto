@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
-    video_id: DataTypes.INTEGER
+    video_id: DataTypes.INTEGER,
+    order: DataTypes.INTEGER
   }, {});
   featured_videos.associate = function(models) {
     // associations can be defined here

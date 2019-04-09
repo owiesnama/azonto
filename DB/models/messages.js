@@ -7,7 +7,9 @@ module.exports = (sequelize, DataTypes) => {
       primaryKey: true,
       type: DataTypes.INTEGER
     },
+    name: DataTypes.STRING,
     sender: DataTypes.STRING,
+    attention: DataTypes.STRING,
     message: DataTypes.TEXT
   }, {});
   messages.associate = function(models) {

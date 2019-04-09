@@ -13,7 +13,7 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Full name</label>
+                            <label class="label">Full name</label>
                             <input type="text"
                                    v-model="user.name"
                                    required
@@ -22,7 +22,7 @@
                     </div>
                     <div class="col-md-12">
                         <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Email address</label>
+                            <label class="label">Email address</label>
                             <input type="email"
                                    v-model="user.email"
                                    required
@@ -30,21 +30,14 @@
                         </div>
                     </div>
                     <div class="col-md-12">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Password</label>
-                            <input type="password"
-                                   v-model="user.password"
-                                   required
-                                   class="form-control">
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="form-group bmd-form-group">
-                            <label class="bmd-label-floating">Confirm password</label>
-                            <input type="password"
-                                   v-model="user.password_confirmation"
-                                   required
-                                   class="form-control">
+                        <div class="form-group">
+                            <select name="role_id"
+                                    class="form-control"
+                                    v-model="user.role_id"
+                                    required>
+                                <option value="1">Admin</option>
+                                <option value="2">Reviewer</option>
+                            </select>
                         </div>
                     </div>
                 </div>

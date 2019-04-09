@@ -2,9 +2,11 @@
 <requests-view inline-template>
     <div class="main-panel">
         <!-- Navbar -->
-        <%-include("./partials/navbar")%>
+        <%- include("./partials/navbar") %>
         <!-- End Navbar -->
         <div class="content">
+            <flash-message></flash-message>
+
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-12">
@@ -29,6 +31,9 @@
                                                 description
                                             </th>
                                             <th>
+                                                url
+                                            </th>
+                                            <th>
                                                 Date
                                             </th>
                                             <th>
@@ -37,42 +42,38 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                        <tr>
+                                        <tr v-for="request in requests"
+                                            :key="request.video_id">
                                             <td>
 
                                                 <div class="video-thumbnail"
-                                                     @click="$modal.show('videoPlay')"
+                                                     @click="playVideo(request)"
                                                 >
-                                                    <img src="https://hw-static.worldstarhiphop.com/u/pic/2019/03/W2hp9gfDqbMU.jpg"
+                                                    <img :src="'/thumbnails/'+request.thumbnail"
                                                          alt="">
                                                     <span class="play-button"></span>
                                                 </div>
 
                                             </td>
-                                            <td>
-                                                Dakota Rice
-                                            </td>
-                                            <td>
-                                                daskota@gmail.com
-                                            </td>
-                                            <td>
-                                                two month ago
-                                            </td>
+                                            <td v-text="request.title"></td>
+                                            <td v-text="request.description"></td>
+                                            <td class="text-center">{{request.player ==1 ?request.url:'-'}}</td>
+                                            <td>{{request.created_at | ago}}</td>
                                             <td class="td-actions">
                                                 <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
+                                                        @click="edit(request)"
                                                         class="btn btn-primary btn-link btn-sm">
                                                     <i class="material-icons">edit</i>
                                                 </button>
                                                 <button type="button" rel="tooltip" title="Edit Task"
-                                                        @click="$modal.show('editUser')"
+                                                        @click="approve(request)"
                                                         class="btn btn-success btn-link btn-sm">
                                                     <i class="material-icons">check</i>
                                                 </button>
                                                 <button type="button"
                                                         rel="tooltip"
                                                         title="Remove"
-                                                        @click="$modal.show('confirmDelete')"
+                                                        @click="confirm(request)"
                                                         class="btn btn-danger btn-link btn-sm"><i
                                                             class="material-icons">close</i>
                                                 </button>
@@ -87,7 +88,8 @@
                 </div>
             </div>
         </div>
-        <%-include("./modals/videoPlay")%>
+        <%- include("./modals/videoPlay") %>
+        <%- include("./modals/requests/all") %>
     </div>
 </requests-view>
 <%- include("./partials/footer") %>

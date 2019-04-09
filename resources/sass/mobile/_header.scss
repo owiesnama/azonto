@@ -1,0 +1,52 @@
+@media (min-width: 300px) and (max-width: 520px) {
+  .navbar {
+
+    .search-control {
+      padding: 6px;
+      height: 26px;
+    }
+    .form-inline {
+      max-width: 55%;
+    }
+    .logo {
+      padding: 2px;
+      img {
+        width: 100px;
+        height: 20px;
+      }
+    }
+
+    .nav-link {
+      padding: 3px;
+    }
+
+    .form-inline {
+      flex-grow: 1;
+    }
+
+  }
+
+}
+
+@media (min-width: 520px) and (max-width: 720px) {
+  .navbar {
+
+    .search-control {
+      padding: 6px;
+    }
+
+    .logo {
+      width: 140px;
+      padding: 1px;
+    }
+
+    .form-inline {
+      flex-grow: 1;
+    }
+    .nav-link {
+      padding: 3px;
+    }
+
+  }
+
+}
